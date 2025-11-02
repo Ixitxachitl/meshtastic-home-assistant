@@ -1,1 +1,11 @@
-{"name":"meshtastic-web","short_name":"meshtastic-web","description":"Meshtastic web client","start_url":"/meshtastic/web/","display":"standalone","background_color":"#ffffff","theme_color":"#42b883","lang":"en","scope":"/meshtastic/web/"}
+{
+    "name": "meshtastic-web",
+    "short_name": "meshtastic-web",
+    "description": "Meshtastic web client",
+    "start_url": "/meshtastic/web/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#42b883",
+    "lang": "en",
+    "scope": "/meshtastic/web/"
+}
