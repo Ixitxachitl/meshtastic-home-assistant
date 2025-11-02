@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+echo "🔨 Building Meshtastic Web..."
+cd meshtastic-web-source/packages/web
+npm run build
+
+echo ""
+echo "📦 Deploying to Home Assistant integration..."
+cd /workspaces/meshtastic-home-assistant
+cp -r meshtastic-web-source/packages/web/dist/* custom_components/meshtastic/meshtastic_web/static/
+
+echo ""
+echo "🔧 Fixing asset paths for Home Assistant subdirectory..."
+cd custom_components/meshtastic/meshtastic_web/static
+
+# Fix paths in index.html
+sed -i 's|href="site.webmanifest"|href="/meshtastic/web/site.webmanifest"|g; s|href="logo_black.svg"|href="/meshtastic/web/logo_black.svg"|g' index.html
+
+# Fix paths in site.webmanifest
+sed -i 's|"src": "/logo.svg"|"src": "/meshtastic/web/logo.svg"|g' site.webmanifest
+
+# Create en-US locale directory (browser language detection expects this)
+cd i18n/locales
+rm -rf en-US
+cp -r en en-US
+
+echo ""
+echo "🧹 Cleaning up old build artifacts..."
+cd /workspaces/meshtastic-home-assistant/custom_components/meshtastic/meshtastic_web/static
+
+# Keep only the latest build files
+find . -name "index-*.js" ! -name "$(ls -t index-*.js | head -1)" -delete
+find . -name "browser-ponyfill-*.js" ! -name "$(ls -t browser-ponyfill-*.js | head -1)" -delete
+find . -name "maplibre-gl-*.js" ! -name "$(ls -t maplibre-gl-*.js | head -1)" -delete
+rm -f *.tmp
+
+echo ""
+echo "✅ Deployment complete!"
+echo ""
+echo "Current deployed files:"
+ls -lh *.{js,css,html} 2>/dev/null | awk '{print "  " $9 " (" $5 ")"}'
+echo ""
+echo "🔄 Restart Home Assistant to load the new version"

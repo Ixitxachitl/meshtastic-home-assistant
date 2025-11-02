@@ -209,11 +209,13 @@ async def async_setup(hass: HomeAssistant) -> bool:
     try:
         _api_context = MeshtasticWebApiContext(hass)
 
-        hass.http.register_view(MeshtasticWebConfigEntryView(hass))
+        # Register specific API routes BEFORE the catch-all SPA route
         hass.http.register_view(MeshtasticWebApiHotspot())
         hass.http.register_view(MeshtasticWebApiV1FromRadioView(hass, _api_context))
         hass.http.register_view(MeshtasticWebApiV1ToRadioView(hass, _api_context))
         hass.http.register_view(MeshtasticWebJsonReportView(hass, _api_context))
+        # Register catch-all SPA route LAST so it doesn't intercept API calls
+        hass.http.register_view(MeshtasticWebConfigEntryView(hass))
         await hass.http.async_register_static_paths(
             [StaticPathConfig(f"{URL_BASE}/web", str(Path(__file__).parent / "static"))]
         )
@@ -225,7 +227,7 @@ async def async_setup(hass: HomeAssistant) -> bool:
 
 
 class MeshtasticWebConfigEntryView(HomeAssistantView):
-    url = URL_BASE + "/web/{entity_id}"
+    url = URL_BASE + "/web/{entity_id:.*}"
     name = "meshtastic:web_api_index"
     requires_auth = False
 
@@ -240,8 +242,21 @@ class MeshtasticWebConfigEntryView(HomeAssistantView):
         request: HomeAssistantRequest,  # noqa: ARG002
         entity_id: str,
     ) -> web.Response:
+        _LOGGER.warning(
+            "MeshtasticWebConfigEntryView: entity_id='%s' starts_with_gateway=%s",
+            entity_id,
+            entity_id.startswith("gateway_"),
+        )
+
         if not entity_id.startswith("gateway_"):
-            return web.FileResponse(Path(__file__).parent / "static" / entity_id, headers={"Cache-Control": "no-cache"})
+            # Serve index.html for SPA routes (empty path or paths without file extensions)
+            static_path = Path(__file__).parent / "static"
+            # If entity_id is empty or doesn't have a file extension, serve index.html
+            if not entity_id or "." not in entity_id.rsplit("/", 1)[-1]:
+                _LOGGER.warning("Serving index.html for entity_id='%s'", entity_id)
+                return web.FileResponse(static_path / "index.html", headers={"Cache-Control": "no-cache"})
+            _LOGGER.warning("Serving static file: %s", entity_id)
+            return web.FileResponse(static_path / entity_id, headers={"Cache-Control": "no-cache"})
 
         entity_registry = er.async_get(self._hass)
         entity_id = f"{DOMAIN}.{entity_id}"
@@ -264,7 +279,7 @@ class MeshtasticWebConfigEntryView(HomeAssistantView):
             return web.HTTPForbidden(body="Web client not enabled for gateway", headers={"Cache-Control": "no-cache"})
 
         return web.HTTPTemporaryRedirect(
-            location=f"{URL_BASE}/web/index.html?" + urlencode({"path": path}), headers={"Cache-Control": "no-cache"}
+            location=f"{URL_BASE}/web/?" + urlencode({"path": path}), headers={"Cache-Control": "no-cache"}
         )
 
 

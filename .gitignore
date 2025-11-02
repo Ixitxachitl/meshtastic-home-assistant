@@ -23,3 +23,9 @@ config/*
 
 # build
 .build
+.pnpm-store
+
+# Meshtastic web source (downloaded for custom builds)
+meshtastic-web-source/
+meshtastic-web-clean/
+meshtastic-web-*/
