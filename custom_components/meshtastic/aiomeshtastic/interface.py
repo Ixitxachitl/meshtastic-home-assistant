@@ -1051,7 +1051,7 @@ class MeshInterface:
                 return c.index
         return 0
 
-    async def send_text_message(
+    async def send_text_message(  # noqa: PLR0912, PLR0913
         self,
         text: str,
         destination: MeshNode | MeshChannel | int | str = None,
@@ -1059,6 +1059,7 @@ class MeshInterface:
         want_ack: bool = False,
         channel_index: int | None = None,
         priority: MeshPacket.Priority | None = None,
+        on_message_sent: Callable[[Packet], Awaitable[None]] | None = None,
     ) -> None:
         if isinstance(destination, MeshNode):
             to_node = destination.id
@@ -1089,6 +1090,13 @@ class MeshInterface:
                 msg = f"Channel #{channel_index} is disabled"
                 raise ValueError(msg)
 
+        if on_message_sent is not None:
+
+            async def out_callback(packet: Packet) -> None:
+                await on_message_sent(packet)
+        else:
+            out_callback = None
+
         return await self._connection.send_mesh_packet(
             channel_index=channel_index,
             to_node=to_node,
@@ -1098,6 +1106,7 @@ class MeshInterface:
             priority=priority or (MeshPacket.Priority.RELIABLE if want_ack else MeshPacket.Priority.DEFAULT),
             want_response=False,
             ack=want_ack,
+            out_callback=out_callback,
         )
 
     async def _notify_node_update(self, node_id: int) -> None:
