@@ -84,6 +84,7 @@ class MeshtasticDataUpdateCoordinator(DataUpdateCoordinator):
             update_interval=timedelta(hours=1),
         )
         self._logger = LOGGER.getChild(self.__class__.__name__)
+        self._first_refresh_done = False
         self._remove_event_listeners = []
         self._remove_event_listeners.append(
             hass.bus.async_listen(EVENT_MESHTASTIC_API_NODE_UPDATED, self._api_node_updated)
@@ -183,15 +184,22 @@ class MeshtasticDataUpdateCoordinator(DataUpdateCoordinator):
             self._logger.warning("Update data requested but config entry is empty")
             return None
 
+        # If we've already done the first refresh and have data, just return existing data
+        # This prevents repeated node database syncs from the device blocking the coordinator
+        if self._first_refresh_done and self.data:
+            return self.data
+
         try:
             node_infos = await self.config_entry.runtime_data.client.async_get_all_nodes()
 
             filter_nodes = self.config_entry.options.get(CONF_OPTION_FILTER_NODES, [])
             filter_node_nums = [el["id"] for el in filter_nodes]
-            return {
+            result = {
                 node_num: deepcopy(node_info)
                 for node_num, node_info in node_infos.items()
                 if node_num in filter_node_nums
             }
+            self._first_refresh_done = True
+            return result
         except MeshtasticApiClientError as exception:
             raise UpdateFailed(exception) from exception
