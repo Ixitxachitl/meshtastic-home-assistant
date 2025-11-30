@@ -677,6 +677,7 @@ class MeshInterface:
                 node_info_dict = google.protobuf.json_format.MessageToDict(
                     node_info, always_print_fields_with_no_presence=True
                 )
+
                 db_node = self._get_or_create_node(node_info.num)
                 db_node.update(node_info_dict)
 
@@ -690,7 +691,10 @@ class MeshInterface:
             except:  # noqa: E722
                 self._logger.warning("Failed to process node info", exc_info=True)
 
+        # Always update lastHeard with the fresh rx_time from the packet envelope
+        # This overwrites any stale lastHeard value from the node_info protobuf
         if p.from_id and p.rx_time:
+            self._logger.debug(f"Updating node {p.from_id} lastHeard to {p.rx_time}")
             await self._node_database_update(p.from_id, lastHeard=p.rx_time, snr=p.rx_snr)
 
     def _get_or_create_node(self, node_num: int) -> MutableMapping[str, Any]:

@@ -591,18 +591,15 @@ class CannotConnectError(HomeAssistantError):
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:  # noqa: ARG002
+    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
+        self.config_entry = config_entry
         self.options = {}
         self.nodes = None
 
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> dict[str, Any]:  # noqa: PLR0912
         errors: dict[str, str] = {}
 
-        if (
-            hasattr(self.config_entry, "runtime_data")
-            and self.config_entry.runtime_data
-            and self.config_entry.runtime_data.client
-        ):
+        if hasattr(self, "config_entry") and self.config_entry.runtime_data and self.config_entry.runtime_data.client:
             self.nodes = await self.config_entry.runtime_data.client.async_get_all_nodes()
 
         if self.nodes is None:
