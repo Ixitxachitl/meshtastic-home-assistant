@@ -297,7 +297,7 @@ async def _setup_meshtastic_device(  # noqa: PLR0913
 async def _setup_meshtastic_entities(
     hass: HomeAssistant, entry: MeshtasticConfigEntry, client: MeshtasticApiClient
 ) -> None:
-    gateway_node = await client.async_get_own_node()
+    gateway_node = entry.runtime_data.gateway_node
     local_config = await client.async_get_node_local_config()
     module_config = await client.async_get_node_module_config()
 

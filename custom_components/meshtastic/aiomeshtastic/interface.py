@@ -196,7 +196,12 @@ class MeshInterface:
 
         async def wrapper(node: MeshNode, source: Packet) -> None:
             if as_dict:
-                await callback(node, google.protobuf.json_format.MessageToDict(source.app_payload))
+                await callback(
+                    node,
+                    google.protobuf.json_format.MessageToDict(
+                        source.app_payload, always_print_fields_with_no_presence=True
+                    ),
+                )
             elif as_packet:
                 await callback(node, source)
             else:
@@ -635,17 +640,23 @@ class MeshInterface:
 
         if packet.port_num == portnums_pb2.PortNum.TELEMETRY_APP:
             telemetry = packet.app_payload
-            telemetry_info = google.protobuf.json_format.MessageToDict(telemetry)
+            telemetry_info = google.protobuf.json_format.MessageToDict(
+                telemetry, always_print_fields_with_no_presence=True
+            )
             if node_id in self._node_database:
                 await self._node_database_update(node_id, **telemetry_info)
         elif packet.port_num == portnums_pb2.PortNum.POSITION_APP:
             position = packet.app_payload
-            position_info = google.protobuf.json_format.MessageToDict(position)
+            position_info = google.protobuf.json_format.MessageToDict(
+                position, always_print_fields_with_no_presence=True
+            )
             if node_id in self._node_database:
                 await self._node_database_update(node_id, position=position_info)
         elif packet.port_num == portnums_pb2.PortNum.NODEINFO_APP:
             node_info = packet.app_payload
-            node_info_dict = google.protobuf.json_format.MessageToDict(node_info)
+            node_info_dict = google.protobuf.json_format.MessageToDict(
+                node_info, always_print_fields_with_no_presence=True
+            )
             if node_id in self._node_database:
                 await self._node_database_update(node_id, **node_info_dict)
             else:
@@ -663,7 +674,9 @@ class MeshInterface:
             node_info = packet.node_info
             node_id = node_info.num
             try:
-                node_info_dict = google.protobuf.json_format.MessageToDict(node_info)
+                node_info_dict = google.protobuf.json_format.MessageToDict(
+                    node_info, always_print_fields_with_no_presence=True
+                )
                 db_node = self._get_or_create_node(node_info.num)
                 db_node.update(node_info_dict)
 
