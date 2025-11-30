@@ -146,7 +146,7 @@ Brown: Team.ValueType  # 14
 """
 Brown
 """
-global___Team = Team
+Global___Team: typing_extensions.TypeAlias = Team
 
 class _MemberRole:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -232,7 +232,7 @@ K9: MemberRole.ValueType  # 8
 """
 Doggo
 """
-global___MemberRole = MemberRole
+Global___MemberRole: typing_extensions.TypeAlias = MemberRole
 
 @typing.final
 class TAKPacket(google.protobuf.message.Message):
@@ -259,31 +259,31 @@ class TAKPacket(google.protobuf.message.Message):
     May be compressed / truncated by the sender (EUD)
     """
     @property
-    def contact(self) -> global___Contact:
+    def contact(self) -> Global___Contact:
         """
         The contact / callsign for ATAK user
         """
 
     @property
-    def group(self) -> global___Group:
+    def group(self) -> Global___Group:
         """
         The group for ATAK user
         """
 
     @property
-    def status(self) -> global___Status:
+    def status(self) -> Global___Status:
         """
         The status of the ATAK EUD
         """
 
     @property
-    def pli(self) -> global___PLI:
+    def pli(self) -> Global___PLI:
         """
         TAK position report
         """
 
     @property
-    def chat(self) -> global___GeoChat:
+    def chat(self) -> Global___GeoChat:
         """
         ATAK GeoChat message
         """
@@ -292,18 +292,18 @@ class TAKPacket(google.protobuf.message.Message):
         self,
         *,
         is_compressed: builtins.bool = ...,
-        contact: global___Contact | None = ...,
-        group: global___Group | None = ...,
-        status: global___Status | None = ...,
-        pli: global___PLI | None = ...,
-        chat: global___GeoChat | None = ...,
+        contact: Global___Contact | None = ...,
+        group: Global___Group | None = ...,
+        status: Global___Status | None = ...,
+        pli: Global___PLI | None = ...,
+        chat: Global___GeoChat | None = ...,
         detail: builtins.bytes = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["chat", b"chat", "contact", b"contact", "detail", b"detail", "group", b"group", "payload_variant", b"payload_variant", "pli", b"pli", "status", b"status"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["chat", b"chat", "contact", b"contact", "detail", b"detail", "group", b"group", "is_compressed", b"is_compressed", "payload_variant", b"payload_variant", "pli", b"pli", "status", b"status"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["pli", "chat", "detail"] | None: ...
 
-global___TAKPacket = TAKPacket
+Global___TAKPacket: typing_extensions.TypeAlias = TAKPacket
 
 @typing.final
 class GeoChat(google.protobuf.message.Message):
@@ -342,7 +342,7 @@ class GeoChat(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_to_callsign", b"_to_callsign"]) -> typing.Literal["to_callsign"] | None: ...
 
-global___GeoChat = GeoChat
+Global___GeoChat: typing_extensions.TypeAlias = GeoChat
 
 @typing.final
 class Group(google.protobuf.message.Message):
@@ -355,11 +355,11 @@ class Group(google.protobuf.message.Message):
 
     ROLE_FIELD_NUMBER: builtins.int
     TEAM_FIELD_NUMBER: builtins.int
-    role: global___MemberRole.ValueType
+    role: Global___MemberRole.ValueType
     """
     Role of the group member
     """
-    team: global___Team.ValueType
+    team: Global___Team.ValueType
     """
     Team (color)
     Default Cyan
@@ -367,12 +367,12 @@ class Group(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        role: global___MemberRole.ValueType = ...,
-        team: global___Team.ValueType = ...,
+        role: Global___MemberRole.ValueType = ...,
+        team: Global___Team.ValueType = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["role", b"role", "team", b"team"]) -> None: ...
 
-global___Group = Group
+Global___Group: typing_extensions.TypeAlias = Group
 
 @typing.final
 class Status(google.protobuf.message.Message):
@@ -395,7 +395,7 @@ class Status(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["battery", b"battery"]) -> None: ...
 
-global___Status = Status
+Global___Status: typing_extensions.TypeAlias = Status
 
 @typing.final
 class Contact(google.protobuf.message.Message):
@@ -426,7 +426,7 @@ class Contact(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["callsign", b"callsign", "device_callsign", b"device_callsign"]) -> None: ...
 
-global___Contact = Contact
+Global___Contact: typing_extensions.TypeAlias = Contact
 
 @typing.final
 class PLI(google.protobuf.message.Message):
@@ -474,4 +474,4 @@ class PLI(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["altitude", b"altitude", "course", b"course", "latitude_i", b"latitude_i", "longitude_i", b"longitude_i", "speed", b"speed"]) -> None: ...
 
-global___PLI = PLI
+Global___PLI: typing_extensions.TypeAlias = PLI

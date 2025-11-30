@@ -94,7 +94,7 @@ class PowerMon(google.protobuf.message.Message):
         self,
     ) -> None: ...
 
-global___PowerMon = PowerMon
+Global___PowerMon: typing_extensions.TypeAlias = PowerMon
 
 @typing.final
 class PowerStressMessage(google.protobuf.message.Message):
@@ -205,7 +205,7 @@ class PowerStressMessage(google.protobuf.message.Message):
 
     CMD_FIELD_NUMBER: builtins.int
     NUM_SECONDS_FIELD_NUMBER: builtins.int
-    cmd: global___PowerStressMessage.Opcode.ValueType
+    cmd: Global___PowerStressMessage.Opcode.ValueType
     """
     What type of HardwareMessage is this?
     """
@@ -213,9 +213,9 @@ class PowerStressMessage(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        cmd: global___PowerStressMessage.Opcode.ValueType = ...,
+        cmd: Global___PowerStressMessage.Opcode.ValueType = ...,
         num_seconds: builtins.float = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["cmd", b"cmd", "num_seconds", b"num_seconds"]) -> None: ...
 
-global___PowerStressMessage = PowerStressMessage
+Global___PowerStressMessage: typing_extensions.TypeAlias = PowerStressMessage

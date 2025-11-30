@@ -6,7 +6,13 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -30,4 +36,4 @@ class RTTTLConfig(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["ringtone", b"ringtone"]) -> None: ...
 
-global___RTTTLConfig = RTTTLConfig
+Global___RTTTLConfig: typing_extensions.TypeAlias = RTTTLConfig

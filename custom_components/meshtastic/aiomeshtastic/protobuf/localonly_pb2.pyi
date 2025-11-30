@@ -8,7 +8,13 @@ import google.protobuf.descriptor
 import google.protobuf.message
 from . import config_pb2
 from . import module_config_pb2
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -100,7 +106,7 @@ class LocalConfig(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["bluetooth", b"bluetooth", "device", b"device", "display", b"display", "lora", b"lora", "network", b"network", "position", b"position", "power", b"power", "security", b"security"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["bluetooth", b"bluetooth", "device", b"device", "display", b"display", "lora", b"lora", "network", b"network", "position", b"position", "power", b"power", "security", b"security", "version", b"version"]) -> None: ...
 
-global___LocalConfig = LocalConfig
+Global___LocalConfig: typing_extensions.TypeAlias = LocalConfig
 
 @typing.final
 class LocalModuleConfig(google.protobuf.message.Message):
@@ -225,4 +231,4 @@ class LocalModuleConfig(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "store_forward", b"store_forward", "telemetry", b"telemetry"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "store_forward", b"store_forward", "telemetry", b"telemetry", "version", b"version"]) -> None: ...
 
-global___LocalModuleConfig = LocalModuleConfig
+Global___LocalModuleConfig: typing_extensions.TypeAlias = LocalModuleConfig

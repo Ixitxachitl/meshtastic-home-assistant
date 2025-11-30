@@ -8,7 +8,13 @@ import google.protobuf.descriptor
 import google.protobuf.message
 from . import localonly_pb2
 from . import mesh_pb2
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -98,4 +104,4 @@ class DeviceProfile(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_short_name", b"_short_name"]) -> typing.Literal["short_name"] | None: ...
 
-global___DeviceProfile = DeviceProfile
+Global___DeviceProfile: typing_extensions.TypeAlias = DeviceProfile

@@ -50,18 +50,18 @@ class XModem(google.protobuf.message.Message):
     SEQ_FIELD_NUMBER: builtins.int
     CRC16_FIELD_NUMBER: builtins.int
     BUFFER_FIELD_NUMBER: builtins.int
-    control: global___XModem.Control.ValueType
+    control: Global___XModem.Control.ValueType
     seq: builtins.int
     crc16: builtins.int
     buffer: builtins.bytes
     def __init__(
         self,
         *,
-        control: global___XModem.Control.ValueType = ...,
+        control: Global___XModem.Control.ValueType = ...,
         seq: builtins.int = ...,
         crc16: builtins.int = ...,
         buffer: builtins.bytes = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["buffer", b"buffer", "control", b"control", "crc16", b"crc16", "seq", b"seq"]) -> None: ...
 
-global___XModem = XModem
+Global___XModem: typing_extensions.TypeAlias = XModem

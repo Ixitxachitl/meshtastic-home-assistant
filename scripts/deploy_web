@@ -20,6 +20,15 @@ sed -i 's|href="site.webmanifest"|href="/meshtastic/web/site.webmanifest"|g; s|h
 # Fix paths in site.webmanifest
 sed -i 's|"src": "/logo.svg"|"src": "/meshtastic/web/logo.svg"|g' site.webmanifest
 
+# Fix paths in JavaScript bundle (find the main index file)
+MAIN_JS=$(ls -1 index-*.js 2>/dev/null | head -1)
+if [ -n "$MAIN_JS" ]; then
+    # Fix device image paths
+    sed -i 's|`/devices/\${r}`|`/meshtastic/web/devices/${r}`|g' "$MAIN_JS"
+    # Fix chirpy.svg error page image
+    sed -i 's|src:"/chirpy\.svg"|src:"/meshtastic/web/chirpy.svg"|g' "$MAIN_JS"
+fi
+
 # Create en-US locale directory (browser language detection expects this)
 cd i18n/locales
 rm -rf en-US

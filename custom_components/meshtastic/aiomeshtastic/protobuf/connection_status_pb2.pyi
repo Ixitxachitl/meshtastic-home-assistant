@@ -6,7 +6,13 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -19,25 +25,25 @@ class DeviceConnectionStatus(google.protobuf.message.Message):
     BLUETOOTH_FIELD_NUMBER: builtins.int
     SERIAL_FIELD_NUMBER: builtins.int
     @property
-    def wifi(self) -> global___WifiConnectionStatus:
+    def wifi(self) -> Global___WifiConnectionStatus:
         """
         WiFi Status
         """
 
     @property
-    def ethernet(self) -> global___EthernetConnectionStatus:
+    def ethernet(self) -> Global___EthernetConnectionStatus:
         """
         WiFi Status
         """
 
     @property
-    def bluetooth(self) -> global___BluetoothConnectionStatus:
+    def bluetooth(self) -> Global___BluetoothConnectionStatus:
         """
         Bluetooth Status
         """
 
     @property
-    def serial(self) -> global___SerialConnectionStatus:
+    def serial(self) -> Global___SerialConnectionStatus:
         """
         Serial Status
         """
@@ -45,10 +51,10 @@ class DeviceConnectionStatus(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        wifi: global___WifiConnectionStatus | None = ...,
-        ethernet: global___EthernetConnectionStatus | None = ...,
-        bluetooth: global___BluetoothConnectionStatus | None = ...,
-        serial: global___SerialConnectionStatus | None = ...,
+        wifi: Global___WifiConnectionStatus | None = ...,
+        ethernet: Global___EthernetConnectionStatus | None = ...,
+        bluetooth: Global___BluetoothConnectionStatus | None = ...,
+        serial: Global___SerialConnectionStatus | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_bluetooth", b"_bluetooth", "_ethernet", b"_ethernet", "_serial", b"_serial", "_wifi", b"_wifi", "bluetooth", b"bluetooth", "ethernet", b"ethernet", "serial", b"serial", "wifi", b"wifi"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["_bluetooth", b"_bluetooth", "_ethernet", b"_ethernet", "_serial", b"_serial", "_wifi", b"_wifi", "bluetooth", b"bluetooth", "ethernet", b"ethernet", "serial", b"serial", "wifi", b"wifi"]) -> None: ...
@@ -61,7 +67,7 @@ class DeviceConnectionStatus(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_wifi", b"_wifi"]) -> typing.Literal["wifi"] | None: ...
 
-global___DeviceConnectionStatus = DeviceConnectionStatus
+Global___DeviceConnectionStatus: typing_extensions.TypeAlias = DeviceConnectionStatus
 
 @typing.final
 class WifiConnectionStatus(google.protobuf.message.Message):
@@ -83,7 +89,7 @@ class WifiConnectionStatus(google.protobuf.message.Message):
     RSSI of wireless connection
     """
     @property
-    def status(self) -> global___NetworkConnectionStatus:
+    def status(self) -> Global___NetworkConnectionStatus:
         """
         Connection status
         """
@@ -91,14 +97,14 @@ class WifiConnectionStatus(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        status: global___NetworkConnectionStatus | None = ...,
+        status: Global___NetworkConnectionStatus | None = ...,
         ssid: builtins.str = ...,
         rssi: builtins.int = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["status", b"status"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["rssi", b"rssi", "ssid", b"ssid", "status", b"status"]) -> None: ...
 
-global___WifiConnectionStatus = WifiConnectionStatus
+Global___WifiConnectionStatus: typing_extensions.TypeAlias = WifiConnectionStatus
 
 @typing.final
 class EthernetConnectionStatus(google.protobuf.message.Message):
@@ -110,7 +116,7 @@ class EthernetConnectionStatus(google.protobuf.message.Message):
 
     STATUS_FIELD_NUMBER: builtins.int
     @property
-    def status(self) -> global___NetworkConnectionStatus:
+    def status(self) -> Global___NetworkConnectionStatus:
         """
         Connection status
         """
@@ -118,12 +124,12 @@ class EthernetConnectionStatus(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        status: global___NetworkConnectionStatus | None = ...,
+        status: Global___NetworkConnectionStatus | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["status", b"status"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["status", b"status"]) -> None: ...
 
-global___EthernetConnectionStatus = EthernetConnectionStatus
+Global___EthernetConnectionStatus: typing_extensions.TypeAlias = EthernetConnectionStatus
 
 @typing.final
 class NetworkConnectionStatus(google.protobuf.message.Message):
@@ -163,7 +169,7 @@ class NetworkConnectionStatus(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["ip_address", b"ip_address", "is_connected", b"is_connected", "is_mqtt_connected", b"is_mqtt_connected", "is_syslog_connected", b"is_syslog_connected"]) -> None: ...
 
-global___NetworkConnectionStatus = NetworkConnectionStatus
+Global___NetworkConnectionStatus: typing_extensions.TypeAlias = NetworkConnectionStatus
 
 @typing.final
 class BluetoothConnectionStatus(google.protobuf.message.Message):
@@ -197,7 +203,7 @@ class BluetoothConnectionStatus(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["is_connected", b"is_connected", "pin", b"pin", "rssi", b"rssi"]) -> None: ...
 
-global___BluetoothConnectionStatus = BluetoothConnectionStatus
+Global___BluetoothConnectionStatus: typing_extensions.TypeAlias = BluetoothConnectionStatus
 
 @typing.final
 class SerialConnectionStatus(google.protobuf.message.Message):
@@ -225,4 +231,4 @@ class SerialConnectionStatus(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["baud", b"baud", "is_connected", b"is_connected"]) -> None: ...
 
-global___SerialConnectionStatus = SerialConnectionStatus
+Global___SerialConnectionStatus: typing_extensions.TypeAlias = SerialConnectionStatus

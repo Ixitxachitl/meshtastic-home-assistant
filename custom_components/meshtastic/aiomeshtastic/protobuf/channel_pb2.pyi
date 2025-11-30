@@ -97,7 +97,7 @@ class ChannelSettings(google.protobuf.message.Message):
     If true, messages seen on the internet will be forwarded to the local mesh.
     """
     @property
-    def module_settings(self) -> global___ModuleSettings:
+    def module_settings(self) -> Global___ModuleSettings:
         """
         Per-channel module settings.
         """
@@ -111,12 +111,12 @@ class ChannelSettings(google.protobuf.message.Message):
         id: builtins.int = ...,
         uplink_enabled: builtins.bool = ...,
         downlink_enabled: builtins.bool = ...,
-        module_settings: global___ModuleSettings | None = ...,
+        module_settings: Global___ModuleSettings | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["module_settings", b"module_settings"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["channel_num", b"channel_num", "downlink_enabled", b"downlink_enabled", "id", b"id", "module_settings", b"module_settings", "name", b"name", "psk", b"psk", "uplink_enabled", b"uplink_enabled"]) -> None: ...
 
-global___ChannelSettings = ChannelSettings
+Global___ChannelSettings: typing_extensions.TypeAlias = ChannelSettings
 
 @typing.final
 class ModuleSettings(google.protobuf.message.Message):
@@ -127,25 +127,25 @@ class ModuleSettings(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     POSITION_PRECISION_FIELD_NUMBER: builtins.int
-    IS_CLIENT_MUTED_FIELD_NUMBER: builtins.int
+    IS_MUTED_FIELD_NUMBER: builtins.int
     position_precision: builtins.int
     """
     Bits of precision for the location sent in position packets.
     """
-    is_client_muted: builtins.bool
+    is_muted: builtins.bool
     """
-    Controls whether or not the phone / clients should mute the current channel
+    Controls whether or not the client / device should mute the current channel
     Useful for noisy public channels you don't necessarily want to disable
     """
     def __init__(
         self,
         *,
         position_precision: builtins.int = ...,
-        is_client_muted: builtins.bool = ...,
+        is_muted: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["is_client_muted", b"is_client_muted", "position_precision", b"position_precision"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["is_muted", b"is_muted", "position_precision", b"position_precision"]) -> None: ...
 
-global___ModuleSettings = ModuleSettings
+Global___ModuleSettings: typing_extensions.TypeAlias = ModuleSettings
 
 @typing.final
 class Channel(google.protobuf.message.Message):
@@ -211,12 +211,12 @@ class Channel(google.protobuf.message.Message):
     (Someday - not currently implemented) An index of -1 could be used to mean "set by name",
     in which case the target node will find and set the channel by settings.name.
     """
-    role: global___Channel.Role.ValueType
+    role: Global___Channel.Role.ValueType
     """
     TODO: REPLACE
     """
     @property
-    def settings(self) -> global___ChannelSettings:
+    def settings(self) -> Global___ChannelSettings:
         """
         The new settings, or NULL to disable that channel
         """
@@ -225,10 +225,10 @@ class Channel(google.protobuf.message.Message):
         self,
         *,
         index: builtins.int = ...,
-        settings: global___ChannelSettings | None = ...,
-        role: global___Channel.Role.ValueType = ...,
+        settings: Global___ChannelSettings | None = ...,
+        role: Global___Channel.Role.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["settings", b"settings"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["index", b"index", "role", b"role", "settings", b"settings"]) -> None: ...
 
-global___Channel = Channel
+Global___Channel: typing_extensions.TypeAlias = Channel

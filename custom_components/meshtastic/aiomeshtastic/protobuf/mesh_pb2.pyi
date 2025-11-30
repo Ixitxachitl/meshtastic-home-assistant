@@ -295,7 +295,7 @@ class _HardwareModelEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._
     """
     TWC_MESH_V4: _HardwareModel.ValueType  # 62
     """
-    TWC_MESH_V4 
+    TWC_MESH_V4
     Adafruit NRF52840 feather express with SX1262, SSD1306 OLED and NEO6M GPS
     """
     NRF52_PROMICRO_DIY: _HardwareModel.ValueType  # 63
@@ -396,6 +396,144 @@ class _HardwareModelEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._
     """
     Mesh-Tab, esp32 based
     https://github.com/valzzu/Mesh-Tab
+    """
+    MESHLINK: _HardwareModel.ValueType  # 87
+    """
+    MeshLink board developed by LoraItalia. NRF52840, eByte E22900M22S (Will also come with other frequencies), 25w MPPT solar charger (5v,12v,18v selectable), support for gps, buzzer, oled or e-ink display, 10 gpios, hardware watchdog
+    https://www.loraitalia.it
+    """
+    XIAO_NRF52_KIT: _HardwareModel.ValueType  # 88
+    """
+    Seeed XIAO nRF52840 + Wio SX1262 kit
+    """
+    THINKNODE_M1: _HardwareModel.ValueType  # 89
+    """
+    Elecrow ThinkNode M1 & M2
+    https://www.elecrow.com/wiki/ThinkNode-M1_Transceiver_Device(Meshtastic)_Power_By_nRF52840.html
+    https://www.elecrow.com/wiki/ThinkNode-M2_Transceiver_Device(Meshtastic)_Power_By_NRF52840.html (this actually uses ESP32-S3)
+    """
+    THINKNODE_M2: _HardwareModel.ValueType  # 90
+    T_ETH_ELITE: _HardwareModel.ValueType  # 91
+    """
+    Lilygo T-ETH-Elite
+    """
+    HELTEC_SENSOR_HUB: _HardwareModel.ValueType  # 92
+    """
+    Heltec HRI-3621 industrial probe
+    """
+    RESERVED_FRIED_CHICKEN: _HardwareModel.ValueType  # 93
+    """
+    Reserved Fried Chicken ID for future use
+    """
+    HELTEC_MESH_POCKET: _HardwareModel.ValueType  # 94
+    """
+    Heltec Magnetic Power Bank with Meshtastic compatible
+    """
+    SEEED_SOLAR_NODE: _HardwareModel.ValueType  # 95
+    """
+    Seeed Solar Node
+    """
+    NOMADSTAR_METEOR_PRO: _HardwareModel.ValueType  # 96
+    """
+    NomadStar Meteor Pro https://nomadstar.ch/
+    """
+    CROWPANEL: _HardwareModel.ValueType  # 97
+    """
+    Elecrow CrowPanel Advance models, ESP32-S3 and TFT with SX1262 radio plugin
+    """
+    LINK_32: _HardwareModel.ValueType  # 98
+    """
+    Lilygo LINK32 board with sensors
+    """
+    SEEED_WIO_TRACKER_L1: _HardwareModel.ValueType  # 99
+    """
+    Seeed Tracker L1
+    """
+    SEEED_WIO_TRACKER_L1_EINK: _HardwareModel.ValueType  # 100
+    """
+    Seeed Tracker L1 EINK driver
+    """
+    MUZI_R1_NEO: _HardwareModel.ValueType  # 101
+    """
+    Muzi Works R1 Neo
+    """
+    T_DECK_PRO: _HardwareModel.ValueType  # 102
+    """
+    Lilygo T-Deck Pro
+    """
+    T_LORA_PAGER: _HardwareModel.ValueType  # 103
+    """
+    Lilygo TLora Pager
+    """
+    M5STACK_RESERVED: _HardwareModel.ValueType  # 104
+    """
+    M5Stack Reserved
+    0x68
+    """
+    WISMESH_TAG: _HardwareModel.ValueType  # 105
+    """
+    RAKwireless WisMesh Tag
+    """
+    RAK3312: _HardwareModel.ValueType  # 106
+    """
+    RAKwireless WisBlock Core RAK3312 https://docs.rakwireless.com/product-categories/wisduo/rak3112-module/overview/
+    """
+    THINKNODE_M5: _HardwareModel.ValueType  # 107
+    """
+    Elecrow ThinkNode M5 https://www.elecrow.com/wiki/ThinkNode_M5_Meshtastic_LoRa_Signal_Transceiver_ESP32-S3.html
+    """
+    HELTEC_MESH_SOLAR: _HardwareModel.ValueType  # 108
+    """
+    MeshSolar is an integrated power management and communication solution designed for outdoor low-power devices.
+    https://heltec.org/project/meshsolar/
+    """
+    T_ECHO_LITE: _HardwareModel.ValueType  # 109
+    """
+    Lilygo T-Echo Lite
+    """
+    HELTEC_V4: _HardwareModel.ValueType  # 110
+    """
+    New Heltec LoRA32 with ESP32-S3 CPU
+    """
+    M5STACK_C6L: _HardwareModel.ValueType  # 111
+    """
+    M5Stack C6L
+    """
+    M5STACK_CARDPUTER_ADV: _HardwareModel.ValueType  # 112
+    """
+    M5Stack Cardputer Adv
+    """
+    HELTEC_WIRELESS_TRACKER_V2: _HardwareModel.ValueType  # 113
+    """
+    ESP32S3 main controller with GPS and TFT screen.
+    """
+    T_WATCH_ULTRA: _HardwareModel.ValueType  # 114
+    """
+    LilyGo T-Watch Ultra
+    """
+    THINKNODE_M3: _HardwareModel.ValueType  # 115
+    """
+    Elecrow ThinkNode M3
+    """
+    WISMESH_TAP_V2: _HardwareModel.ValueType  # 116
+    """
+    RAK WISMESH_TAP_V2 with ESP32-S3 CPU
+    """
+    RAK3401: _HardwareModel.ValueType  # 117
+    """
+    RAK3401
+    """
+    RAK6421: _HardwareModel.ValueType  # 118
+    """
+    RAK6421 Hat+
+    """
+    THINKNODE_M4: _HardwareModel.ValueType  # 119
+    """
+    Elecrow ThinkNode M4
+    """
+    THINKNODE_M6: _HardwareModel.ValueType  # 120
+    """
+    Elecrow ThinkNode M6
     """
     PRIVATE_HW: _HardwareModel.ValueType  # 255
     """
@@ -675,7 +813,7 @@ CDEBYTE EoRa-S3 board using their own MM modules, clone of LILYGO T3S3
 """
 TWC_MESH_V4: HardwareModel.ValueType  # 62
 """
-TWC_MESH_V4 
+TWC_MESH_V4
 Adafruit NRF52840 feather express with SX1262, SSD1306 OLED and NEO6M GPS
 """
 NRF52_PROMICRO_DIY: HardwareModel.ValueType  # 63
@@ -777,13 +915,151 @@ MESH_TAB: HardwareModel.ValueType  # 86
 Mesh-Tab, esp32 based
 https://github.com/valzzu/Mesh-Tab
 """
+MESHLINK: HardwareModel.ValueType  # 87
+"""
+MeshLink board developed by LoraItalia. NRF52840, eByte E22900M22S (Will also come with other frequencies), 25w MPPT solar charger (5v,12v,18v selectable), support for gps, buzzer, oled or e-ink display, 10 gpios, hardware watchdog
+https://www.loraitalia.it
+"""
+XIAO_NRF52_KIT: HardwareModel.ValueType  # 88
+"""
+Seeed XIAO nRF52840 + Wio SX1262 kit
+"""
+THINKNODE_M1: HardwareModel.ValueType  # 89
+"""
+Elecrow ThinkNode M1 & M2
+https://www.elecrow.com/wiki/ThinkNode-M1_Transceiver_Device(Meshtastic)_Power_By_nRF52840.html
+https://www.elecrow.com/wiki/ThinkNode-M2_Transceiver_Device(Meshtastic)_Power_By_NRF52840.html (this actually uses ESP32-S3)
+"""
+THINKNODE_M2: HardwareModel.ValueType  # 90
+T_ETH_ELITE: HardwareModel.ValueType  # 91
+"""
+Lilygo T-ETH-Elite
+"""
+HELTEC_SENSOR_HUB: HardwareModel.ValueType  # 92
+"""
+Heltec HRI-3621 industrial probe
+"""
+RESERVED_FRIED_CHICKEN: HardwareModel.ValueType  # 93
+"""
+Reserved Fried Chicken ID for future use
+"""
+HELTEC_MESH_POCKET: HardwareModel.ValueType  # 94
+"""
+Heltec Magnetic Power Bank with Meshtastic compatible
+"""
+SEEED_SOLAR_NODE: HardwareModel.ValueType  # 95
+"""
+Seeed Solar Node
+"""
+NOMADSTAR_METEOR_PRO: HardwareModel.ValueType  # 96
+"""
+NomadStar Meteor Pro https://nomadstar.ch/
+"""
+CROWPANEL: HardwareModel.ValueType  # 97
+"""
+Elecrow CrowPanel Advance models, ESP32-S3 and TFT with SX1262 radio plugin
+"""
+LINK_32: HardwareModel.ValueType  # 98
+"""
+Lilygo LINK32 board with sensors
+"""
+SEEED_WIO_TRACKER_L1: HardwareModel.ValueType  # 99
+"""
+Seeed Tracker L1
+"""
+SEEED_WIO_TRACKER_L1_EINK: HardwareModel.ValueType  # 100
+"""
+Seeed Tracker L1 EINK driver
+"""
+MUZI_R1_NEO: HardwareModel.ValueType  # 101
+"""
+Muzi Works R1 Neo
+"""
+T_DECK_PRO: HardwareModel.ValueType  # 102
+"""
+Lilygo T-Deck Pro
+"""
+T_LORA_PAGER: HardwareModel.ValueType  # 103
+"""
+Lilygo TLora Pager
+"""
+M5STACK_RESERVED: HardwareModel.ValueType  # 104
+"""
+M5Stack Reserved
+0x68
+"""
+WISMESH_TAG: HardwareModel.ValueType  # 105
+"""
+RAKwireless WisMesh Tag
+"""
+RAK3312: HardwareModel.ValueType  # 106
+"""
+RAKwireless WisBlock Core RAK3312 https://docs.rakwireless.com/product-categories/wisduo/rak3112-module/overview/
+"""
+THINKNODE_M5: HardwareModel.ValueType  # 107
+"""
+Elecrow ThinkNode M5 https://www.elecrow.com/wiki/ThinkNode_M5_Meshtastic_LoRa_Signal_Transceiver_ESP32-S3.html
+"""
+HELTEC_MESH_SOLAR: HardwareModel.ValueType  # 108
+"""
+MeshSolar is an integrated power management and communication solution designed for outdoor low-power devices.
+https://heltec.org/project/meshsolar/
+"""
+T_ECHO_LITE: HardwareModel.ValueType  # 109
+"""
+Lilygo T-Echo Lite
+"""
+HELTEC_V4: HardwareModel.ValueType  # 110
+"""
+New Heltec LoRA32 with ESP32-S3 CPU
+"""
+M5STACK_C6L: HardwareModel.ValueType  # 111
+"""
+M5Stack C6L
+"""
+M5STACK_CARDPUTER_ADV: HardwareModel.ValueType  # 112
+"""
+M5Stack Cardputer Adv
+"""
+HELTEC_WIRELESS_TRACKER_V2: HardwareModel.ValueType  # 113
+"""
+ESP32S3 main controller with GPS and TFT screen.
+"""
+T_WATCH_ULTRA: HardwareModel.ValueType  # 114
+"""
+LilyGo T-Watch Ultra
+"""
+THINKNODE_M3: HardwareModel.ValueType  # 115
+"""
+Elecrow ThinkNode M3
+"""
+WISMESH_TAP_V2: HardwareModel.ValueType  # 116
+"""
+RAK WISMESH_TAP_V2 with ESP32-S3 CPU
+"""
+RAK3401: HardwareModel.ValueType  # 117
+"""
+RAK3401
+"""
+RAK6421: HardwareModel.ValueType  # 118
+"""
+RAK6421 Hat+
+"""
+THINKNODE_M4: HardwareModel.ValueType  # 119
+"""
+Elecrow ThinkNode M4
+"""
+THINKNODE_M6: HardwareModel.ValueType  # 120
+"""
+Elecrow ThinkNode M6
+"""
 PRIVATE_HW: HardwareModel.ValueType  # 255
 """
 ------------------------------------------------------------------------------------------------------------------------------------------
 Reserved ID For developing private Ports. These will show up in live traffic sparsely, so we can use a high number. Keep it within 8 bits.
 ------------------------------------------------------------------------------------------------------------------------------------------
 """
-global___HardwareModel = HardwareModel
+Global___HardwareModel: typing_extensions.TypeAlias = HardwareModel
 
 class _Constants:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -819,7 +1095,7 @@ From mesh.options
 note: this payload length is ONLY the bytes that are sent inside of the Data protobuf (excluding protobuf overhead). The 16 byte header is
 outside of this envelope
 """
-global___Constants = Constants
+Global___Constants: typing_extensions.TypeAlias = Constants
 
 class _CriticalErrorCode:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -956,7 +1232,78 @@ Corruption was detected on the flash filesystem but we were unable to repair thi
 NOTE: Your node will probably need to be reconfigured the next time it reboots (it will lose the region code etc...)
 If you see this failure in the field please post in the forum because we are interested in seeing if this is occurring in the field.
 """
-global___CriticalErrorCode = CriticalErrorCode
+Global___CriticalErrorCode: typing_extensions.TypeAlias = CriticalErrorCode
+
+class _FirmwareEdition:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _FirmwareEditionEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_FirmwareEdition.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    VANILLA: _FirmwareEdition.ValueType  # 0
+    """
+    Vanilla firmware
+    """
+    SMART_CITIZEN: _FirmwareEdition.ValueType  # 1
+    """
+    Firmware for use in the Smart Citizen environmental monitoring network
+    """
+    OPEN_SAUCE: _FirmwareEdition.ValueType  # 16
+    """
+    Open Sauce, the maker conference held yearly in CA
+    """
+    DEFCON: _FirmwareEdition.ValueType  # 17
+    """
+    DEFCON, the yearly hacker conference
+    """
+    BURNING_MAN: _FirmwareEdition.ValueType  # 18
+    """
+    Burning Man, the yearly hippie gathering in the desert
+    """
+    HAMVENTION: _FirmwareEdition.ValueType  # 19
+    """
+    Hamvention, the Dayton amateur radio convention
+    """
+    DIY_EDITION: _FirmwareEdition.ValueType  # 127
+    """
+    Placeholder for DIY and unofficial events
+    """
+
+class FirmwareEdition(_FirmwareEdition, metaclass=_FirmwareEditionEnumTypeWrapper):
+    """
+    Enum to indicate to clients whether this firmware is a special firmware build, like an event.
+    The first 16 values are reserved for non-event special firmwares, like the Smart Citizen use case.
+    """
+
+VANILLA: FirmwareEdition.ValueType  # 0
+"""
+Vanilla firmware
+"""
+SMART_CITIZEN: FirmwareEdition.ValueType  # 1
+"""
+Firmware for use in the Smart Citizen environmental monitoring network
+"""
+OPEN_SAUCE: FirmwareEdition.ValueType  # 16
+"""
+Open Sauce, the maker conference held yearly in CA
+"""
+DEFCON: FirmwareEdition.ValueType  # 17
+"""
+DEFCON, the yearly hacker conference
+"""
+BURNING_MAN: FirmwareEdition.ValueType  # 18
+"""
+Burning Man, the yearly hippie gathering in the desert
+"""
+HAMVENTION: FirmwareEdition.ValueType  # 19
+"""
+Hamvention, the Dayton amateur radio convention
+"""
+DIY_EDITION: FirmwareEdition.ValueType  # 127
+"""
+Placeholder for DIY and unofficial events
+"""
+Global___FirmwareEdition: typing_extensions.TypeAlias = FirmwareEdition
 
 class _ExcludedModules:
     ValueType = typing.NewType("ValueType", builtins.int)
@@ -1019,6 +1366,14 @@ class _ExcludedModulesEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper
     PAXCOUNTER_CONFIG: _ExcludedModules.ValueType  # 4096
     """
     Paxcounter module
+    """
+    BLUETOOTH_CONFIG: _ExcludedModules.ValueType  # 8192
+    """
+    Bluetooth config (not technically a module, but used to indicate bluetooth capabilities)
+    """
+    NETWORK_CONFIG: _ExcludedModules.ValueType  # 16384
+    """
+    Network config (not technically a module, but used to indicate network capabilities)
     """
 
 class ExcludedModules(_ExcludedModules, metaclass=_ExcludedModulesEnumTypeWrapper):
@@ -1084,7 +1439,15 @@ PAXCOUNTER_CONFIG: ExcludedModules.ValueType  # 4096
 """
 Paxcounter module
 """
-global___ExcludedModules = ExcludedModules
+BLUETOOTH_CONFIG: ExcludedModules.ValueType  # 8192
+"""
+Bluetooth config (not technically a module, but used to indicate bluetooth capabilities)
+"""
+NETWORK_CONFIG: ExcludedModules.ValueType  # 16384
+"""
+Network config (not technically a module, but used to indicate network capabilities)
+"""
+Global___ExcludedModules: typing_extensions.TypeAlias = ExcludedModules
 
 @typing.final
 class Position(google.protobuf.message.Message):
@@ -1236,11 +1599,11 @@ class Position(google.protobuf.message.Message):
     the mesh (because there are devices on the mesh without GPS or RTC).
     seconds since 1970
     """
-    location_source: global___Position.LocSource.ValueType
+    location_source: Global___Position.LocSource.ValueType
     """
     TODO: REPLACE
     """
-    altitude_source: global___Position.AltSource.ValueType
+    altitude_source: Global___Position.AltSource.ValueType
     """
     TODO: REPLACE
     """
@@ -1334,8 +1697,8 @@ class Position(google.protobuf.message.Message):
         longitude_i: builtins.int | None = ...,
         altitude: builtins.int | None = ...,
         time: builtins.int = ...,
-        location_source: global___Position.LocSource.ValueType = ...,
-        altitude_source: global___Position.AltSource.ValueType = ...,
+        location_source: Global___Position.LocSource.ValueType = ...,
+        altitude_source: Global___Position.AltSource.ValueType = ...,
         timestamp: builtins.int = ...,
         timestamp_millis_adjust: builtins.int = ...,
         altitude_hae: builtins.int | None = ...,
@@ -1371,7 +1734,7 @@ class Position(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_longitude_i", b"_longitude_i"]) -> typing.Literal["longitude_i"] | None: ...
 
-global___Position = Position
+Global___Position: typing_extensions.TypeAlias = Position
 
 @typing.final
 class User(google.protobuf.message.Message):
@@ -1408,6 +1771,7 @@ class User(google.protobuf.message.Message):
     IS_LICENSED_FIELD_NUMBER: builtins.int
     ROLE_FIELD_NUMBER: builtins.int
     PUBLIC_KEY_FIELD_NUMBER: builtins.int
+    IS_UNMESSAGABLE_FIELD_NUMBER: builtins.int
     id: builtins.str
     """
     A globally unique ID string for this user.
@@ -1430,7 +1794,7 @@ class User(google.protobuf.message.Message):
     This is the addr of the radio.
     Not populated by the phone, but added by the esp32 when broadcasting
     """
-    hw_model: global___HardwareModel.ValueType
+    hw_model: Global___HardwareModel.ValueType
     """
     TBEAM, HELTEC, etc...
     Starting in 1.2.11 moved to hw_model enum in the NodeInfo object.
@@ -1452,6 +1816,10 @@ class User(google.protobuf.message.Message):
     The public key of the user's device.
     This is sent out to other nodes on the mesh to allow them to compute a shared secret key.
     """
+    is_unmessagable: builtins.bool
+    """
+    Whether or not the node can be messaged
+    """
     def __init__(
         self,
         *,
@@ -1459,14 +1827,17 @@ class User(google.protobuf.message.Message):
         long_name: builtins.str = ...,
         short_name: builtins.str = ...,
         macaddr: builtins.bytes = ...,
-        hw_model: global___HardwareModel.ValueType = ...,
+        hw_model: Global___HardwareModel.ValueType = ...,
         is_licensed: builtins.bool = ...,
         role: config_pb2.Config.DeviceConfig.Role.ValueType = ...,
         public_key: builtins.bytes = ...,
+        is_unmessagable: builtins.bool | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["hw_model", b"hw_model", "id", b"id", "is_licensed", b"is_licensed", "long_name", b"long_name", "macaddr", b"macaddr", "public_key", b"public_key", "role", b"role", "short_name", b"short_name"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_is_unmessagable", b"_is_unmessagable", "is_unmessagable", b"is_unmessagable"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_is_unmessagable", b"_is_unmessagable", "hw_model", b"hw_model", "id", b"id", "is_licensed", b"is_licensed", "is_unmessagable", b"is_unmessagable", "long_name", b"long_name", "macaddr", b"macaddr", "public_key", b"public_key", "role", b"role", "short_name", b"short_name"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_is_unmessagable", b"_is_unmessagable"]) -> typing.Literal["is_unmessagable"] | None: ...
 
-global___User = User
+Global___User: typing_extensions.TypeAlias = User
 
 @typing.final
 class RouteDiscovery(google.protobuf.message.Message):
@@ -1514,7 +1885,7 @@ class RouteDiscovery(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["route", b"route", "route_back", b"route_back", "snr_back", b"snr_back", "snr_towards", b"snr_towards"]) -> None: ...
 
-global___RouteDiscovery = RouteDiscovery
+Global___RouteDiscovery: typing_extensions.TypeAlias = RouteDiscovery
 
 @typing.final
 class Routing(google.protobuf.message.Message):
@@ -1596,6 +1967,11 @@ class Routing(google.protobuf.message.Message):
         """
         Admin packet sent using PKC, but not from a public key on the admin key list
         """
+        RATE_LIMIT_EXCEEDED: Routing._Error.ValueType  # 38
+        """
+        Airtime fairness rate limit exceeded for a packet
+        This typically enforced per portnum and is used to prevent a single node from monopolizing airtime
+        """
 
     class Error(_Error, metaclass=_ErrorEnumTypeWrapper):
         """
@@ -1669,23 +2045,28 @@ class Routing(google.protobuf.message.Message):
     """
     Admin packet sent using PKC, but not from a public key on the admin key list
     """
+    RATE_LIMIT_EXCEEDED: Routing.Error.ValueType  # 38
+    """
+    Airtime fairness rate limit exceeded for a packet
+    This typically enforced per portnum and is used to prevent a single node from monopolizing airtime
+    """
 
     ROUTE_REQUEST_FIELD_NUMBER: builtins.int
     ROUTE_REPLY_FIELD_NUMBER: builtins.int
     ERROR_REASON_FIELD_NUMBER: builtins.int
-    error_reason: global___Routing.Error.ValueType
+    error_reason: Global___Routing.Error.ValueType
     """
     A failure in delivering a message (usually used for routing control messages, but might be provided
     in addition to ack.fail_id to provide details on the type of failure).
     """
     @property
-    def route_request(self) -> global___RouteDiscovery:
+    def route_request(self) -> Global___RouteDiscovery:
         """
         A route request going from the requester
         """
 
     @property
-    def route_reply(self) -> global___RouteDiscovery:
+    def route_reply(self) -> Global___RouteDiscovery:
         """
         A route reply
         """
@@ -1693,15 +2074,15 @@ class Routing(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        route_request: global___RouteDiscovery | None = ...,
-        route_reply: global___RouteDiscovery | None = ...,
-        error_reason: global___Routing.Error.ValueType = ...,
+        route_request: Global___RouteDiscovery | None = ...,
+        route_reply: Global___RouteDiscovery | None = ...,
+        error_reason: Global___Routing.Error.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["error_reason", b"error_reason", "route_reply", b"route_reply", "route_request", b"route_request", "variant", b"variant"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["error_reason", b"error_reason", "route_reply", b"route_reply", "route_request", b"route_request", "variant", b"variant"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["variant", b"variant"]) -> typing.Literal["route_request", "route_reply", "error_reason"] | None: ...
 
-global___Routing = Routing
+Global___Routing: typing_extensions.TypeAlias = Routing
 
 @typing.final
 class Data(google.protobuf.message.Message):
@@ -1785,7 +2166,42 @@ class Data(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["_bitfield", b"_bitfield", "bitfield", b"bitfield", "dest", b"dest", "emoji", b"emoji", "payload", b"payload", "portnum", b"portnum", "reply_id", b"reply_id", "request_id", b"request_id", "source", b"source", "want_response", b"want_response"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_bitfield", b"_bitfield"]) -> typing.Literal["bitfield"] | None: ...
 
-global___Data = Data
+Global___Data: typing_extensions.TypeAlias = Data
+
+@typing.final
+class KeyVerification(google.protobuf.message.Message):
+    """
+    The actual over-the-mesh message doing KeyVerification
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NONCE_FIELD_NUMBER: builtins.int
+    HASH1_FIELD_NUMBER: builtins.int
+    HASH2_FIELD_NUMBER: builtins.int
+    nonce: builtins.int
+    """
+    random value Selected by the requesting node
+    """
+    hash1: builtins.bytes
+    """
+    The final authoritative hash, only to be sent by NodeA at the end of the handshake
+    """
+    hash2: builtins.bytes
+    """
+    The intermediary hash (actually derived from hash1),
+    sent from NodeB to NodeA in response to the initial message.
+    """
+    def __init__(
+        self,
+        *,
+        nonce: builtins.int = ...,
+        hash1: builtins.bytes = ...,
+        hash2: builtins.bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["hash1", b"hash1", "hash2", b"hash2", "nonce", b"nonce"]) -> None: ...
+
+Global___KeyVerification: typing_extensions.TypeAlias = KeyVerification
 
 @typing.final
 class Waypoint(google.protobuf.message.Message):
@@ -1855,7 +2271,7 @@ class Waypoint(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_longitude_i", b"_longitude_i"]) -> typing.Literal["longitude_i"] | None: ...
 
-global___Waypoint = Waypoint
+Global___Waypoint: typing_extensions.TypeAlias = Waypoint
 
 @typing.final
 class MqttClientProxyMessage(google.protobuf.message.Message):
@@ -1897,7 +2313,7 @@ class MqttClientProxyMessage(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["data", b"data", "payload_variant", b"payload_variant", "retained", b"retained", "text", b"text", "topic", b"topic"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["data", "text"] | None: ...
 
-global___MqttClientProxyMessage = MqttClientProxyMessage
+Global___MqttClientProxyMessage: typing_extensions.TypeAlias = MqttClientProxyMessage
 
 @typing.final
 class MeshPacket(google.protobuf.message.Message):
@@ -2064,6 +2480,83 @@ class MeshPacket(google.protobuf.message.Message):
     The message is delayed and was originally a direct message
     """
 
+    class _TransportMechanism:
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
+
+    class _TransportMechanismEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[MeshPacket._TransportMechanism.ValueType], builtins.type):
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        TRANSPORT_INTERNAL: MeshPacket._TransportMechanism.ValueType  # 0
+        """
+        The default case is that the node generated a packet itself
+        """
+        TRANSPORT_LORA: MeshPacket._TransportMechanism.ValueType  # 1
+        """
+        Arrived via the primary LoRa radio
+        """
+        TRANSPORT_LORA_ALT1: MeshPacket._TransportMechanism.ValueType  # 2
+        """
+        Arrived via a secondary LoRa radio
+        """
+        TRANSPORT_LORA_ALT2: MeshPacket._TransportMechanism.ValueType  # 3
+        """
+        Arrived via a tertiary LoRa radio
+        """
+        TRANSPORT_LORA_ALT3: MeshPacket._TransportMechanism.ValueType  # 4
+        """
+        Arrived via a quaternary LoRa radio
+        """
+        TRANSPORT_MQTT: MeshPacket._TransportMechanism.ValueType  # 5
+        """
+        Arrived via an MQTT connection
+        """
+        TRANSPORT_MULTICAST_UDP: MeshPacket._TransportMechanism.ValueType  # 6
+        """
+        Arrived via Multicast UDP
+        """
+        TRANSPORT_API: MeshPacket._TransportMechanism.ValueType  # 7
+        """
+        Arrived via API connection
+        """
+
+    class TransportMechanism(_TransportMechanism, metaclass=_TransportMechanismEnumTypeWrapper):
+        """
+        Enum to identify which transport mechanism this packet arrived over
+        """
+
+    TRANSPORT_INTERNAL: MeshPacket.TransportMechanism.ValueType  # 0
+    """
+    The default case is that the node generated a packet itself
+    """
+    TRANSPORT_LORA: MeshPacket.TransportMechanism.ValueType  # 1
+    """
+    Arrived via the primary LoRa radio
+    """
+    TRANSPORT_LORA_ALT1: MeshPacket.TransportMechanism.ValueType  # 2
+    """
+    Arrived via a secondary LoRa radio
+    """
+    TRANSPORT_LORA_ALT2: MeshPacket.TransportMechanism.ValueType  # 3
+    """
+    Arrived via a tertiary LoRa radio
+    """
+    TRANSPORT_LORA_ALT3: MeshPacket.TransportMechanism.ValueType  # 4
+    """
+    Arrived via a quaternary LoRa radio
+    """
+    TRANSPORT_MQTT: MeshPacket.TransportMechanism.ValueType  # 5
+    """
+    Arrived via an MQTT connection
+    """
+    TRANSPORT_MULTICAST_UDP: MeshPacket.TransportMechanism.ValueType  # 6
+    """
+    Arrived via Multicast UDP
+    """
+    TRANSPORT_API: MeshPacket.TransportMechanism.ValueType  # 7
+    """
+    Arrived via API connection
+    """
+
     FROM_FIELD_NUMBER: builtins.int
     TO_FIELD_NUMBER: builtins.int
     CHANNEL_FIELD_NUMBER: builtins.int
@@ -2084,9 +2577,14 @@ class MeshPacket(google.protobuf.message.Message):
     NEXT_HOP_FIELD_NUMBER: builtins.int
     RELAY_NODE_FIELD_NUMBER: builtins.int
     TX_AFTER_FIELD_NUMBER: builtins.int
+    TRANSPORT_MECHANISM_FIELD_NUMBER: builtins.int
     to: builtins.int
     """
     The (immediate) destination for this packet
+    If the value is 4,294,967,295 (maximum value of an unsigned 32bit integer), this indicates that the packet was
+    not destined for a specific node, but for a channel as indicated by the value of `channel` below.
+    If the value is another, this indicates that the packet was destined for a specific
+    node (i.e. a kind of "Direct Message" to this node) and not broadcast on a channel.
     """
     channel: builtins.int
     """
@@ -2145,7 +2643,7 @@ class MeshPacket(google.protobuf.message.Message):
     If after some time we don't hear anyone rebroadcast our packet, we will timeout and retransmit, using the regular resend logic.
     Note: This flag is normally sent in a flag bit in the header when sent over the wire
     """
-    priority: global___MeshPacket.Priority.ValueType
+    priority: Global___MeshPacket.Priority.ValueType
     """
     The priority of this message for sending.
     See MeshPacket.Priority description for more details.
@@ -2154,7 +2652,7 @@ class MeshPacket(google.protobuf.message.Message):
     """
     rssi of received packet. Only sent to phone for dispay purposes.
     """
-    delayed: global___MeshPacket.Delayed.ValueType
+    delayed: Global___MeshPacket.Delayed.ValueType
     """
     Describe if this message is delayed
     """
@@ -2177,7 +2675,7 @@ class MeshPacket(google.protobuf.message.Message):
     """
     next_hop: builtins.int
     """
-    Last byte of the node number of the node that should be used as the next hop in routing. 
+    Last byte of the node number of the node that should be used as the next hop in routing.
     Set by the firmware internally, clients are not supposed to set this.
     """
     relay_node: builtins.int
@@ -2191,8 +2689,12 @@ class MeshPacket(google.protobuf.message.Message):
     Timestamp after which this packet may be sent.
     Set by the firmware internally, clients are not supposed to set this.
     """
+    transport_mechanism: Global___MeshPacket.TransportMechanism.ValueType
+    """
+    Indicates which transport mechanism this packet arrived over
+    """
     @property
-    def decoded(self) -> global___Data:
+    def decoded(self) -> Global___Data:
         """
         TODO: REPLACE
         """
@@ -2202,16 +2704,16 @@ class MeshPacket(google.protobuf.message.Message):
         *,
         to: builtins.int = ...,
         channel: builtins.int = ...,
-        decoded: global___Data | None = ...,
+        decoded: Global___Data | None = ...,
         encrypted: builtins.bytes = ...,
         id: builtins.int = ...,
         rx_time: builtins.int = ...,
         rx_snr: builtins.float = ...,
         hop_limit: builtins.int = ...,
         want_ack: builtins.bool = ...,
-        priority: global___MeshPacket.Priority.ValueType = ...,
+        priority: Global___MeshPacket.Priority.ValueType = ...,
         rx_rssi: builtins.int = ...,
-        delayed: global___MeshPacket.Delayed.ValueType = ...,
+        delayed: Global___MeshPacket.Delayed.ValueType = ...,
         via_mqtt: builtins.bool = ...,
         hop_start: builtins.int = ...,
         public_key: builtins.bytes = ...,
@@ -2219,12 +2721,13 @@ class MeshPacket(google.protobuf.message.Message):
         next_hop: builtins.int = ...,
         relay_node: builtins.int = ...,
         tx_after: builtins.int = ...,
+        transport_mechanism: Global___MeshPacket.TransportMechanism.ValueType = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["decoded", b"decoded", "encrypted", b"encrypted", "payload_variant", b"payload_variant"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["channel", b"channel", "decoded", b"decoded", "delayed", b"delayed", "encrypted", b"encrypted", "from", b"from", "hop_limit", b"hop_limit", "hop_start", b"hop_start", "id", b"id", "next_hop", b"next_hop", "payload_variant", b"payload_variant", "pki_encrypted", b"pki_encrypted", "priority", b"priority", "public_key", b"public_key", "relay_node", b"relay_node", "rx_rssi", b"rx_rssi", "rx_snr", b"rx_snr", "rx_time", b"rx_time", "to", b"to", "tx_after", b"tx_after", "via_mqtt", b"via_mqtt", "want_ack", b"want_ack"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["channel", b"channel", "decoded", b"decoded", "delayed", b"delayed", "encrypted", b"encrypted", "from", b"from", "hop_limit", b"hop_limit", "hop_start", b"hop_start", "id", b"id", "next_hop", b"next_hop", "payload_variant", b"payload_variant", "pki_encrypted", b"pki_encrypted", "priority", b"priority", "public_key", b"public_key", "relay_node", b"relay_node", "rx_rssi", b"rx_rssi", "rx_snr", b"rx_snr", "rx_time", b"rx_time", "to", b"to", "transport_mechanism", b"transport_mechanism", "tx_after", b"tx_after", "via_mqtt", b"via_mqtt", "want_ack", b"want_ack"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["decoded", "encrypted"] | None: ...
 
-global___MeshPacket = MeshPacket
+Global___MeshPacket: typing_extensions.TypeAlias = MeshPacket
 
 @typing.final
 class NodeInfo(google.protobuf.message.Message):
@@ -2260,6 +2763,7 @@ class NodeInfo(google.protobuf.message.Message):
     HOPS_AWAY_FIELD_NUMBER: builtins.int
     IS_FAVORITE_FIELD_NUMBER: builtins.int
     IS_IGNORED_FIELD_NUMBER: builtins.int
+    IS_KEY_MANUALLY_VERIFIED_FIELD_NUMBER: builtins.int
     num: builtins.int
     """
     The node number
@@ -2301,14 +2805,20 @@ class NodeInfo(google.protobuf.message.Message):
     True if node is in our ignored list
     Persists between NodeDB internal clean ups
     """
+    is_key_manually_verified: builtins.bool
+    """
+    True if node public key has been verified.
+    Persists between NodeDB internal clean ups
+    LSB 0 of the bitfield
+    """
     @property
-    def user(self) -> global___User:
+    def user(self) -> Global___User:
         """
         The user info for this node
         """
 
     @property
-    def position(self) -> global___Position:
+    def position(self) -> Global___Position:
         """
         This position data. Note: before 1.2.14 we would also store the last time we've heard from this node in position.time, that is no longer true.
         Position.time now indicates the last time we received a POSITION from that node.
@@ -2324,8 +2834,8 @@ class NodeInfo(google.protobuf.message.Message):
         self,
         *,
         num: builtins.int = ...,
-        user: global___User | None = ...,
-        position: global___Position | None = ...,
+        user: Global___User | None = ...,
+        position: Global___Position | None = ...,
         snr: builtins.float = ...,
         last_heard: builtins.int = ...,
         device_metrics: telemetry_pb2.DeviceMetrics | None = ...,
@@ -2334,12 +2844,13 @@ class NodeInfo(google.protobuf.message.Message):
         hops_away: builtins.int | None = ...,
         is_favorite: builtins.bool = ...,
         is_ignored: builtins.bool = ...,
+        is_key_manually_verified: builtins.bool = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["_hops_away", b"_hops_away", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "position", b"position", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_hops_away", b"_hops_away", "channel", b"channel", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "is_favorite", b"is_favorite", "is_ignored", b"is_ignored", "last_heard", b"last_heard", "num", b"num", "position", b"position", "snr", b"snr", "user", b"user", "via_mqtt", b"via_mqtt"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["_hops_away", b"_hops_away", "channel", b"channel", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "is_favorite", b"is_favorite", "is_ignored", b"is_ignored", "is_key_manually_verified", b"is_key_manually_verified", "last_heard", b"last_heard", "num", b"num", "position", b"position", "snr", b"snr", "user", b"user", "via_mqtt", b"via_mqtt"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["_hops_away", b"_hops_away"]) -> typing.Literal["hops_away"] | None: ...
 
-global___NodeInfo = NodeInfo
+Global___NodeInfo: typing_extensions.TypeAlias = NodeInfo
 
 @typing.final
 class MyNodeInfo(google.protobuf.message.Message):
@@ -2356,6 +2867,8 @@ class MyNodeInfo(google.protobuf.message.Message):
     MIN_APP_VERSION_FIELD_NUMBER: builtins.int
     DEVICE_ID_FIELD_NUMBER: builtins.int
     PIO_ENV_FIELD_NUMBER: builtins.int
+    FIRMWARE_EDITION_FIELD_NUMBER: builtins.int
+    NODEDB_COUNT_FIELD_NUMBER: builtins.int
     my_node_num: builtins.int
     """
     Tells the phone what our node number is, default starting value is
@@ -2379,6 +2892,15 @@ class MyNodeInfo(google.protobuf.message.Message):
     """
     The PlatformIO environment used to build this firmware
     """
+    firmware_edition: Global___FirmwareEdition.ValueType
+    """
+    The indicator for whether this device is running event firmware and which
+    """
+    nodedb_count: builtins.int
+    """
+    The number of nodes in the nodedb.
+    This is used by the phone to know how many NodeInfo packets to expect on want_config
+    """
     def __init__(
         self,
         *,
@@ -2387,10 +2909,12 @@ class MyNodeInfo(google.protobuf.message.Message):
         min_app_version: builtins.int = ...,
         device_id: builtins.bytes = ...,
         pio_env: builtins.str = ...,
+        firmware_edition: Global___FirmwareEdition.ValueType = ...,
+        nodedb_count: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["device_id", b"device_id", "min_app_version", b"min_app_version", "my_node_num", b"my_node_num", "pio_env", b"pio_env", "reboot_count", b"reboot_count"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["device_id", b"device_id", "firmware_edition", b"firmware_edition", "min_app_version", b"min_app_version", "my_node_num", b"my_node_num", "nodedb_count", b"nodedb_count", "pio_env", b"pio_env", "reboot_count", b"reboot_count"]) -> None: ...
 
-global___MyNodeInfo = MyNodeInfo
+Global___MyNodeInfo: typing_extensions.TypeAlias = MyNodeInfo
 
 @typing.final
 class LogRecord(google.protobuf.message.Message):
@@ -2489,7 +3013,7 @@ class LogRecord(google.protobuf.message.Message):
     """
     Usually based on thread name - if known
     """
-    level: global___LogRecord.Level.ValueType
+    level: Global___LogRecord.Level.ValueType
     """
     Not yet set
     """
@@ -2499,11 +3023,11 @@ class LogRecord(google.protobuf.message.Message):
         message: builtins.str = ...,
         time: builtins.int = ...,
         source: builtins.str = ...,
-        level: global___LogRecord.Level.ValueType = ...,
+        level: Global___LogRecord.Level.ValueType = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["level", b"level", "message", b"message", "source", b"source", "time", b"time"]) -> None: ...
 
-global___LogRecord = LogRecord
+Global___LogRecord: typing_extensions.TypeAlias = LogRecord
 
 @typing.final
 class QueueStatus(google.protobuf.message.Message):
@@ -2531,7 +3055,7 @@ class QueueStatus(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["free", b"free", "maxlen", b"maxlen", "mesh_packet_id", b"mesh_packet_id", "res", b"res"]) -> None: ...
 
-global___QueueStatus = QueueStatus
+Global___QueueStatus: typing_extensions.TypeAlias = QueueStatus
 
 @typing.final
 class FromRadio(google.protobuf.message.Message):
@@ -2581,20 +3105,20 @@ class FromRadio(google.protobuf.message.Message):
     NOTE: This ID must not change - to keep (minimal) compatibility with <1.2 version of android apps.
     """
     @property
-    def packet(self) -> global___MeshPacket:
+    def packet(self) -> Global___MeshPacket:
         """
         Log levels, chosen to match python logging conventions.
         """
 
     @property
-    def my_info(self) -> global___MyNodeInfo:
+    def my_info(self) -> Global___MyNodeInfo:
         """
         Tells the phone what our node number is, can be -1 if we've not yet joined a mesh.
         NOTE: This ID must not change - to keep (minimal) compatibility with <1.2 version of android apps.
         """
 
     @property
-    def node_info(self) -> global___NodeInfo:
+    def node_info(self) -> Global___NodeInfo:
         """
         One packet is sent for each node in the on radio DB
         starts over with the first node in our DB
@@ -2607,7 +3131,7 @@ class FromRadio(google.protobuf.message.Message):
         """
 
     @property
-    def log_record(self) -> global___LogRecord:
+    def log_record(self) -> Global___LogRecord:
         """
         Set to send debug console output over our protobuf stream
         """
@@ -2625,7 +3149,7 @@ class FromRadio(google.protobuf.message.Message):
         """
 
     @property
-    def queueStatus(self) -> global___QueueStatus:
+    def queueStatus(self) -> Global___QueueStatus:
         """
         Queue status info
         """
@@ -2637,25 +3161,25 @@ class FromRadio(google.protobuf.message.Message):
         """
 
     @property
-    def metadata(self) -> global___DeviceMetadata:
+    def metadata(self) -> Global___DeviceMetadata:
         """
         Device metadata message
         """
 
     @property
-    def mqttClientProxyMessage(self) -> global___MqttClientProxyMessage:
+    def mqttClientProxyMessage(self) -> Global___MqttClientProxyMessage:
         """
         MQTT Client Proxy Message (device sending to client / phone for publishing to MQTT)
         """
 
     @property
-    def fileInfo(self) -> global___FileInfo:
+    def fileInfo(self) -> Global___FileInfo:
         """
         File system manifest messages
         """
 
     @property
-    def clientNotification(self) -> global___ClientNotification:
+    def clientNotification(self) -> Global___ClientNotification:
         """
         Notification message to the client
         """
@@ -2670,28 +3194,28 @@ class FromRadio(google.protobuf.message.Message):
         self,
         *,
         id: builtins.int = ...,
-        packet: global___MeshPacket | None = ...,
-        my_info: global___MyNodeInfo | None = ...,
-        node_info: global___NodeInfo | None = ...,
+        packet: Global___MeshPacket | None = ...,
+        my_info: Global___MyNodeInfo | None = ...,
+        node_info: Global___NodeInfo | None = ...,
         config: config_pb2.Config | None = ...,
-        log_record: global___LogRecord | None = ...,
+        log_record: Global___LogRecord | None = ...,
         config_complete_id: builtins.int = ...,
         rebooted: builtins.bool = ...,
         moduleConfig: module_config_pb2.ModuleConfig | None = ...,
         channel: channel_pb2.Channel | None = ...,
-        queueStatus: global___QueueStatus | None = ...,
+        queueStatus: Global___QueueStatus | None = ...,
         xmodemPacket: xmodem_pb2.XModem | None = ...,
-        metadata: global___DeviceMetadata | None = ...,
-        mqttClientProxyMessage: global___MqttClientProxyMessage | None = ...,
-        fileInfo: global___FileInfo | None = ...,
-        clientNotification: global___ClientNotification | None = ...,
+        metadata: Global___DeviceMetadata | None = ...,
+        mqttClientProxyMessage: Global___MqttClientProxyMessage | None = ...,
+        fileInfo: Global___FileInfo | None = ...,
+        clientNotification: Global___ClientNotification | None = ...,
         deviceuiConfig: device_ui_pb2.DeviceUIConfig | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["channel", b"channel", "clientNotification", b"clientNotification", "config", b"config", "config_complete_id", b"config_complete_id", "deviceuiConfig", b"deviceuiConfig", "fileInfo", b"fileInfo", "log_record", b"log_record", "metadata", b"metadata", "moduleConfig", b"moduleConfig", "mqttClientProxyMessage", b"mqttClientProxyMessage", "my_info", b"my_info", "node_info", b"node_info", "packet", b"packet", "payload_variant", b"payload_variant", "queueStatus", b"queueStatus", "rebooted", b"rebooted", "xmodemPacket", b"xmodemPacket"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["channel", b"channel", "clientNotification", b"clientNotification", "config", b"config", "config_complete_id", b"config_complete_id", "deviceuiConfig", b"deviceuiConfig", "fileInfo", b"fileInfo", "id", b"id", "log_record", b"log_record", "metadata", b"metadata", "moduleConfig", b"moduleConfig", "mqttClientProxyMessage", b"mqttClientProxyMessage", "my_info", b"my_info", "node_info", b"node_info", "packet", b"packet", "payload_variant", b"payload_variant", "queueStatus", b"queueStatus", "rebooted", b"rebooted", "xmodemPacket", b"xmodemPacket"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["packet", "my_info", "node_info", "config", "log_record", "config_complete_id", "rebooted", "moduleConfig", "channel", "queueStatus", "xmodemPacket", "metadata", "mqttClientProxyMessage", "fileInfo", "clientNotification", "deviceuiConfig"] | None: ...
 
-global___FromRadio = FromRadio
+Global___FromRadio: typing_extensions.TypeAlias = FromRadio
 
 @typing.final
 class ClientNotification(google.protobuf.message.Message):
@@ -2708,6 +3232,11 @@ class ClientNotification(google.protobuf.message.Message):
     TIME_FIELD_NUMBER: builtins.int
     LEVEL_FIELD_NUMBER: builtins.int
     MESSAGE_FIELD_NUMBER: builtins.int
+    KEY_VERIFICATION_NUMBER_INFORM_FIELD_NUMBER: builtins.int
+    KEY_VERIFICATION_NUMBER_REQUEST_FIELD_NUMBER: builtins.int
+    KEY_VERIFICATION_FINAL_FIELD_NUMBER: builtins.int
+    DUPLICATED_PUBLIC_KEY_FIELD_NUMBER: builtins.int
+    LOW_ENTROPY_KEY_FIELD_NUMBER: builtins.int
     reply_id: builtins.int
     """
     The id of the packet we're notifying in response to
@@ -2716,7 +3245,7 @@ class ClientNotification(google.protobuf.message.Message):
     """
     Seconds since 1970 - or 0 for unknown/unset
     """
-    level: global___LogRecord.Level.ValueType
+    level: Global___LogRecord.Level.ValueType
     """
     The level type of notification
     """
@@ -2724,19 +3253,120 @@ class ClientNotification(google.protobuf.message.Message):
     """
     The message body of the notification
     """
+    @property
+    def key_verification_number_inform(self) -> Global___KeyVerificationNumberInform: ...
+    @property
+    def key_verification_number_request(self) -> Global___KeyVerificationNumberRequest: ...
+    @property
+    def key_verification_final(self) -> Global___KeyVerificationFinal: ...
+    @property
+    def duplicated_public_key(self) -> Global___DuplicatedPublicKey: ...
+    @property
+    def low_entropy_key(self) -> Global___LowEntropyKey: ...
     def __init__(
         self,
         *,
         reply_id: builtins.int | None = ...,
         time: builtins.int = ...,
-        level: global___LogRecord.Level.ValueType = ...,
+        level: Global___LogRecord.Level.ValueType = ...,
         message: builtins.str = ...,
+        key_verification_number_inform: Global___KeyVerificationNumberInform | None = ...,
+        key_verification_number_request: Global___KeyVerificationNumberRequest | None = ...,
+        key_verification_final: Global___KeyVerificationFinal | None = ...,
+        duplicated_public_key: Global___DuplicatedPublicKey | None = ...,
+        low_entropy_key: Global___LowEntropyKey | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_reply_id", b"_reply_id", "reply_id", b"reply_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_reply_id", b"_reply_id", "level", b"level", "message", b"message", "reply_id", b"reply_id", "time", b"time"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_reply_id", b"_reply_id", "duplicated_public_key", b"duplicated_public_key", "key_verification_final", b"key_verification_final", "key_verification_number_inform", b"key_verification_number_inform", "key_verification_number_request", b"key_verification_number_request", "low_entropy_key", b"low_entropy_key", "payload_variant", b"payload_variant", "reply_id", b"reply_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_reply_id", b"_reply_id", "duplicated_public_key", b"duplicated_public_key", "key_verification_final", b"key_verification_final", "key_verification_number_inform", b"key_verification_number_inform", "key_verification_number_request", b"key_verification_number_request", "level", b"level", "low_entropy_key", b"low_entropy_key", "message", b"message", "payload_variant", b"payload_variant", "reply_id", b"reply_id", "time", b"time"]) -> None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_reply_id", b"_reply_id"]) -> typing.Literal["reply_id"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["key_verification_number_inform", "key_verification_number_request", "key_verification_final", "duplicated_public_key", "low_entropy_key"] | None: ...
 
-global___ClientNotification = ClientNotification
+Global___ClientNotification: typing_extensions.TypeAlias = ClientNotification
+
+@typing.final
+class KeyVerificationNumberInform(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NONCE_FIELD_NUMBER: builtins.int
+    REMOTE_LONGNAME_FIELD_NUMBER: builtins.int
+    SECURITY_NUMBER_FIELD_NUMBER: builtins.int
+    nonce: builtins.int
+    remote_longname: builtins.str
+    security_number: builtins.int
+    def __init__(
+        self,
+        *,
+        nonce: builtins.int = ...,
+        remote_longname: builtins.str = ...,
+        security_number: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["nonce", b"nonce", "remote_longname", b"remote_longname", "security_number", b"security_number"]) -> None: ...
+
+Global___KeyVerificationNumberInform: typing_extensions.TypeAlias = KeyVerificationNumberInform
+
+@typing.final
+class KeyVerificationNumberRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NONCE_FIELD_NUMBER: builtins.int
+    REMOTE_LONGNAME_FIELD_NUMBER: builtins.int
+    nonce: builtins.int
+    remote_longname: builtins.str
+    def __init__(
+        self,
+        *,
+        nonce: builtins.int = ...,
+        remote_longname: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["nonce", b"nonce", "remote_longname", b"remote_longname"]) -> None: ...
+
+Global___KeyVerificationNumberRequest: typing_extensions.TypeAlias = KeyVerificationNumberRequest
+
+@typing.final
+class KeyVerificationFinal(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NONCE_FIELD_NUMBER: builtins.int
+    REMOTE_LONGNAME_FIELD_NUMBER: builtins.int
+    ISSENDER_FIELD_NUMBER: builtins.int
+    VERIFICATION_CHARACTERS_FIELD_NUMBER: builtins.int
+    nonce: builtins.int
+    remote_longname: builtins.str
+    isSender: builtins.bool
+    verification_characters: builtins.str
+    def __init__(
+        self,
+        *,
+        nonce: builtins.int = ...,
+        remote_longname: builtins.str = ...,
+        isSender: builtins.bool = ...,
+        verification_characters: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["isSender", b"isSender", "nonce", b"nonce", "remote_longname", b"remote_longname", "verification_characters", b"verification_characters"]) -> None: ...
+
+Global___KeyVerificationFinal: typing_extensions.TypeAlias = KeyVerificationFinal
+
+@typing.final
+class DuplicatedPublicKey(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+Global___DuplicatedPublicKey: typing_extensions.TypeAlias = DuplicatedPublicKey
+
+@typing.final
+class LowEntropyKey(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+Global___LowEntropyKey: typing_extensions.TypeAlias = LowEntropyKey
 
 @typing.final
 class FileInfo(google.protobuf.message.Message):
@@ -2764,7 +3394,7 @@ class FileInfo(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["file_name", b"file_name", "size_bytes", b"size_bytes"]) -> None: ...
 
-global___FileInfo = FileInfo
+Global___FileInfo: typing_extensions.TypeAlias = FileInfo
 
 @typing.final
 class ToRadio(google.protobuf.message.Message):
@@ -2799,7 +3429,7 @@ class ToRadio(google.protobuf.message.Message):
     (Sending this message is optional for clients)
     """
     @property
-    def packet(self) -> global___MeshPacket:
+    def packet(self) -> Global___MeshPacket:
         """
         Send this packet on the mesh
         """
@@ -2811,13 +3441,13 @@ class ToRadio(google.protobuf.message.Message):
         """
 
     @property
-    def mqttClientProxyMessage(self) -> global___MqttClientProxyMessage:
+    def mqttClientProxyMessage(self) -> Global___MqttClientProxyMessage:
         """
         MQTT Client Proxy Message (for client / phone subscribed to MQTT sending to device)
         """
 
     @property
-    def heartbeat(self) -> global___Heartbeat:
+    def heartbeat(self) -> Global___Heartbeat:
         """
         Heartbeat message (used to keep the device connection awake on serial)
         """
@@ -2825,18 +3455,18 @@ class ToRadio(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        packet: global___MeshPacket | None = ...,
+        packet: Global___MeshPacket | None = ...,
         want_config_id: builtins.int = ...,
         disconnect: builtins.bool = ...,
         xmodemPacket: xmodem_pb2.XModem | None = ...,
-        mqttClientProxyMessage: global___MqttClientProxyMessage | None = ...,
-        heartbeat: global___Heartbeat | None = ...,
+        mqttClientProxyMessage: Global___MqttClientProxyMessage | None = ...,
+        heartbeat: Global___Heartbeat | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["disconnect", b"disconnect", "heartbeat", b"heartbeat", "mqttClientProxyMessage", b"mqttClientProxyMessage", "packet", b"packet", "payload_variant", b"payload_variant", "want_config_id", b"want_config_id", "xmodemPacket", b"xmodemPacket"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["disconnect", b"disconnect", "heartbeat", b"heartbeat", "mqttClientProxyMessage", b"mqttClientProxyMessage", "packet", b"packet", "payload_variant", b"payload_variant", "want_config_id", b"want_config_id", "xmodemPacket", b"xmodemPacket"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["packet", "want_config_id", "disconnect", "xmodemPacket", "mqttClientProxyMessage", "heartbeat"] | None: ...
 
-global___ToRadio = ToRadio
+Global___ToRadio: typing_extensions.TypeAlias = ToRadio
 
 @typing.final
 class Compressed(google.protobuf.message.Message):
@@ -2864,7 +3494,7 @@ class Compressed(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["data", b"data", "portnum", b"portnum"]) -> None: ...
 
-global___Compressed = Compressed
+Global___Compressed: typing_extensions.TypeAlias = Compressed
 
 @typing.final
 class NeighborInfo(google.protobuf.message.Message):
@@ -2891,7 +3521,7 @@ class NeighborInfo(google.protobuf.message.Message):
     Broadcast interval of the represented node (in seconds)
     """
     @property
-    def neighbors(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Neighbor]:
+    def neighbors(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___Neighbor]:
         """
         The list of out edges from this node
         """
@@ -2902,11 +3532,11 @@ class NeighborInfo(google.protobuf.message.Message):
         node_id: builtins.int = ...,
         last_sent_by_id: builtins.int = ...,
         node_broadcast_interval_secs: builtins.int = ...,
-        neighbors: collections.abc.Iterable[global___Neighbor] | None = ...,
+        neighbors: collections.abc.Iterable[Global___Neighbor] | None = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["last_sent_by_id", b"last_sent_by_id", "neighbors", b"neighbors", "node_broadcast_interval_secs", b"node_broadcast_interval_secs", "node_id", b"node_id"]) -> None: ...
 
-global___NeighborInfo = NeighborInfo
+Global___NeighborInfo: typing_extensions.TypeAlias = NeighborInfo
 
 @typing.final
 class Neighbor(google.protobuf.message.Message):
@@ -2948,7 +3578,7 @@ class Neighbor(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["last_rx_time", b"last_rx_time", "node_broadcast_interval_secs", b"node_broadcast_interval_secs", "node_id", b"node_id", "snr", b"snr"]) -> None: ...
 
-global___Neighbor = Neighbor
+Global___Neighbor: typing_extensions.TypeAlias = Neighbor
 
 @typing.final
 class DeviceMetadata(google.protobuf.message.Message):
@@ -3002,7 +3632,7 @@ class DeviceMetadata(google.protobuf.message.Message):
     """
     Indicates the device's current enabled position flags
     """
-    hw_model: global___HardwareModel.ValueType
+    hw_model: Global___HardwareModel.ValueType
     """
     Device hardware model
     """
@@ -3030,14 +3660,14 @@ class DeviceMetadata(google.protobuf.message.Message):
         hasEthernet: builtins.bool = ...,
         role: config_pb2.Config.DeviceConfig.Role.ValueType = ...,
         position_flags: builtins.int = ...,
-        hw_model: global___HardwareModel.ValueType = ...,
+        hw_model: Global___HardwareModel.ValueType = ...,
         hasRemoteHardware: builtins.bool = ...,
         hasPKC: builtins.bool = ...,
         excluded_modules: builtins.int = ...,
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["canShutdown", b"canShutdown", "device_state_version", b"device_state_version", "excluded_modules", b"excluded_modules", "firmware_version", b"firmware_version", "hasBluetooth", b"hasBluetooth", "hasEthernet", b"hasEthernet", "hasPKC", b"hasPKC", "hasRemoteHardware", b"hasRemoteHardware", "hasWifi", b"hasWifi", "hw_model", b"hw_model", "position_flags", b"position_flags", "role", b"role"]) -> None: ...
 
-global___DeviceMetadata = DeviceMetadata
+Global___DeviceMetadata: typing_extensions.TypeAlias = DeviceMetadata
 
 @typing.final
 class Heartbeat(google.protobuf.message.Message):
@@ -3048,11 +3678,19 @@ class Heartbeat(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    NONCE_FIELD_NUMBER: builtins.int
+    nonce: builtins.int
+    """
+    The nonce of the heartbeat message
+    """
     def __init__(
         self,
+        *,
+        nonce: builtins.int = ...,
     ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["nonce", b"nonce"]) -> None: ...
 
-global___Heartbeat = Heartbeat
+Global___Heartbeat: typing_extensions.TypeAlias = Heartbeat
 
 @typing.final
 class NodeRemoteHardwarePin(google.protobuf.message.Message):
@@ -3083,7 +3721,7 @@ class NodeRemoteHardwarePin(google.protobuf.message.Message):
     def HasField(self, field_name: typing.Literal["pin", b"pin"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["node_num", b"node_num", "pin", b"pin"]) -> None: ...
 
-global___NodeRemoteHardwarePin = NodeRemoteHardwarePin
+Global___NodeRemoteHardwarePin: typing_extensions.TypeAlias = NodeRemoteHardwarePin
 
 @typing.final
 class ChunkedPayload(google.protobuf.message.Message):
@@ -3119,7 +3757,7 @@ class ChunkedPayload(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["chunk_count", b"chunk_count", "chunk_index", b"chunk_index", "payload_chunk", b"payload_chunk", "payload_id", b"payload_id"]) -> None: ...
 
-global___ChunkedPayload = ChunkedPayload
+Global___ChunkedPayload: typing_extensions.TypeAlias = ChunkedPayload
 
 @typing.final
 class resend_chunks(google.protobuf.message.Message):
@@ -3139,7 +3777,7 @@ class resend_chunks(google.protobuf.message.Message):
     ) -> None: ...
     def ClearField(self, field_name: typing.Literal["chunks", b"chunks"]) -> None: ...
 
-global___resend_chunks = resend_chunks
+Global___resend_chunks: typing_extensions.TypeAlias = resend_chunks
 
 @typing.final
 class ChunkedPayloadResponse(google.protobuf.message.Message):
@@ -3166,7 +3804,7 @@ class ChunkedPayloadResponse(google.protobuf.message.Message):
     Accept the transfer chunked payload
     """
     @property
-    def resend_chunks(self) -> global___resend_chunks:
+    def resend_chunks(self) -> Global___resend_chunks:
         """
         Request missing indexes in the chunked payload
         """
@@ -3177,10 +3815,10 @@ class ChunkedPayloadResponse(google.protobuf.message.Message):
         payload_id: builtins.int = ...,
         request_transfer: builtins.bool = ...,
         accept_transfer: builtins.bool = ...,
-        resend_chunks: global___resend_chunks | None = ...,
+        resend_chunks: Global___resend_chunks | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["accept_transfer", b"accept_transfer", "payload_variant", b"payload_variant", "request_transfer", b"request_transfer", "resend_chunks", b"resend_chunks"]) -> builtins.bool: ...
     def ClearField(self, field_name: typing.Literal["accept_transfer", b"accept_transfer", "payload_id", b"payload_id", "payload_variant", b"payload_variant", "request_transfer", b"request_transfer", "resend_chunks", b"resend_chunks"]) -> None: ...
     def WhichOneof(self, oneof_group: typing.Literal["payload_variant", b"payload_variant"]) -> typing.Literal["request_transfer", "accept_transfer", "resend_chunks"] | None: ...
 
-global___ChunkedPayloadResponse = ChunkedPayloadResponse
+Global___ChunkedPayloadResponse: typing_extensions.TypeAlias = ChunkedPayloadResponse
