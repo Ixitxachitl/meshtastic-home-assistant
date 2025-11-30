@@ -690,7 +690,7 @@ class MeshInterface:
             except:  # noqa: E722
                 self._logger.warning("Failed to process node info", exc_info=True)
 
-        if p.from_id:
+        if p.from_id and p.rx_time:
             await self._node_database_update(p.from_id, lastHeard=p.rx_time, snr=p.rx_snr)
 
     def _get_or_create_node(self, node_num: int) -> MutableMapping[str, Any]:
