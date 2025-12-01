@@ -194,11 +194,15 @@ class MeshtasticDataUpdateCoordinator(DataUpdateCoordinator):
 
             filter_nodes = self.config_entry.options.get(CONF_OPTION_FILTER_NODES, [])
             filter_node_nums = [el["id"] for el in filter_nodes]
-            result = {
-                node_num: deepcopy(node_info)
-                for node_num, node_info in node_infos.items()
-                if node_num in filter_node_nums
-            }
+            result = {}
+            for node_num, node_info in node_infos.items():
+                if node_num in filter_node_nums:
+                    node_data = deepcopy(node_info)
+                    # Remove lastHeard entirely if it's 0 (protobuf default/stale value)
+                    # Fresh lastHeard values will come from packet rx_time updates
+                    if node_data.get("lastHeard") == 0:
+                        node_data.pop("lastHeard", None)
+                    result[node_num] = node_data
             self._first_refresh_done = True
             return result
         except MeshtasticApiClientError as exception:

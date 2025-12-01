@@ -196,12 +196,14 @@ class MeshInterface:
 
         async def wrapper(node: MeshNode, source: Packet) -> None:
             if as_dict:
-                await callback(
-                    node,
-                    google.protobuf.json_format.MessageToDict(
-                        source.app_payload, always_print_fields_with_no_presence=True
-                    ),
+                payload_dict = google.protobuf.json_format.MessageToDict(
+                    source.app_payload, always_print_fields_with_no_presence=True
                 )
+                # For NODEINFO_APP: Remove lastHeard from wire packets (stale/default values)
+                # but keep it for DatabaseNodeInfoPacket (contains fresh lastHeard from rx_time)
+                if packet_type == portnums_pb2.PortNum.NODEINFO_APP and not isinstance(source, DatabaseNodeInfoPacket):
+                    payload_dict.pop("lastHeard", None)
+                await callback(node, payload_dict)
             elif as_packet:
                 await callback(node, source)
             else:
@@ -640,16 +642,12 @@ class MeshInterface:
 
         if packet.port_num == portnums_pb2.PortNum.TELEMETRY_APP:
             telemetry = packet.app_payload
-            telemetry_info = google.protobuf.json_format.MessageToDict(
-                telemetry, always_print_fields_with_no_presence=True
-            )
+            telemetry_info = google.protobuf.json_format.MessageToDict(telemetry)
             if node_id in self._node_database:
                 await self._node_database_update(node_id, **telemetry_info)
         elif packet.port_num == portnums_pb2.PortNum.POSITION_APP:
             position = packet.app_payload
-            position_info = google.protobuf.json_format.MessageToDict(
-                position, always_print_fields_with_no_presence=True
-            )
+            position_info = google.protobuf.json_format.MessageToDict(position)
             if node_id in self._node_database:
                 await self._node_database_update(node_id, position=position_info)
         elif packet.port_num == portnums_pb2.PortNum.NODEINFO_APP:
@@ -657,6 +655,9 @@ class MeshInterface:
             node_info_dict = google.protobuf.json_format.MessageToDict(
                 node_info, always_print_fields_with_no_presence=True
             )
+            # Remove lastHeard entirely - it contains stale/default values
+            # Fresh lastHeard is set from packet rx_time in _process_node_info
+            node_info_dict.pop("lastHeard", None)
             if node_id in self._node_database:
                 await self._node_database_update(node_id, **node_info_dict)
             else:
@@ -677,6 +678,9 @@ class MeshInterface:
                 node_info_dict = google.protobuf.json_format.MessageToDict(
                     node_info, always_print_fields_with_no_presence=True
                 )
+                # Remove lastHeard entirely - it contains stale/default values
+                # Fresh lastHeard is set from packet rx_time below
+                node_info_dict.pop("lastHeard", None)
 
                 db_node = self._get_or_create_node(node_info.num)
                 db_node.update(node_info_dict)
@@ -694,7 +698,6 @@ class MeshInterface:
         # Always update lastHeard with the fresh rx_time from the packet envelope
         # This overwrites any stale lastHeard value from the node_info protobuf
         if p.from_id and p.rx_time:
-            self._logger.debug(f"Updating node {p.from_id} lastHeard to {p.rx_time}")
             await self._node_database_update(p.from_id, lastHeard=p.rx_time, snr=p.rx_snr)
 
     def _get_or_create_node(self, node_num: int) -> MutableMapping[str, Any]:

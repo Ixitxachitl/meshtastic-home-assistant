@@ -291,6 +291,14 @@ class MeshtasticApiClient:
         }
 
     async def _on_node_info(self, node: MeshNode, info: dict[str, Any]) -> None:
+        # Don't include lastHeard in updates if it's 0 (default/stale value from protobuf)
+        # Only real timestamps from rx_time should update lastHeard
+        last_heard = info.get("lastHeard")
+        if last_heard is not None and last_heard == 0:
+            # Remove lastHeard=0 to avoid overwriting good timestamps with default value
+            info = dict(info)  # Make a copy
+            info.pop("lastHeard", None)
+
         event_data = self._build_event_data(node.id, info)
         position = event_data.get(ATTR_EVENT_MESHTASTIC_API_DATA, {}).get("position", {})
         if position:
