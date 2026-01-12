@@ -58,8 +58,7 @@
           "serial_port": "Path to serial port, e.g. /dev/ttyUSB0"
         }
       },
-      "reconfigure": {
-      },
+      "reconfigure": {},
       "node": {
         "description": "Configure which nodes should be imported",
         "data": {
@@ -267,6 +266,9 @@
     "sensor": {
       "battery_level": {
         "name": "Battery Level"
+      },
+      "environment_gas_resistance": {
+        "name": "Gas Resistance"
       }
     },
     "meshtastic": {
