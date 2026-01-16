@@ -325,10 +325,15 @@ class MeshtasticApiClient:
         )
 
         event_data["message_id"] = packet.mesh_packet.id
-        # Calculate hops_away from hop_start and hop_limit if hop_start is set
+        # Add signal strength and hop information from the mesh packet
         mesh_packet = packet.mesh_packet
-        if mesh_packet and mesh_packet.hop_start > 0:
-            event_data["hops_away"] = mesh_packet.hop_start - mesh_packet.hop_limit
+        if mesh_packet:
+            if mesh_packet.hop_start > 0:
+                event_data["hopsAway"] = mesh_packet.hop_start - mesh_packet.hop_limit
+            if mesh_packet.rx_snr:
+                event_data["rxSnr"] = mesh_packet.rx_snr
+            if mesh_packet.rx_rssi:
+                event_data["rxRssi"] = mesh_packet.rx_rssi
         self._hass.bus.async_fire(EVENT_MESHTASTIC_API_TEXT_MESSAGE, event_data)
 
     async def _on_telemetry(self, node: MeshNode, telemetry: dict[str, Any]) -> None:
