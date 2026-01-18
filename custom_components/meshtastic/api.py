@@ -318,6 +318,7 @@ class MeshtasticApiClient:
             node.id,
             {
                 "from": packet.from_id,
+                "fromId": f"!{packet.from_id:08x}" if packet.from_id else None,
                 "to": {"node": to_node, "channel": to_channel},
                 "gateway": self.get_own_node()["num"],
                 "message": packet.app_payload,
