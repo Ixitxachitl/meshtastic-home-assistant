@@ -208,6 +208,7 @@ class NodeInfoLite(google.protobuf.message.Message):
     """
     Bitfield for storing booleans.
     LSB 0 is_key_manually_verified
+    LSB 1 is_muted
     """
     @property
     def user(self) -> Global___UserLite:

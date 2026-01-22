@@ -127,6 +127,7 @@ class LocalModuleConfig(google.protobuf.message.Message):
     AMBIENT_LIGHTING_FIELD_NUMBER: builtins.int
     DETECTION_SENSOR_FIELD_NUMBER: builtins.int
     PAXCOUNTER_FIELD_NUMBER: builtins.int
+    STATUSMESSAGE_FIELD_NUMBER: builtins.int
     VERSION_FIELD_NUMBER: builtins.int
     version: builtins.int
     """
@@ -212,6 +213,12 @@ class LocalModuleConfig(google.protobuf.message.Message):
         Paxcounter Config
         """
 
+    @property
+    def statusmessage(self) -> module_config_pb2.ModuleConfig.StatusMessageConfig:
+        """
+        StatusMessage Config
+        """
+
     def __init__(
         self,
         *,
@@ -228,11 +235,12 @@ class LocalModuleConfig(google.protobuf.message.Message):
         ambient_lighting: module_config_pb2.ModuleConfig.AmbientLightingConfig | None = ...,
         detection_sensor: module_config_pb2.ModuleConfig.DetectionSensorConfig | None = ...,
         paxcounter: module_config_pb2.ModuleConfig.PaxcounterConfig | None = ...,
+        statusmessage: module_config_pb2.ModuleConfig.StatusMessageConfig | None = ...,
         version: builtins.int = ...,
     ) -> None: ...
-    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "store_forward", b"store_forward", "telemetry", b"telemetry"]
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "statusmessage", b"statusmessage", "store_forward", b"store_forward", "telemetry", b"telemetry"]
     def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
-    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "store_forward", b"store_forward", "telemetry", b"telemetry", "version", b"version"]
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "statusmessage", b"statusmessage", "store_forward", b"store_forward", "telemetry", b"telemetry", "version", b"version"]
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LocalModuleConfig: typing_extensions.TypeAlias = LocalModuleConfig

@@ -168,9 +168,9 @@ class _HardwareModelEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._
     Less common/prototype boards listed here (needs one more byte over the air)
     ---------------------------------------------------------------------------
     """
-    NRF52840DK: _HardwareModel.ValueType  # 33
+    T_ECHO_PLUS: _HardwareModel.ValueType  # 33
     """
-    TODO: REPLACE
+    T-Echo Plus device from LilyGo
     """
     PPR: _HardwareModel.ValueType  # 34
     """
@@ -421,9 +421,9 @@ class _HardwareModelEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._
     """
     Heltec HRI-3621 industrial probe
     """
-    RESERVED_FRIED_CHICKEN: _HardwareModel.ValueType  # 93
+    MUZI_BASE: _HardwareModel.ValueType  # 93
     """
-    Reserved Fried Chicken ID for future use
+    Muzi Works Muzi-Base device
     """
     HELTEC_MESH_POCKET: _HardwareModel.ValueType  # 94
     """
@@ -534,6 +534,18 @@ class _HardwareModelEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._
     THINKNODE_M6: _HardwareModel.ValueType  # 120
     """
     Elecrow ThinkNode M6
+    """
+    MESHSTICK_1262: _HardwareModel.ValueType  # 121
+    """
+    Elecrow Meshstick 1262
+    """
+    TBEAM_1_WATT: _HardwareModel.ValueType  # 122
+    """
+    LilyGo T-Beam 1W
+    """
+    T5_S3_EPAPER_PRO: _HardwareModel.ValueType  # 123
+    """
+    LilyGo T5 S3 ePaper Pro (V1 and V2)
     """
     PRIVATE_HW: _HardwareModel.ValueType  # 255
     """
@@ -686,9 +698,9 @@ LORA_RELAY_V1: HardwareModel.ValueType  # 32
 Less common/prototype boards listed here (needs one more byte over the air)
 ---------------------------------------------------------------------------
 """
-NRF52840DK: HardwareModel.ValueType  # 33
+T_ECHO_PLUS: HardwareModel.ValueType  # 33
 """
-TODO: REPLACE
+T-Echo Plus device from LilyGo
 """
 PPR: HardwareModel.ValueType  # 34
 """
@@ -939,9 +951,9 @@ HELTEC_SENSOR_HUB: HardwareModel.ValueType  # 92
 """
 Heltec HRI-3621 industrial probe
 """
-RESERVED_FRIED_CHICKEN: HardwareModel.ValueType  # 93
+MUZI_BASE: HardwareModel.ValueType  # 93
 """
-Reserved Fried Chicken ID for future use
+Muzi Works Muzi-Base device
 """
 HELTEC_MESH_POCKET: HardwareModel.ValueType  # 94
 """
@@ -1052,6 +1064,18 @@ Elecrow ThinkNode M4
 THINKNODE_M6: HardwareModel.ValueType  # 120
 """
 Elecrow ThinkNode M6
+"""
+MESHSTICK_1262: HardwareModel.ValueType  # 121
+"""
+Elecrow Meshstick 1262
+"""
+TBEAM_1_WATT: HardwareModel.ValueType  # 122
+"""
+LilyGo T-Beam 1W
+"""
+T5_S3_EPAPER_PRO: HardwareModel.ValueType  # 123
+"""
+LilyGo T5 S3 ePaper Pro (V1 and V2)
 """
 PRIVATE_HW: HardwareModel.ValueType  # 255
 """
@@ -1993,6 +2017,11 @@ class Routing(google.protobuf.message.Message):
         Airtime fairness rate limit exceeded for a packet
         This typically enforced per portnum and is used to prevent a single node from monopolizing airtime
         """
+        PKI_SEND_FAIL_PUBLIC_KEY: Routing._Error.ValueType  # 39
+        """
+        PKI encryption failed, due to no public key for the remote node
+        This is different from PKI_UNKNOWN_PUBKEY which indicates a failure upon receiving a packet
+        """
 
     class Error(_Error, metaclass=_ErrorEnumTypeWrapper):
         """
@@ -2070,6 +2099,11 @@ class Routing(google.protobuf.message.Message):
     """
     Airtime fairness rate limit exceeded for a packet
     This typically enforced per portnum and is used to prevent a single node from monopolizing airtime
+    """
+    PKI_SEND_FAIL_PUBLIC_KEY: Routing.Error.ValueType  # 39
+    """
+    PKI encryption failed, due to no public key for the remote node
+    This is different from PKI_UNKNOWN_PUBKEY which indicates a failure upon receiving a packet
     """
 
     ROUTE_REQUEST_FIELD_NUMBER: builtins.int
@@ -2234,6 +2268,144 @@ class KeyVerification(google.protobuf.message.Message):
 Global___KeyVerification: typing_extensions.TypeAlias = KeyVerification
 
 @typing.final
+class StoreForwardPlusPlus(google.protobuf.message.Message):
+    """
+    The actual over-the-mesh message doing store and forward++
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    class _SFPP_message_type:
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
+
+    class _SFPP_message_typeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[StoreForwardPlusPlus._SFPP_message_type.ValueType], builtins.type):
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        CANON_ANNOUNCE: StoreForwardPlusPlus._SFPP_message_type.ValueType  # 0
+        """
+        Send an announcement of the canonical tip of a chain
+        """
+        CHAIN_QUERY: StoreForwardPlusPlus._SFPP_message_type.ValueType  # 1
+        """
+        Query whether a specific link is on the chain
+        """
+        LINK_REQUEST: StoreForwardPlusPlus._SFPP_message_type.ValueType  # 3
+        """
+        Request the next link in the chain
+        """
+        LINK_PROVIDE: StoreForwardPlusPlus._SFPP_message_type.ValueType  # 4
+        """
+        Provide a link to add to the chain
+        """
+        LINK_PROVIDE_FIRSTHALF: StoreForwardPlusPlus._SFPP_message_type.ValueType  # 5
+        """
+        If we must fragment, send the first half
+        """
+        LINK_PROVIDE_SECONDHALF: StoreForwardPlusPlus._SFPP_message_type.ValueType  # 6
+        """
+        If we must fragment, send the second half
+        """
+
+    class SFPP_message_type(_SFPP_message_type, metaclass=_SFPP_message_typeEnumTypeWrapper):
+        """
+        Enum of message types
+        """
+
+    CANON_ANNOUNCE: StoreForwardPlusPlus.SFPP_message_type.ValueType  # 0
+    """
+    Send an announcement of the canonical tip of a chain
+    """
+    CHAIN_QUERY: StoreForwardPlusPlus.SFPP_message_type.ValueType  # 1
+    """
+    Query whether a specific link is on the chain
+    """
+    LINK_REQUEST: StoreForwardPlusPlus.SFPP_message_type.ValueType  # 3
+    """
+    Request the next link in the chain
+    """
+    LINK_PROVIDE: StoreForwardPlusPlus.SFPP_message_type.ValueType  # 4
+    """
+    Provide a link to add to the chain
+    """
+    LINK_PROVIDE_FIRSTHALF: StoreForwardPlusPlus.SFPP_message_type.ValueType  # 5
+    """
+    If we must fragment, send the first half
+    """
+    LINK_PROVIDE_SECONDHALF: StoreForwardPlusPlus.SFPP_message_type.ValueType  # 6
+    """
+    If we must fragment, send the second half
+    """
+
+    SFPP_MESSAGE_TYPE_FIELD_NUMBER: builtins.int
+    MESSAGE_HASH_FIELD_NUMBER: builtins.int
+    COMMIT_HASH_FIELD_NUMBER: builtins.int
+    ROOT_HASH_FIELD_NUMBER: builtins.int
+    MESSAGE_FIELD_NUMBER: builtins.int
+    ENCAPSULATED_ID_FIELD_NUMBER: builtins.int
+    ENCAPSULATED_TO_FIELD_NUMBER: builtins.int
+    ENCAPSULATED_FROM_FIELD_NUMBER: builtins.int
+    ENCAPSULATED_RXTIME_FIELD_NUMBER: builtins.int
+    CHAIN_COUNT_FIELD_NUMBER: builtins.int
+    sfpp_message_type: Global___StoreForwardPlusPlus.SFPP_message_type.ValueType
+    """
+    Which message type is this
+    """
+    message_hash: builtins.bytes
+    """
+    The hash of the specific message
+    """
+    commit_hash: builtins.bytes
+    """
+    The hash of a link on a chain
+    """
+    root_hash: builtins.bytes
+    """
+    the root hash of a chain
+    """
+    message: builtins.bytes
+    """
+    The encrypted bytes from a message
+    """
+    encapsulated_id: builtins.int
+    """
+    Message ID of the contained message
+    """
+    encapsulated_to: builtins.int
+    """
+    Destination of the contained message
+    """
+    encapsulated_from: builtins.int
+    """
+    Sender of the contained message
+    """
+    encapsulated_rxtime: builtins.int
+    """
+    The receive time of the message in question
+    """
+    chain_count: builtins.int
+    """
+    Used in a LINK_REQUEST to specify the message X spots back from head
+    """
+    def __init__(
+        self,
+        *,
+        sfpp_message_type: Global___StoreForwardPlusPlus.SFPP_message_type.ValueType = ...,
+        message_hash: builtins.bytes = ...,
+        commit_hash: builtins.bytes = ...,
+        root_hash: builtins.bytes = ...,
+        message: builtins.bytes = ...,
+        encapsulated_id: builtins.int = ...,
+        encapsulated_to: builtins.int = ...,
+        encapsulated_from: builtins.int = ...,
+        encapsulated_rxtime: builtins.int = ...,
+        chain_count: builtins.int = ...,
+    ) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["chain_count", b"chain_count", "commit_hash", b"commit_hash", "encapsulated_from", b"encapsulated_from", "encapsulated_id", b"encapsulated_id", "encapsulated_rxtime", b"encapsulated_rxtime", "encapsulated_to", b"encapsulated_to", "message", b"message", "message_hash", b"message_hash", "root_hash", b"root_hash", "sfpp_message_type", b"sfpp_message_type"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___StoreForwardPlusPlus: typing_extensions.TypeAlias = StoreForwardPlusPlus
+
+@typing.final
 class Waypoint(google.protobuf.message.Message):
     """
     Waypoint message, used to share arbitrary locations across the mesh
@@ -2308,6 +2480,26 @@ class Waypoint(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: _WhichOneofArgType__longitude_i) -> _WhichOneofReturnType__longitude_i | None: ...
 
 Global___Waypoint: typing_extensions.TypeAlias = Waypoint
+
+@typing.final
+class StatusMessage(google.protobuf.message.Message):
+    """
+    Message for node status
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    STATUS_FIELD_NUMBER: builtins.int
+    status: builtins.str
+    def __init__(
+        self,
+        *,
+        status: builtins.str = ...,
+    ) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["status", b"status"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___StatusMessage: typing_extensions.TypeAlias = StatusMessage
 
 @typing.final
 class MqttClientProxyMessage(google.protobuf.message.Message):
@@ -2808,6 +3000,7 @@ class NodeInfo(google.protobuf.message.Message):
     IS_FAVORITE_FIELD_NUMBER: builtins.int
     IS_IGNORED_FIELD_NUMBER: builtins.int
     IS_KEY_MANUALLY_VERIFIED_FIELD_NUMBER: builtins.int
+    IS_MUTED_FIELD_NUMBER: builtins.int
     num: builtins.int
     """
     The node number
@@ -2855,6 +3048,11 @@ class NodeInfo(google.protobuf.message.Message):
     Persists between NodeDB internal clean ups
     LSB 0 of the bitfield
     """
+    is_muted: builtins.bool
+    """
+    True if node has been muted
+    Persistes between NodeDB internal clean ups
+    """
     @property
     def user(self) -> Global___User:
         """
@@ -2889,10 +3087,11 @@ class NodeInfo(google.protobuf.message.Message):
         is_favorite: builtins.bool = ...,
         is_ignored: builtins.bool = ...,
         is_key_manually_verified: builtins.bool = ...,
+        is_muted: builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "position", b"position", "user", b"user"]
     def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
-    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away", "channel", b"channel", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "is_favorite", b"is_favorite", "is_ignored", b"is_ignored", "is_key_manually_verified", b"is_key_manually_verified", "last_heard", b"last_heard", "num", b"num", "position", b"position", "snr", b"snr", "user", b"user", "via_mqtt", b"via_mqtt"]
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away", "channel", b"channel", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "is_favorite", b"is_favorite", "is_ignored", b"is_ignored", "is_key_manually_verified", b"is_key_manually_verified", "is_muted", b"is_muted", "last_heard", b"last_heard", "num", b"num", "position", b"position", "snr", b"snr", "user", b"user", "via_mqtt", b"via_mqtt"]
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     _WhichOneofReturnType__hops_away: typing_extensions.TypeAlias = typing.Literal["hops_away"]
     _WhichOneofArgType__hops_away: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away"]

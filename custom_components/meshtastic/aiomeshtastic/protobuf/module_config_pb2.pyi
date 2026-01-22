@@ -576,6 +576,12 @@ class ModuleConfig(google.protobuf.message.Message):
             """Used to configure and view some parameters of MeshSolar.
             https://heltec.org/project/meshsolar/
             """
+            LOG: ModuleConfig.SerialConfig._Serial_Mode.ValueType  # 9
+            """Logs mesh traffic to the serial pins, ideal for logging via openLog or similar.
+            includes other packets
+            """
+            LOGTEXT: ModuleConfig.SerialConfig._Serial_Mode.ValueType  # 10
+            """only text (channel & DM)"""
 
         class Serial_Mode(_Serial_Mode, metaclass=_Serial_ModeEnumTypeWrapper):
             """
@@ -599,6 +605,12 @@ class ModuleConfig(google.protobuf.message.Message):
         """Used to configure and view some parameters of MeshSolar.
         https://heltec.org/project/meshsolar/
         """
+        LOG: ModuleConfig.SerialConfig.Serial_Mode.ValueType  # 9
+        """Logs mesh traffic to the serial pins, ideal for logging via openLog or similar.
+        includes other packets
+        """
+        LOGTEXT: ModuleConfig.SerialConfig.Serial_Mode.ValueType  # 10
+        """only text (channel & DM)"""
 
         ENABLED_FIELD_NUMBER: builtins.int
         ECHO_FIELD_NUMBER: builtins.int
@@ -887,6 +899,7 @@ class ModuleConfig(google.protobuf.message.Message):
         HEALTH_UPDATE_INTERVAL_FIELD_NUMBER: builtins.int
         HEALTH_SCREEN_ENABLED_FIELD_NUMBER: builtins.int
         DEVICE_TELEMETRY_ENABLED_FIELD_NUMBER: builtins.int
+        AIR_QUALITY_SCREEN_ENABLED_FIELD_NUMBER: builtins.int
         device_update_interval: builtins.int
         """
         Interval in seconds of how often we should try to send our
@@ -952,6 +965,10 @@ class ModuleConfig(google.protobuf.message.Message):
         Enable/Disable the device telemetry module to send metrics to the mesh
         Note: We will still send telemtry to the connected phone / client every minute over the API
         """
+        air_quality_screen_enabled: builtins.bool
+        """
+        Enable/Disable the air quality telemetry measurement module on-device display
+        """
         def __init__(
             self,
             *,
@@ -969,8 +986,9 @@ class ModuleConfig(google.protobuf.message.Message):
             health_update_interval: builtins.int = ...,
             health_screen_enabled: builtins.bool = ...,
             device_telemetry_enabled: builtins.bool = ...,
+            air_quality_screen_enabled: builtins.bool = ...,
         ) -> None: ...
-        _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_quality_enabled", b"air_quality_enabled", "air_quality_interval", b"air_quality_interval", "device_telemetry_enabled", b"device_telemetry_enabled", "device_update_interval", b"device_update_interval", "environment_display_fahrenheit", b"environment_display_fahrenheit", "environment_measurement_enabled", b"environment_measurement_enabled", "environment_screen_enabled", b"environment_screen_enabled", "environment_update_interval", b"environment_update_interval", "health_measurement_enabled", b"health_measurement_enabled", "health_screen_enabled", b"health_screen_enabled", "health_update_interval", b"health_update_interval", "power_measurement_enabled", b"power_measurement_enabled", "power_screen_enabled", b"power_screen_enabled", "power_update_interval", b"power_update_interval"]
+        _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_quality_enabled", b"air_quality_enabled", "air_quality_interval", b"air_quality_interval", "air_quality_screen_enabled", b"air_quality_screen_enabled", "device_telemetry_enabled", b"device_telemetry_enabled", "device_update_interval", b"device_update_interval", "environment_display_fahrenheit", b"environment_display_fahrenheit", "environment_measurement_enabled", b"environment_measurement_enabled", "environment_screen_enabled", b"environment_screen_enabled", "environment_update_interval", b"environment_update_interval", "health_measurement_enabled", b"health_measurement_enabled", "health_screen_enabled", b"health_screen_enabled", "health_update_interval", b"health_update_interval", "power_measurement_enabled", b"power_measurement_enabled", "power_screen_enabled", b"power_screen_enabled", "power_update_interval", b"power_update_interval"]
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @typing.final
@@ -1179,6 +1197,27 @@ class ModuleConfig(google.protobuf.message.Message):
         _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["blue", b"blue", "current", b"current", "green", b"green", "led_state", b"led_state", "red", b"red"]
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
+    @typing.final
+    class StatusMessageConfig(google.protobuf.message.Message):
+        """
+        StatusMessage config - Allows setting a status message for a node to periodically rebroadcast
+        """
+
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+        NODE_STATUS_FIELD_NUMBER: builtins.int
+        node_status: builtins.str
+        """
+        The actual status string
+        """
+        def __init__(
+            self,
+            *,
+            node_status: builtins.str = ...,
+        ) -> None: ...
+        _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["node_status", b"node_status"]
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
     MQTT_FIELD_NUMBER: builtins.int
     SERIAL_FIELD_NUMBER: builtins.int
     EXTERNAL_NOTIFICATION_FIELD_NUMBER: builtins.int
@@ -1192,6 +1231,7 @@ class ModuleConfig(google.protobuf.message.Message):
     AMBIENT_LIGHTING_FIELD_NUMBER: builtins.int
     DETECTION_SENSOR_FIELD_NUMBER: builtins.int
     PAXCOUNTER_FIELD_NUMBER: builtins.int
+    STATUSMESSAGE_FIELD_NUMBER: builtins.int
     @property
     def mqtt(self) -> Global___ModuleConfig.MQTTConfig:
         """
@@ -1270,6 +1310,12 @@ class ModuleConfig(google.protobuf.message.Message):
         TODO: REPLACE
         """
 
+    @property
+    def statusmessage(self) -> Global___ModuleConfig.StatusMessageConfig:
+        """
+        TODO: REPLACE
+        """
+
     def __init__(
         self,
         *,
@@ -1286,12 +1332,13 @@ class ModuleConfig(google.protobuf.message.Message):
         ambient_lighting: Global___ModuleConfig.AmbientLightingConfig | None = ...,
         detection_sensor: Global___ModuleConfig.DetectionSensorConfig | None = ...,
         paxcounter: Global___ModuleConfig.PaxcounterConfig | None = ...,
+        statusmessage: Global___ModuleConfig.StatusMessageConfig | None = ...,
     ) -> None: ...
-    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "payload_variant", b"payload_variant", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "store_forward", b"store_forward", "telemetry", b"telemetry"]
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "payload_variant", b"payload_variant", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "statusmessage", b"statusmessage", "store_forward", b"store_forward", "telemetry", b"telemetry"]
     def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
-    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "payload_variant", b"payload_variant", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "store_forward", b"store_forward", "telemetry", b"telemetry"]
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["ambient_lighting", b"ambient_lighting", "audio", b"audio", "canned_message", b"canned_message", "detection_sensor", b"detection_sensor", "external_notification", b"external_notification", "mqtt", b"mqtt", "neighbor_info", b"neighbor_info", "paxcounter", b"paxcounter", "payload_variant", b"payload_variant", "range_test", b"range_test", "remote_hardware", b"remote_hardware", "serial", b"serial", "statusmessage", b"statusmessage", "store_forward", b"store_forward", "telemetry", b"telemetry"]
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_payload_variant: typing_extensions.TypeAlias = typing.Literal["mqtt", "serial", "external_notification", "store_forward", "range_test", "telemetry", "canned_message", "audio", "remote_hardware", "neighbor_info", "ambient_lighting", "detection_sensor", "paxcounter"]
+    _WhichOneofReturnType_payload_variant: typing_extensions.TypeAlias = typing.Literal["mqtt", "serial", "external_notification", "store_forward", "range_test", "telemetry", "canned_message", "audio", "remote_hardware", "neighbor_info", "ambient_lighting", "detection_sensor", "paxcounter", "statusmessage"]
     _WhichOneofArgType_payload_variant: typing_extensions.TypeAlias = typing.Literal["payload_variant", b"payload_variant"]
     def WhichOneof(self, oneof_group: _WhichOneofArgType_payload_variant) -> _WhichOneofReturnType_payload_variant | None: ...
 

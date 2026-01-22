@@ -1179,6 +1179,7 @@ class LocalStats(google.protobuf.message.Message):
     HEAP_TOTAL_BYTES_FIELD_NUMBER: builtins.int
     HEAP_FREE_BYTES_FIELD_NUMBER: builtins.int
     NUM_TX_DROPPED_FIELD_NUMBER: builtins.int
+    NOISE_FLOOR_FIELD_NUMBER: builtins.int
     uptime_seconds: builtins.int
     """
     How long the device has been running since the last reboot (in seconds)
@@ -1237,6 +1238,10 @@ class LocalStats(google.protobuf.message.Message):
     """
     Number of packets that were dropped because the transmit queue was full.
     """
+    noise_floor: builtins.int
+    """
+    Noise floor value measured in dBm
+    """
     def __init__(
         self,
         *,
@@ -1254,8 +1259,9 @@ class LocalStats(google.protobuf.message.Message):
         heap_total_bytes: builtins.int = ...,
         heap_free_bytes: builtins.int = ...,
         num_tx_dropped: builtins.int = ...,
+        noise_floor: builtins.int = ...,
     ) -> None: ...
-    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_util_tx", b"air_util_tx", "channel_utilization", b"channel_utilization", "heap_free_bytes", b"heap_free_bytes", "heap_total_bytes", b"heap_total_bytes", "num_online_nodes", b"num_online_nodes", "num_packets_rx", b"num_packets_rx", "num_packets_rx_bad", b"num_packets_rx_bad", "num_packets_tx", b"num_packets_tx", "num_rx_dupe", b"num_rx_dupe", "num_total_nodes", b"num_total_nodes", "num_tx_dropped", b"num_tx_dropped", "num_tx_relay", b"num_tx_relay", "num_tx_relay_canceled", b"num_tx_relay_canceled", "uptime_seconds", b"uptime_seconds"]
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_util_tx", b"air_util_tx", "channel_utilization", b"channel_utilization", "heap_free_bytes", b"heap_free_bytes", "heap_total_bytes", b"heap_total_bytes", "noise_floor", b"noise_floor", "num_online_nodes", b"num_online_nodes", "num_packets_rx", b"num_packets_rx", "num_packets_rx_bad", b"num_packets_rx_bad", "num_packets_tx", b"num_packets_tx", "num_rx_dupe", b"num_rx_dupe", "num_total_nodes", b"num_total_nodes", "num_tx_dropped", b"num_tx_dropped", "num_tx_relay", b"num_tx_relay", "num_tx_relay_canceled", b"num_tx_relay_canceled", "uptime_seconds", b"uptime_seconds"]
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
 Global___LocalStats: typing_extensions.TypeAlias = LocalStats
