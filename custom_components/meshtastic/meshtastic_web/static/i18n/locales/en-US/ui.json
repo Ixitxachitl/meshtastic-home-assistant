@@ -3,11 +3,12 @@
     "title": "Navigation",
     "messages": "Messages",
     "map": "Map",
-    "config": "Config",
+    "settings": "Settings",
     "channels": "Channels",
     "radioConfig": "Radio Config",
+    "deviceConfig": "Device Config",
     "moduleConfig": "Module Config",
-    "channelConfig": "Channel Config",
+    "manageConnections": "Manage Connections",
     "nodes": "Nodes"
   },
   "app": {
@@ -27,13 +28,7 @@
         "title": "Firmware",
         "version": "v{{version}}",
         "buildDate": "Build date: {{date}}"
-      },
-      "deviceName": {
-        "title": "Device Name",
-        "changeName": "Change Device Name",
-        "placeholder": "Enter device name"
-      },
-      "editDeviceName": "Edit device name"
+      }
     }
   },
   "batteryStatus": {
@@ -186,7 +181,7 @@
   "showUnheard": {
     "label": "Unknown last heard"
   },
-  "language": {
+  "languagePicker": {
     "label": "Language",
     "changeLanguage": "Change Language"
   },
@@ -208,7 +203,7 @@
       "step4": "Any other relevant information"
     },
     "reportLink": "You can report the issue to our <0>GitHub</0>",
-    "dashboardLink": "Return to the <0>dashboard</0>",
+    "connectionsLink": "Return to the <0>connections</0>",
     "detailsSummary": "Error Details",
     "errorMessageLabel": "Error message:",
     "stackTraceLabel": "Stack trace:",

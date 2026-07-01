@@ -1,7 +1,7 @@
 {
 	"name": "Meshtastic",
 	"short_name": "Web Client",
-	"start_url": "/meshtastic/web/",
+	"start_url": ".",
 	"description": "Meshtastic Web App",
 	"icons": [
 		{
@@ -12,6 +12,5 @@
 	],
 	"theme_color": "#67ea94",
 	"background_color": "#67ea94",
-	"display": "standalone",
-	"scope": "/meshtastic/web/"
+	"display": "standalone"
 }
