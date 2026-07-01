@@ -107,7 +107,13 @@ class MeshtasticApiClient:
         if connection_type == ConnectionType.TCP.value:
             connection = AioTcpConnection(host=data[CONF_CONNECTION_TCP_HOST], port=data[CONF_CONNECTION_TCP_PORT])
         elif connection_type == ConnectionType.BLUETOOTH.value:
-            connection = AioBluetoothConnection(ble_address=data[CONF_CONNECTION_BLUETOOTH_ADDRESS])
+            ble_address = data[CONF_CONNECTION_BLUETOOTH_ADDRESS]
+            ble_device = None
+            if hass:
+                from homeassistant.components.bluetooth import async_ble_device_from_address
+
+                ble_device = async_ble_device_from_address(hass, ble_address, connectable=True)
+            connection = AioBluetoothConnection(ble_address=ble_address, ble_device=ble_device)
         elif connection_type == ConnectionType.SERIAL.value:
             connection = AioSerialConnection(device=data[CONF_CONNECTION_SERIAL_PORT])
         else:
