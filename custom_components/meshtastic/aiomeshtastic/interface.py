@@ -419,7 +419,8 @@ class MeshInterface:
 
         # Parse broker address
         hostname = broker.split(":", 1)[0]
-        port = int(broker.split(":", 1)[1]) if ":" in broker else 1883
+        default_port = 8883 if use_tls else 1883
+        port = int(broker.split(":", 1)[1]) if ":" in broker else default_port
 
         # Get node ID for client identifier
         node_id = self._connected_node_info.my_node_num
