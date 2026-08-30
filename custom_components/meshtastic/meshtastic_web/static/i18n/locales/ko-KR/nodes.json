@@ -41,7 +41,7 @@
       "lastHeard": "최근 수신",
       "encryption": "암호화",
       "model": "하드웨어",
-      "macAddress": "MAC 주소"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "직접 연결",

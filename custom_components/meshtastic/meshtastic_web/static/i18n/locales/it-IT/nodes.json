@@ -41,7 +41,7 @@
       "lastHeard": "Ultimo Contatto",
       "encryption": "Crittografia",
       "model": "Modello",
-      "macAddress": "Indirizzo MAC"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "Diretto",

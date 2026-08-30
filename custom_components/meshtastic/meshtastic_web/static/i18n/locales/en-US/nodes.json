@@ -41,7 +41,7 @@
       "lastHeard": "Last Heard",
       "encryption": "Encryption",
       "model": "Model",
-      "macAddress": "MAC Address"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "Direct",
@@ -52,7 +52,6 @@
       "never": "Never"
     }
   },
-
   "actions": {
     "added": "Added",
     "removed": "Removed",

@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: MIT
 
-VERSION = "v2.7.2-22-g1f26b9d7"
+VERSION = "v2.7.2-23-g117a87ff"

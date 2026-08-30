@@ -41,7 +41,7 @@
       "lastHeard": "最後接收時間",
       "encryption": "加密",
       "model": "Model",
-      "macAddress": "MAC 地址"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "直線",

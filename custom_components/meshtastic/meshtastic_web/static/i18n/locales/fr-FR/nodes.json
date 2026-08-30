@@ -41,7 +41,7 @@
       "lastHeard": "Dernière écoute",
       "encryption": "Chiffrement",
       "model": "Modèle",
-      "macAddress": "Adresse MAC"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "Direk",

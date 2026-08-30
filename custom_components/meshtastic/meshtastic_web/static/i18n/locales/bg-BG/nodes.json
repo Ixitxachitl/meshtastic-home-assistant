@@ -41,7 +41,7 @@
       "lastHeard": "Последно чут",
       "encryption": "Криптиране",
       "model": "Модел",
-      "macAddress": "MAC адрес"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "Директно",

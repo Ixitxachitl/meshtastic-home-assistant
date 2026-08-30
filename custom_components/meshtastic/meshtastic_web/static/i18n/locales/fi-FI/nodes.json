@@ -41,7 +41,7 @@
       "lastHeard": "Viimeksi kuultu",
       "encryption": "Salaus",
       "model": "Malli",
-      "macAddress": "MAC-osoite"
+      "nodeId": "Node ID"
     },
     "connectionStatus": {
       "direct": "Suora",
