@@ -77,11 +77,10 @@ misbehaves after an upgrade this is the first thing to try removing.
   sends no CORP header; this matches upstream's own dev server. Safari does
   not implement `credentialless`, so it is not isolated there and persistence
   falls back to in-memory, as before.
-- **Deep links do not survive a reload.** Once in, the URL becomes something
-  like `/meshtastic/web/messages/broadcast/0`; reloading requests a
-  multi-segment path the integration does not serve. Re-enter through the
-  gateway link. Fixing this needs a catch-all route in
-  `meshtastic_web/__init__.py` serving `index.html` for unmatched sub-paths.
+- Client-side routes are served by the integration falling back to
+  `index.html` for paths that are not files, so reloading
+  `/meshtastic/web/messages/broadcast/0` works. Paths that look like files
+  still 404 rather than returning HTML.
 - Upstream's `index.html` references `icon.svg` and `logo_black.svg`, which its
   own build does not emit. `deploy_web` drops those link tags and reports it.
 - **`core.ignorecase`.** The build emits `logo.svg` lowercase. If git is
