@@ -23,3 +23,7 @@ config/*
 
 # build
 .build
+.pnpm-store
+
+# Meshtastic web client source, checked out for local builds
+meshtastic-web-source/

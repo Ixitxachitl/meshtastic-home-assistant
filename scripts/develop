@@ -16,5 +16,12 @@ fi
 ## without resulting to symlinks.
 export PYTHONPATH="${PYTHONPATH}:${PWD}/custom_components"
 
+# Prefer the workspace venv so we do not pick up a mismatched global install.
+if [[ -x "${PWD}/.venv/bin/hass" ]]; then
+    HASS_BIN="${PWD}/.venv/bin/hass"
+else
+    HASS_BIN="hass"
+fi
+
 # Start Home Assistant
-hass --config "${PWD}/config" --debug
+"${HASS_BIN}" --config "${PWD}/config" --debug
