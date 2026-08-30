@@ -56,7 +56,8 @@ _Home Assistant Integration for [Meshtastic](https://www.meshtastic.org)._
 > * Developed against Home Assistant `2026.8.3` on Python 3.14, with `bleak`
 >   at `~=3.0.2`. The lint workflow moves to 3.14 because `requirements.txt`
 >   no longer resolves on 3.12. **This raises the HACS minimum to 2026.8.3.**
-> * Bundled web client `v2.7.2`, built reproducibly by `scripts/deploy_web`
+> * Bundled web client `v2.7.2-20-gcffd35fe`, built reproducibly by
+>   `scripts/deploy_web`
 >   rather than hand-edited. 2.7.x assumes it is served from the server root
 >   in several places and dropped the `?path=` parameter the integration uses
 >   to point it at a gateway; see [scripts/web/README.md](scripts/web/README.md).

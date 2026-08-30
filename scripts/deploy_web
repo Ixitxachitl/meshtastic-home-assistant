@@ -14,7 +14,15 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 REPO_ROOT="${PWD}"
 
-WEB_VERSION="${WEB_VERSION:-v2.7.2}"
+# Where to build the client from. Point WEB_REPO at a fork carrying the
+# subdirectory patches and the patch step below becomes a no-op; it is
+# idempotent, so it keeps working either way and doubles as a check that the
+# fork still has them.
+WEB_REPO="${WEB_REPO:-https://github.com/meshtastic/web.git}"
+# Pinned to a commit rather than a tag: upstream tags lag main. Their version
+# labelling is inconsistent -- at the time of writing the newest tag is v2.7.2
+# while package.json says 2.7.0-0 -- so a commit is the only unambiguous pin.
+WEB_VERSION="${WEB_VERSION:-cffd35fe054c113172e78c2a697572cf91955930}"
 WEB_SOURCE="${WEB_SOURCE:-${REPO_ROOT}/meshtastic-web-source}"
 STATIC_DIR="${REPO_ROOT}/custom_components/meshtastic/meshtastic_web/static"
 VERSION_FILE="${REPO_ROOT}/custom_components/meshtastic/meshtastic_web/version.py"
@@ -22,7 +30,7 @@ VERSION_FILE="${REPO_ROOT}/custom_components/meshtastic/meshtastic_web/version.p
 # Must match URL_BASE + "/web/" in custom_components/meshtastic/const.py
 BASE_PATH="/meshtastic/web/"
 
-echo "==> Checking out meshtastic/web ${WEB_VERSION}"
+echo "==> Checking out ${WEB_REPO} at ${WEB_VERSION}"
 if [[ ! -d "${WEB_SOURCE}/.git" ]]; then
     if [[ -e "${WEB_SOURCE}" ]]; then
         # An earlier workflow left an unpacked tarball or a hand-managed tree
@@ -33,10 +41,13 @@ if [[ ! -d "${WEB_SOURCE}/.git" ]]; then
         echo "Remove it (or set WEB_SOURCE to another path) and re-run." >&2
         exit 1
     fi
-    git clone https://github.com/meshtastic/web.git "${WEB_SOURCE}"
+    git clone "${WEB_REPO}" "${WEB_SOURCE}"
 fi
-git -C "${WEB_SOURCE}" fetch --tags --force origin
-git -C "${WEB_SOURCE}" checkout --force "${WEB_VERSION}"
+# Fetch branches as well as tags so WEB_VERSION may be a tag, a branch or a
+# commit. The clone may be shallow and single-branch, so deepen it too.
+git -C "${WEB_SOURCE}" fetch --tags --force --unshallow origin 2>/dev/null ||
+    git -C "${WEB_SOURCE}" fetch --tags --force origin '+refs/heads/*:refs/remotes/origin/*'
+git -C "${WEB_SOURCE}" checkout --force --detach "${WEB_VERSION}"
 # Guarantee a pristine tree so the patches below apply to known content.
 git -C "${WEB_SOURCE}" reset --hard "${WEB_VERSION}"
 git -C "${WEB_SOURCE}" clean -fd -e node_modules
@@ -295,16 +306,19 @@ if [[ -d "${STATIC_DIR}/i18n/locales/en" ]]; then
 fi
 
 echo "==> Recording version"
+# Describe the checkout so version.py reads v2.7.2-20-gcffd35f rather than a
+# bare sha when WEB_VERSION is a commit.
+WEB_DESCRIBE=$(git -C "${WEB_SOURCE}" describe --tags --always 2>/dev/null || echo "${WEB_VERSION}")
 cat <<EOT > "${VERSION_FILE}"
 # SPDX-FileCopyrightText: 2024-2025 Pascal Brogle @broglep
 #
 # SPDX-License-Identifier: MIT
 
-VERSION = "${WEB_VERSION}"
+VERSION = "${WEB_DESCRIBE}"
 EOT
 
 echo
-echo "Deployed meshtastic/web ${WEB_VERSION}:"
+echo "Deployed meshtastic/web ${WEB_DESCRIBE}:"
 (cd "${STATIC_DIR}" && ls -lh ./*.js ./*.css ./*.html 2>/dev/null | awk '{print "  " $9 " (" $5 ")"}')
 echo
 echo "Restart Home Assistant to load the new client."

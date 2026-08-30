@@ -92,7 +92,16 @@ misbehaves after an upgrade this is the first thing to try removing.
 
 ## Upgrading
 
-Bump `WEB_VERSION` in `scripts/deploy_web` and run it. Every patch asserts on
+Bump `WEB_VERSION` in `scripts/deploy_web` and run it. It is pinned to a commit
+rather than a tag: upstream's tags lag `main`, and their version labelling is
+inconsistent between tags and `package.json`, so a commit is the only
+unambiguous pin.
+
+`WEB_REPO` selects where to build from. Pointed at a fork carrying these
+patches in source, the patch step below becomes a no-op -- it is idempotent, so
+it works either way and doubles as a check that the fork still has them. That
+also turns upstream drift into a merge conflict in the fork rather than an
+assertion failure here. Every patch asserts on
 the text it expects and the script aborts if upstream changed it, so a failure
 means reading the new source rather than a silently broken bundle. Re-check
 `apps/web/src/core/stores/deviceStore/` on each upgrade: `ha-bootstrap.js`
