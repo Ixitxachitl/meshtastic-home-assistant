@@ -65,8 +65,9 @@ _Home Assistant Integration for [Meshtastic](https://www.meshtastic.org)._
 > * The `request_config` timeout is a fixed 60s and does not scale with
 >   `nodedb_count`. It passes at the 250-node ceiling over TCP with little
 >   margin; Bluetooth may still loop.
-> * The web client cannot persist its database — Home Assistant's static
->   handler does not send the COOP/COEP headers OPFS requires.
+> * The web client is served cross-origin isolated so it can persist its
+>   database. Safari does not implement `COEP: credentialless`, so there it
+>   falls back to not persisting rather than breaking.
 
 Supported Features:
  * Add meshtastic devices as gateways to interact with the mesh

@@ -68,9 +68,15 @@ misbehaves after an upgrade this is the first thing to try removing.
 
 ## Known limitations
 
-- **No OPFS persistence.** SQLite wants COOP/COEP headers, which Home
-  Assistant's static handler does not send, so `meshtastic.db` is not saved and
-  the client falls back to in-memory. Non-fatal.
+- **OPFS persistence needs cross-origin isolation.** SQLite stores
+  `meshtastic.db` in the origin private file system, which needs
+  SharedArrayBuffer, which needs the document isolated. The integration sends
+  `COOP: same-origin` and `COEP: credentialless` on the document
+  (`MeshtasticWebConfigEntryView`) to provide it. `credentialless` rather than
+  `require-corp` because `Map.tsx` fetches its style from a third party that
+  sends no CORP header; this matches upstream's own dev server. Safari does
+  not implement `credentialless`, so it is not isolated there and persistence
+  falls back to in-memory, as before.
 - **Deep links do not survive a reload.** Once in, the URL becomes something
   like `/meshtastic/web/messages/broadcast/0`; reloading requests a
   multi-segment path the integration does not serve. Re-enter through the
