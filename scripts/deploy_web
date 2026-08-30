@@ -1,0 +1,310 @@
+#!/usr/bin/env bash
+#
+# Build the bundled Meshtastic web client and vendor the result into the
+# integration.
+#
+# Home Assistant serves the client from a subdirectory rather than from the
+# server root (see URL_BASE in custom_components/meshtastic/const.py), so the
+# build has to be told about that prefix up front. Vite's --base does that for
+# everything it emits; only files copied verbatim out of the app's public/
+# directory need patching afterwards, and those are handled explicitly below.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+REPO_ROOT="${PWD}"
+
+WEB_VERSION="${WEB_VERSION:-v2.7.2}"
+WEB_SOURCE="${WEB_SOURCE:-${REPO_ROOT}/meshtastic-web-source}"
+STATIC_DIR="${REPO_ROOT}/custom_components/meshtastic/meshtastic_web/static"
+VERSION_FILE="${REPO_ROOT}/custom_components/meshtastic/meshtastic_web/version.py"
+
+# Must match URL_BASE + "/web/" in custom_components/meshtastic/const.py
+BASE_PATH="/meshtastic/web/"
+
+echo "==> Checking out meshtastic/web ${WEB_VERSION}"
+if [[ ! -d "${WEB_SOURCE}/.git" ]]; then
+    if [[ -e "${WEB_SOURCE}" ]]; then
+        # An earlier workflow left an unpacked tarball or a hand-managed tree
+        # here. We need real history to check out a pinned tag, and cloning
+        # into a non-empty directory fails, so say what to do rather than
+        # deleting someone's working copy.
+        echo "${WEB_SOURCE} exists but is not a git checkout." >&2
+        echo "Remove it (or set WEB_SOURCE to another path) and re-run." >&2
+        exit 1
+    fi
+    git clone https://github.com/meshtastic/web.git "${WEB_SOURCE}"
+fi
+git -C "${WEB_SOURCE}" fetch --tags --force origin
+git -C "${WEB_SOURCE}" checkout --force "${WEB_VERSION}"
+# Guarantee a pristine tree so the patches below apply to known content.
+git -C "${WEB_SOURCE}" reset --hard "${WEB_VERSION}"
+git -C "${WEB_SOURCE}" clean -fd -e node_modules
+
+# The web app moved from packages/web to apps/web in v2.7.2.
+if [[ -d "${WEB_SOURCE}/apps/web" ]]; then
+    WEB_APP="${WEB_SOURCE}/apps/web"
+else
+    WEB_APP="${WEB_SOURCE}/packages/web"
+fi
+
+echo "==> Patching runtime asset paths"
+# A handful of paths are built at runtime from string literals rather than
+# being asset references vite can see, so --base does not reach them and they
+# would resolve against the server root. Rewrite them to derive from
+# import.meta.env.BASE_URL, which vite substitutes at build time and which is
+# correct for any base, including upstream's own "/".
+python3 - "${WEB_APP}" <<'PY'
+import pathlib
+import sys
+
+app = pathlib.Path(sys.argv[1])
+patches = [
+    (
+        "src/components/generic/DeviceImage.tsx",
+        '`/devices/${device}`',
+        '`${import.meta.env.BASE_URL}devices/${device}`',
+    ),
+    (
+        "src/i18n-config.ts",
+        '"/i18n/locales/{{lng}}/{{ns}}.json"',
+        '`${import.meta.env.BASE_URL}i18n/locales/{{lng}}/{{ns}}.json`',
+    ),
+    (
+        "src/components/Sidebar.tsx",
+        'src="/logo.svg"',
+        'src={`${import.meta.env.BASE_URL}logo.svg`}',
+    ),
+    (
+        "src/components/UI/ErrorPage.tsx",
+        'src="/chirpy.svg"',
+        'src={`${import.meta.env.BASE_URL}chirpy.svg`}',
+    ),
+    # Reachability is probed against conn.url, but for Home Assistant that is
+    # the gateway's API base rather than a document: it maps to a static file
+    # lookup that always misses, so the probe fails and connecting is refused
+    # with a misleading CORS message. hotspot-detect.html is served under the
+    # same base by both Home Assistant and Meshtastic firmware, purely as a
+    # liveness check, so probe that instead.
+    (
+        "src/core/connections/transports.ts",
+        "  const ok = await testHttpReachable(conn.url);\n"
+        "  if (!ok) {",
+        "  const ok = await testHttpReachable(\n"
+        "    `${conn.url.replace(/\\/+$/, \"\")}/hotspot-detect.html`,\n"
+        "  );\n"
+        "  if (!ok) {",
+    ),
+    (
+        "src/core/connections/transports.ts",
+        "      const ok = await testHttpReachable(conn.url);\n"
+        '      return ok ? "online" : "error";',
+        "      const ok = await testHttpReachable(\n"
+        "        `${conn.url.replace(/\\/+$/, \"\")}/hotspot-detect.html`,\n"
+        "      );\n"
+        '      return ok ? "online" : "error";',
+    ),
+    # TransportHTTP.create() takes an authority, not a URL, and appends
+    # /api/v1/... to it. Passing url.host alone throws away the path, so every
+    # API call lands at the server root instead of the gateway. Home Assistant
+    # serves each gateway under /meshtastic/web/<config entry id>, so the path
+    # has to be carried through.
+    (
+        "src/core/connections/transports.ts",
+        "  const transport = await TransportHTTP.create(url.host, isTLS);",
+        "  const transport = await TransportHTTP.create(\n"
+        "    url.host + url.pathname.replace(/\\/+$/, \"\"),\n"
+        "    isTLS,\n"
+        "  );",
+    ),
+    # The router is created without a basepath, so it matches against the full
+    # URL path. Served from a subdirectory nothing matches, and the not-found
+    # page appears as soon as a device connects and App switches from the
+    # connection screen to route-driven rendering. Routing is new in 2.7.x --
+    # the 2.6.x client upstream bundles renders from state and has no router at
+    # all -- which is why upstream never needed this.
+    (
+        "src/routes.tsx",
+        """const router = createRouter({
+  routeTree,""",
+        """const router = createRouter({
+  routeTree,
+  basepath: import.meta.env.BASE_URL,""",
+    ),
+]
+
+for rel, old, new in patches:
+    path = app / rel
+    text = path.read_text(encoding="utf-8")
+    if new in text:
+        continue
+    if old not in text:
+        sys.exit(f"{rel}: expected to find {old!r}; upstream changed it")
+    path.write_text(text.replace(old, new), encoding="utf-8")
+    print(f"    patched {rel}")
+PY
+
+echo "==> Installing dependencies"
+(cd "${WEB_SOURCE}" && corepack pnpm install --frozen-lockfile)
+
+echo "==> Building with base ${BASE_PATH}"
+(cd "${WEB_APP}" && corepack pnpm exec vite build --base="${BASE_PATH}")
+
+echo "==> Vendoring into ${STATIC_DIR#"${REPO_ROOT}"/}"
+# Replace the directory wholesale. Everything under it is build output, and
+# keeping the old contents around leaves orphaned content-hashed bundles behind
+# that nothing references but git keeps forever.
+rm -rf "${STATIC_DIR}"
+mkdir -p "${STATIC_DIR}"
+cp -r "${WEB_APP}/dist/." "${STATIC_DIR}/"
+
+echo "==> Rewriting references and injecting the Home Assistant bootstrap"
+python3 - "${STATIC_DIR}/index.html" "${BASE_PATH}" "${REPO_ROOT}/scripts/web/ha-bootstrap.js" <<'PY'
+import re
+import sys
+
+path, base, bootstrap_path = sys.argv[1], sys.argv[2], sys.argv[3]
+with open(path, encoding="utf-8") as fh:
+    html = fh.read()
+
+# Vite rewrites the assets it emits, but leaves alone the hand-written link
+# tags in the app's index.html template and anything copied verbatim out of
+# public/. Absolutise every server-root href/src not already under the base,
+# then make the base-relative ones absolute too, since the page can be served
+# from paths where relative resolution differs.
+html, n_abs = re.subn(
+    r'(href|src)="/(?!' + re.escape(base.lstrip("/")) + r')',
+    lambda m: f'{m.group(1)}="{base}',
+    html,
+)
+html, n_rel = re.subn(
+    r'(href|src)="(?!https?:|//|/|data:|#)',
+    lambda m: f'{m.group(1)}="{base}',
+    html,
+)
+print(f"    absolutised {n_abs} server-root and {n_rel} relative reference(s)")
+
+# Replace the module script vite emits with the Home Assistant bootstrap, which
+# seeds the client's saved-connection store from the ?path= query parameter and
+# only then loads the app. Dropping this leaves the client unable to reach the
+# gateway node, so treat a shape we do not recognise as fatal.
+module_re = re.compile(
+    r'<script\b[^>]*\btype="module"[^>]*\bsrc="([^"]+)"[^>]*></script>'
+)
+matches = module_re.findall(html)
+if len(matches) != 1:
+    sys.exit(
+        f"expected exactly one module script tag in index.html, found {len(matches)}; "
+        "the bootstrap injection needs updating for this build"
+    )
+app_src = matches[0]
+
+with open(bootstrap_path, encoding="utf-8") as fh:
+    bootstrap = fh.read()
+if "__APP_MODULE_SRC__" not in bootstrap:
+    sys.exit("ha-bootstrap.js is missing the __APP_MODULE_SRC__ placeholder")
+bootstrap = bootstrap.replace("__APP_MODULE_SRC__", app_src)
+
+html = module_re.sub(f"<script>\n{bootstrap}\n</script>", html, count=1)
+print(f"    injected bootstrap, deferring {app_src}")
+
+with open(path, "w", encoding="utf-8") as fh:
+    fh.write(html)
+PY
+
+# site.webmanifest is served as-is, so its icon reference needs the same
+# treatment.
+sed -i "s|\"src\": \"/|\"src\": \"${BASE_PATH}|g" "${STATIC_DIR}/site.webmanifest"
+
+echo "==> Verifying references"
+python3 - "${STATIC_DIR}" "${BASE_PATH}" <<'PY'
+import json
+import pathlib
+import re
+import sys
+
+static, base = pathlib.Path(sys.argv[1]), sys.argv[2]
+bad = []
+refs = set()
+
+html = (static / "index.html").read_text(encoding="utf-8")
+for attr, url in re.findall(r'(href|src)="([^"]*)"', html):
+    if url.startswith("/") and not url.startswith(base):
+        bad.append(f"index.html: {attr}=\"{url}\"")
+    elif url.startswith(base):
+        refs.add(url[len(base):])
+    elif not re.match(r"^[a-z]+:|^//|^#", url):
+        refs.add(url)  # relative, resolves against base
+
+for name in ("site.webmanifest", "manifest.webmanifest"):
+    path = static / name
+    if not path.exists():
+        continue
+    def walk(node):
+        if isinstance(node, str):
+            if node.startswith("/") and not node.startswith(base):
+                bad.append(f"{name}: {node!r}")
+        elif isinstance(node, dict):
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+    walk(json.loads(path.read_text(encoding="utf-8")))
+
+sw = static / "registerSW.js"
+if sw.exists():
+    for url in re.findall(r"'(/[^']*)'", sw.read_text(encoding="utf-8")):
+        if not url.startswith(base):
+            bad.append(f"registerSW.js: {url!r}")
+
+if bad:
+    print("    server-root references outside " + base + ":", file=sys.stderr)
+    for b in bad:
+        print("      " + b, file=sys.stderr)
+    sys.exit(1)
+
+# Upstream's index.html template references icon files its own build does not
+# emit. Shipping a dangling reference is how broken images reach the browser,
+# so drop the offending link tags outright and say so, rather than warning and
+# continuing. Anything dangling that is NOT a droppable icon link is fatal.
+missing = sorted(r for r in refs if r and not (static / r).exists())
+if missing:
+    html = (static / "index.html").read_text(encoding="utf-8")
+    for ref in missing:
+        pattern = re.compile(
+            r'\s*<link\b[^>]*\b(?:href)="(?:' + re.escape(base) + r')?'
+            + re.escape(ref) + r'"[^>]*/?>',
+        )
+        html, n = pattern.subn("", html)
+        if n:
+            print(f"    dropped link to missing {ref}")
+        else:
+            sys.exit(f"index.html references missing {ref} and it is not a droppable link tag")
+    (static / "index.html").write_text(html, encoding="utf-8")
+
+print("    all asset references resolve under " + base)
+PY
+
+echo "==> Creating en-US locale alias"
+# The browser reports en-US, and the client does not fall back to the bare
+# language, so it needs a directory under the exact tag.
+if [[ -d "${STATIC_DIR}/i18n/locales/en" ]]; then
+    rm -rf "${STATIC_DIR}/i18n/locales/en-US"
+    cp -r "${STATIC_DIR}/i18n/locales/en" "${STATIC_DIR}/i18n/locales/en-US"
+fi
+
+echo "==> Recording version"
+cat <<EOT > "${VERSION_FILE}"
+# SPDX-FileCopyrightText: 2024-2025 Pascal Brogle @broglep
+#
+# SPDX-License-Identifier: MIT
+
+VERSION = "${WEB_VERSION}"
+EOT
+
+echo
+echo "Deployed meshtastic/web ${WEB_VERSION}:"
+(cd "${STATIC_DIR}" && ls -lh ./*.js ./*.css ./*.html 2>/dev/null | awk '{print "  " $9 " (" $5 ")"}')
+echo
+echo "Restart Home Assistant to load the new client."
