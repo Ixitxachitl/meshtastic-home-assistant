@@ -101,7 +101,7 @@ class HardwareMessage(google.protobuf.message.Message):
     TYPE_FIELD_NUMBER: builtins.int
     GPIO_MASK_FIELD_NUMBER: builtins.int
     GPIO_VALUE_FIELD_NUMBER: builtins.int
-    type: global___HardwareMessage.Type.ValueType
+    type: Global___HardwareMessage.Type.ValueType
     """
     What type of HardwareMessage is this?
     """
@@ -117,10 +117,11 @@ class HardwareMessage(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        type: global___HardwareMessage.Type.ValueType = ...,
+        type: Global___HardwareMessage.Type.ValueType = ...,
         gpio_mask: builtins.int = ...,
         gpio_value: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["gpio_mask", b"gpio_mask", "gpio_value", b"gpio_value", "type", b"type"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["gpio_mask", b"gpio_mask", "gpio_value", b"gpio_value", "type", b"type"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___HardwareMessage = HardwareMessage
+Global___HardwareMessage: typing_extensions.TypeAlias = HardwareMessage

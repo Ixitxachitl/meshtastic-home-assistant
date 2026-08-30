@@ -57,8 +57,16 @@ $SEDCMD 's/\[meshtastic.aiomeshtastic.protobuf./[/' "${OUTDIR}/meshtastic/aiomes
 
 
 PROTOBUF_VERSION=$(cd "${PWD}/protobufs" && git tag --points-at HEAD | sed 's/v\(.*\)/\1/')
+if [[ -z "${PROTOBUF_VERSION}" ]]; then
+    # Not on a tag; fall back to `git describe` so __version__ is never empty.
+    PROTOBUF_VERSION=$(cd "${PWD}/protobufs" && git describe --tags --always | sed 's/^v//')
+fi
 # Create a __init__.py in the out directory with protobuf version
 cat <<EOT > "${OUTDIR}/meshtastic/aiomeshtastic/protobuf/__init__.py"
+# SPDX-FileCopyrightText: 2024-2025 Pascal Brogle @broglep
+#
+# SPDX-License-Identifier: MIT
+
 __version__ = "$PROTOBUF_VERSION"
 EOT
 

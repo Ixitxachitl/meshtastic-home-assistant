@@ -4,7 +4,9 @@ isort:skip_file
 """
 
 import builtins
+import collections.abc
 import google.protobuf.descriptor
+import google.protobuf.internal.containers
 import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import sys
@@ -53,7 +55,7 @@ class _TelemetrySensorTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wra
     """
     SHTC3: _TelemetrySensorType.ValueType  # 7
     """
-    High accuracy temperature and humidity
+    TODO - REMOVE High accuracy temperature and humidity
     """
     LPS22: _TelemetrySensorType.ValueType  # 8
     """
@@ -73,7 +75,7 @@ class _TelemetrySensorTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wra
     """
     SHT31: _TelemetrySensorType.ValueType  # 12
     """
-    High accuracy temperature and humidity
+    TODO - REMOVE High accuracy temperature and humidity
     """
     PMSA003I: _TelemetrySensorType.ValueType  # 13
     """
@@ -93,7 +95,7 @@ class _TelemetrySensorTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wra
     """
     SHT4X: _TelemetrySensorType.ValueType  # 17
     """
-    Sensirion High accuracy temperature and humidity
+    TODO - REMOVE Sensirion High accuracy temperature and humidity
     """
     VEML7700: _TelemetrySensorType.ValueType  # 18
     """
@@ -199,6 +201,62 @@ class _TelemetrySensorTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wra
     """
     SEN5X PM SENSORS
     """
+    TSL2561: _TelemetrySensorType.ValueType  # 44
+    """
+    TSL2561 light sensor
+    """
+    BH1750: _TelemetrySensorType.ValueType  # 45
+    """
+    BH1750 light sensor
+    """
+    HDC1080: _TelemetrySensorType.ValueType  # 46
+    """
+    HDC1080 Temperature and Humidity Sensor
+    """
+    SHT21: _TelemetrySensorType.ValueType  # 47
+    """
+    TODO - REMOVE STH21 Temperature and R. Humidity sensor
+    """
+    STC31: _TelemetrySensorType.ValueType  # 48
+    """
+    Sensirion STC31 CO2 sensor
+    """
+    SCD30: _TelemetrySensorType.ValueType  # 49
+    """
+    SCD30 CO2, humidity, temperature sensor
+    """
+    SHTXX: _TelemetrySensorType.ValueType  # 50
+    """
+    SHT family of sensors for temperature and humidity
+    """
+    DS248X: _TelemetrySensorType.ValueType  # 51
+    """
+    DS248X Bridge for one-wire temperature sensors
+    """
+    MMC5983MA: _TelemetrySensorType.ValueType  # 52
+    """
+    MMC5983MA 3-Axis Digital Magnetic Sensor
+    """
+    ICM42607P: _TelemetrySensorType.ValueType  # 53
+    """
+    ICM-42607-P 6‑Axis IMU
+    """
+    SPA06: _TelemetrySensorType.ValueType  # 54
+    """
+    SPA06 pressure and temperature
+    """
+    HM330X: _TelemetrySensorType.ValueType  # 55
+    """
+    HM330X PM SENSOR
+    """
+    SEN6X: _TelemetrySensorType.ValueType  # 56
+    """
+    Sensirion SEN6X PM/RHT/VOC/NOx/CO2/HCHO sensor family (SEN62, SEN63C, SEN65, SEN66, SEN68, SEN69C)
+    """
+    AS3935: _TelemetrySensorType.ValueType  # 57
+    """
+    AS3935 Franklin lightning sensor
+    """
 
 class TelemetrySensorType(_TelemetrySensorType, metaclass=_TelemetrySensorTypeEnumTypeWrapper):
     """
@@ -235,7 +293,7 @@ High accuracy temperature and pressure
 """
 SHTC3: TelemetrySensorType.ValueType  # 7
 """
-High accuracy temperature and humidity
+TODO - REMOVE High accuracy temperature and humidity
 """
 LPS22: TelemetrySensorType.ValueType  # 8
 """
@@ -255,7 +313,7 @@ QMC5883L: TelemetrySensorType.ValueType  # 11
 """
 SHT31: TelemetrySensorType.ValueType  # 12
 """
-High accuracy temperature and humidity
+TODO - REMOVE High accuracy temperature and humidity
 """
 PMSA003I: TelemetrySensorType.ValueType  # 13
 """
@@ -275,7 +333,7 @@ RCWL-9620 Doppler Radar Distance Sensor, used for water level detection
 """
 SHT4X: TelemetrySensorType.ValueType  # 17
 """
-Sensirion High accuracy temperature and humidity
+TODO - REMOVE Sensirion High accuracy temperature and humidity
 """
 VEML7700: TelemetrySensorType.ValueType  # 18
 """
@@ -381,7 +439,63 @@ SEN5X: TelemetrySensorType.ValueType  # 43
 """
 SEN5X PM SENSORS
 """
-global___TelemetrySensorType = TelemetrySensorType
+TSL2561: TelemetrySensorType.ValueType  # 44
+"""
+TSL2561 light sensor
+"""
+BH1750: TelemetrySensorType.ValueType  # 45
+"""
+BH1750 light sensor
+"""
+HDC1080: TelemetrySensorType.ValueType  # 46
+"""
+HDC1080 Temperature and Humidity Sensor
+"""
+SHT21: TelemetrySensorType.ValueType  # 47
+"""
+TODO - REMOVE STH21 Temperature and R. Humidity sensor
+"""
+STC31: TelemetrySensorType.ValueType  # 48
+"""
+Sensirion STC31 CO2 sensor
+"""
+SCD30: TelemetrySensorType.ValueType  # 49
+"""
+SCD30 CO2, humidity, temperature sensor
+"""
+SHTXX: TelemetrySensorType.ValueType  # 50
+"""
+SHT family of sensors for temperature and humidity
+"""
+DS248X: TelemetrySensorType.ValueType  # 51
+"""
+DS248X Bridge for one-wire temperature sensors
+"""
+MMC5983MA: TelemetrySensorType.ValueType  # 52
+"""
+MMC5983MA 3-Axis Digital Magnetic Sensor
+"""
+ICM42607P: TelemetrySensorType.ValueType  # 53
+"""
+ICM-42607-P 6‑Axis IMU
+"""
+SPA06: TelemetrySensorType.ValueType  # 54
+"""
+SPA06 pressure and temperature
+"""
+HM330X: TelemetrySensorType.ValueType  # 55
+"""
+HM330X PM SENSOR
+"""
+SEN6X: TelemetrySensorType.ValueType  # 56
+"""
+Sensirion SEN6X PM/RHT/VOC/NOx/CO2/HCHO sensor family (SEN62, SEN63C, SEN65, SEN66, SEN68, SEN69C)
+"""
+AS3935: TelemetrySensorType.ValueType  # 57
+"""
+AS3935 Franklin lightning sensor
+"""
+Global___TelemetrySensorType: typing_extensions.TypeAlias = TelemetrySensorType
 
 @typing.final
 class DeviceMetrics(google.protobuf.message.Message):
@@ -425,20 +539,32 @@ class DeviceMetrics(google.protobuf.message.Message):
         air_util_tx: builtins.float | None = ...,
         uptime_seconds: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_air_util_tx", b"_air_util_tx", "_battery_level", b"_battery_level", "_channel_utilization", b"_channel_utilization", "_uptime_seconds", b"_uptime_seconds", "_voltage", b"_voltage", "air_util_tx", b"air_util_tx", "battery_level", b"battery_level", "channel_utilization", b"channel_utilization", "uptime_seconds", b"uptime_seconds", "voltage", b"voltage"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_air_util_tx", b"_air_util_tx", "_battery_level", b"_battery_level", "_channel_utilization", b"_channel_utilization", "_uptime_seconds", b"_uptime_seconds", "_voltage", b"_voltage", "air_util_tx", b"air_util_tx", "battery_level", b"battery_level", "channel_utilization", b"channel_utilization", "uptime_seconds", b"uptime_seconds", "voltage", b"voltage"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_air_util_tx", b"_air_util_tx", "_battery_level", b"_battery_level", "_channel_utilization", b"_channel_utilization", "_uptime_seconds", b"_uptime_seconds", "_voltage", b"_voltage", "air_util_tx", b"air_util_tx", "battery_level", b"battery_level", "channel_utilization", b"channel_utilization", "uptime_seconds", b"uptime_seconds", "voltage", b"voltage"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_air_util_tx", b"_air_util_tx", "_battery_level", b"_battery_level", "_channel_utilization", b"_channel_utilization", "_uptime_seconds", b"_uptime_seconds", "_voltage", b"_voltage", "air_util_tx", b"air_util_tx", "battery_level", b"battery_level", "channel_utilization", b"channel_utilization", "uptime_seconds", b"uptime_seconds", "voltage", b"voltage"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__air_util_tx: typing_extensions.TypeAlias = typing.Literal["air_util_tx"]
+    _WhichOneofArgType__air_util_tx: typing_extensions.TypeAlias = typing.Literal["_air_util_tx", b"_air_util_tx"]
+    _WhichOneofReturnType__battery_level: typing_extensions.TypeAlias = typing.Literal["battery_level"]
+    _WhichOneofArgType__battery_level: typing_extensions.TypeAlias = typing.Literal["_battery_level", b"_battery_level"]
+    _WhichOneofReturnType__channel_utilization: typing_extensions.TypeAlias = typing.Literal["channel_utilization"]
+    _WhichOneofArgType__channel_utilization: typing_extensions.TypeAlias = typing.Literal["_channel_utilization", b"_channel_utilization"]
+    _WhichOneofReturnType__uptime_seconds: typing_extensions.TypeAlias = typing.Literal["uptime_seconds"]
+    _WhichOneofArgType__uptime_seconds: typing_extensions.TypeAlias = typing.Literal["_uptime_seconds", b"_uptime_seconds"]
+    _WhichOneofReturnType__voltage: typing_extensions.TypeAlias = typing.Literal["voltage"]
+    _WhichOneofArgType__voltage: typing_extensions.TypeAlias = typing.Literal["_voltage", b"_voltage"]
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_air_util_tx", b"_air_util_tx"]) -> typing.Literal["air_util_tx"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__air_util_tx) -> _WhichOneofReturnType__air_util_tx | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_battery_level", b"_battery_level"]) -> typing.Literal["battery_level"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__battery_level) -> _WhichOneofReturnType__battery_level | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_channel_utilization", b"_channel_utilization"]) -> typing.Literal["channel_utilization"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__channel_utilization) -> _WhichOneofReturnType__channel_utilization | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_uptime_seconds", b"_uptime_seconds"]) -> typing.Literal["uptime_seconds"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__uptime_seconds) -> _WhichOneofReturnType__uptime_seconds | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_voltage", b"_voltage"]) -> typing.Literal["voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voltage) -> _WhichOneofReturnType__voltage | None: ...
 
-global___DeviceMetrics = DeviceMetrics
+Global___DeviceMetrics: typing_extensions.TypeAlias = DeviceMetrics
 
 @typing.final
 class EnvironmentMetrics(google.protobuf.message.Message):
@@ -470,6 +596,25 @@ class EnvironmentMetrics(google.protobuf.message.Message):
     RAINFALL_24H_FIELD_NUMBER: builtins.int
     SOIL_MOISTURE_FIELD_NUMBER: builtins.int
     SOIL_TEMPERATURE_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH0_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH1_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH2_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH3_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH4_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH5_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH6_FIELD_NUMBER: builtins.int
+    ADC_VOLTAGE_CH7_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH0_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH1_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH2_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH3_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH4_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH5_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH6_FIELD_NUMBER: builtins.int
+    ONE_WIRE_TEMPERATURE_CH7_FIELD_NUMBER: builtins.int
+    LIGHTNING_STRIKE_COUNT_1H_FIELD_NUMBER: builtins.int
+    LIGHTNING_DISTANCE_KM_FIELD_NUMBER: builtins.int
     temperature: builtins.float
     """
     Temperature measured
@@ -560,6 +705,84 @@ class EnvironmentMetrics(google.protobuf.message.Message):
     """
     Soil temperature measured (*C)
     """
+    adc_voltage_ch0: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 0 (V)
+    """
+    adc_voltage_ch1: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 1 (V)
+    """
+    adc_voltage_ch2: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 2 (V)
+    """
+    adc_voltage_ch3: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 3 (V)
+    """
+    adc_voltage_ch4: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 4 (V)
+    """
+    adc_voltage_ch5: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 5 (V)
+    """
+    adc_voltage_ch6: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 6 (V)
+    """
+    adc_voltage_ch7: builtins.float
+    """
+    Multi-channel ADC Voltage Channel 7 (V)
+    """
+    one_wire_temperature_ch0: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 0 (*C)
+    """
+    one_wire_temperature_ch1: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 1 (*C)
+    """
+    one_wire_temperature_ch2: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 2 (*C)
+    """
+    one_wire_temperature_ch3: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 3 (*C)
+    """
+    one_wire_temperature_ch4: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 4 (*C)
+    """
+    one_wire_temperature_ch5: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 5 (*C)
+    """
+    one_wire_temperature_ch6: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 6 (*C)
+    """
+    one_wire_temperature_ch7: builtins.float
+    """
+    Multi-channel One-Wire Temperature Channel 7 (*C)
+    """
+    lightning_strike_count_1h: builtins.int
+    """
+    Lightning strikes detected in the last hour
+    """
+    lightning_distance_km: builtins.float
+    """
+    Estimated distance to the leading edge of the storm, in km
+    """
+    @property
+    def one_wire_temperature(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.float]:
+        """
+        Never implemented, but Voltage may be mis-interpreted by old clients as temperature
+        """
+
     def __init__(
         self,
         *,
@@ -585,55 +808,192 @@ class EnvironmentMetrics(google.protobuf.message.Message):
         rainfall_24h: builtins.float | None = ...,
         soil_moisture: builtins.int | None = ...,
         soil_temperature: builtins.float | None = ...,
+        one_wire_temperature: collections.abc.Iterable[builtins.float] | None = ...,
+        adc_voltage_ch0: builtins.float | None = ...,
+        adc_voltage_ch1: builtins.float | None = ...,
+        adc_voltage_ch2: builtins.float | None = ...,
+        adc_voltage_ch3: builtins.float | None = ...,
+        adc_voltage_ch4: builtins.float | None = ...,
+        adc_voltage_ch5: builtins.float | None = ...,
+        adc_voltage_ch6: builtins.float | None = ...,
+        adc_voltage_ch7: builtins.float | None = ...,
+        one_wire_temperature_ch0: builtins.float | None = ...,
+        one_wire_temperature_ch1: builtins.float | None = ...,
+        one_wire_temperature_ch2: builtins.float | None = ...,
+        one_wire_temperature_ch3: builtins.float | None = ...,
+        one_wire_temperature_ch4: builtins.float | None = ...,
+        one_wire_temperature_ch5: builtins.float | None = ...,
+        one_wire_temperature_ch6: builtins.float | None = ...,
+        one_wire_temperature_ch7: builtins.float | None = ...,
+        lightning_strike_count_1h: builtins.int | None = ...,
+        lightning_distance_km: builtins.float | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_barometric_pressure", b"_barometric_pressure", "_current", b"_current", "_distance", b"_distance", "_gas_resistance", b"_gas_resistance", "_iaq", b"_iaq", "_ir_lux", b"_ir_lux", "_lux", b"_lux", "_radiation", b"_radiation", "_rainfall_1h", b"_rainfall_1h", "_rainfall_24h", b"_rainfall_24h", "_relative_humidity", b"_relative_humidity", "_soil_moisture", b"_soil_moisture", "_soil_temperature", b"_soil_temperature", "_temperature", b"_temperature", "_uv_lux", b"_uv_lux", "_voltage", b"_voltage", "_weight", b"_weight", "_white_lux", b"_white_lux", "_wind_direction", b"_wind_direction", "_wind_gust", b"_wind_gust", "_wind_lull", b"_wind_lull", "_wind_speed", b"_wind_speed", "barometric_pressure", b"barometric_pressure", "current", b"current", "distance", b"distance", "gas_resistance", b"gas_resistance", "iaq", b"iaq", "ir_lux", b"ir_lux", "lux", b"lux", "radiation", b"radiation", "rainfall_1h", b"rainfall_1h", "rainfall_24h", b"rainfall_24h", "relative_humidity", b"relative_humidity", "soil_moisture", b"soil_moisture", "soil_temperature", b"soil_temperature", "temperature", b"temperature", "uv_lux", b"uv_lux", "voltage", b"voltage", "weight", b"weight", "white_lux", b"white_lux", "wind_direction", b"wind_direction", "wind_gust", b"wind_gust", "wind_lull", b"wind_lull", "wind_speed", b"wind_speed"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_barometric_pressure", b"_barometric_pressure", "_current", b"_current", "_distance", b"_distance", "_gas_resistance", b"_gas_resistance", "_iaq", b"_iaq", "_ir_lux", b"_ir_lux", "_lux", b"_lux", "_radiation", b"_radiation", "_rainfall_1h", b"_rainfall_1h", "_rainfall_24h", b"_rainfall_24h", "_relative_humidity", b"_relative_humidity", "_soil_moisture", b"_soil_moisture", "_soil_temperature", b"_soil_temperature", "_temperature", b"_temperature", "_uv_lux", b"_uv_lux", "_voltage", b"_voltage", "_weight", b"_weight", "_white_lux", b"_white_lux", "_wind_direction", b"_wind_direction", "_wind_gust", b"_wind_gust", "_wind_lull", b"_wind_lull", "_wind_speed", b"_wind_speed", "barometric_pressure", b"barometric_pressure", "current", b"current", "distance", b"distance", "gas_resistance", b"gas_resistance", "iaq", b"iaq", "ir_lux", b"ir_lux", "lux", b"lux", "radiation", b"radiation", "rainfall_1h", b"rainfall_1h", "rainfall_24h", b"rainfall_24h", "relative_humidity", b"relative_humidity", "soil_moisture", b"soil_moisture", "soil_temperature", b"soil_temperature", "temperature", b"temperature", "uv_lux", b"uv_lux", "voltage", b"voltage", "weight", b"weight", "white_lux", b"white_lux", "wind_direction", b"wind_direction", "wind_gust", b"wind_gust", "wind_lull", b"wind_lull", "wind_speed", b"wind_speed"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch0", b"_adc_voltage_ch0", "_adc_voltage_ch1", b"_adc_voltage_ch1", "_adc_voltage_ch2", b"_adc_voltage_ch2", "_adc_voltage_ch3", b"_adc_voltage_ch3", "_adc_voltage_ch4", b"_adc_voltage_ch4", "_adc_voltage_ch5", b"_adc_voltage_ch5", "_adc_voltage_ch6", b"_adc_voltage_ch6", "_adc_voltage_ch7", b"_adc_voltage_ch7", "_barometric_pressure", b"_barometric_pressure", "_current", b"_current", "_distance", b"_distance", "_gas_resistance", b"_gas_resistance", "_iaq", b"_iaq", "_ir_lux", b"_ir_lux", "_lightning_distance_km", b"_lightning_distance_km", "_lightning_strike_count_1h", b"_lightning_strike_count_1h", "_lux", b"_lux", "_one_wire_temperature_ch0", b"_one_wire_temperature_ch0", "_one_wire_temperature_ch1", b"_one_wire_temperature_ch1", "_one_wire_temperature_ch2", b"_one_wire_temperature_ch2", "_one_wire_temperature_ch3", b"_one_wire_temperature_ch3", "_one_wire_temperature_ch4", b"_one_wire_temperature_ch4", "_one_wire_temperature_ch5", b"_one_wire_temperature_ch5", "_one_wire_temperature_ch6", b"_one_wire_temperature_ch6", "_one_wire_temperature_ch7", b"_one_wire_temperature_ch7", "_radiation", b"_radiation", "_rainfall_1h", b"_rainfall_1h", "_rainfall_24h", b"_rainfall_24h", "_relative_humidity", b"_relative_humidity", "_soil_moisture", b"_soil_moisture", "_soil_temperature", b"_soil_temperature", "_temperature", b"_temperature", "_uv_lux", b"_uv_lux", "_voltage", b"_voltage", "_weight", b"_weight", "_white_lux", b"_white_lux", "_wind_direction", b"_wind_direction", "_wind_gust", b"_wind_gust", "_wind_lull", b"_wind_lull", "_wind_speed", b"_wind_speed", "adc_voltage_ch0", b"adc_voltage_ch0", "adc_voltage_ch1", b"adc_voltage_ch1", "adc_voltage_ch2", b"adc_voltage_ch2", "adc_voltage_ch3", b"adc_voltage_ch3", "adc_voltage_ch4", b"adc_voltage_ch4", "adc_voltage_ch5", b"adc_voltage_ch5", "adc_voltage_ch6", b"adc_voltage_ch6", "adc_voltage_ch7", b"adc_voltage_ch7", "barometric_pressure", b"barometric_pressure", "current", b"current", "distance", b"distance", "gas_resistance", b"gas_resistance", "iaq", b"iaq", "ir_lux", b"ir_lux", "lightning_distance_km", b"lightning_distance_km", "lightning_strike_count_1h", b"lightning_strike_count_1h", "lux", b"lux", "one_wire_temperature_ch0", b"one_wire_temperature_ch0", "one_wire_temperature_ch1", b"one_wire_temperature_ch1", "one_wire_temperature_ch2", b"one_wire_temperature_ch2", "one_wire_temperature_ch3", b"one_wire_temperature_ch3", "one_wire_temperature_ch4", b"one_wire_temperature_ch4", "one_wire_temperature_ch5", b"one_wire_temperature_ch5", "one_wire_temperature_ch6", b"one_wire_temperature_ch6", "one_wire_temperature_ch7", b"one_wire_temperature_ch7", "radiation", b"radiation", "rainfall_1h", b"rainfall_1h", "rainfall_24h", b"rainfall_24h", "relative_humidity", b"relative_humidity", "soil_moisture", b"soil_moisture", "soil_temperature", b"soil_temperature", "temperature", b"temperature", "uv_lux", b"uv_lux", "voltage", b"voltage", "weight", b"weight", "white_lux", b"white_lux", "wind_direction", b"wind_direction", "wind_gust", b"wind_gust", "wind_lull", b"wind_lull", "wind_speed", b"wind_speed"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch0", b"_adc_voltage_ch0", "_adc_voltage_ch1", b"_adc_voltage_ch1", "_adc_voltage_ch2", b"_adc_voltage_ch2", "_adc_voltage_ch3", b"_adc_voltage_ch3", "_adc_voltage_ch4", b"_adc_voltage_ch4", "_adc_voltage_ch5", b"_adc_voltage_ch5", "_adc_voltage_ch6", b"_adc_voltage_ch6", "_adc_voltage_ch7", b"_adc_voltage_ch7", "_barometric_pressure", b"_barometric_pressure", "_current", b"_current", "_distance", b"_distance", "_gas_resistance", b"_gas_resistance", "_iaq", b"_iaq", "_ir_lux", b"_ir_lux", "_lightning_distance_km", b"_lightning_distance_km", "_lightning_strike_count_1h", b"_lightning_strike_count_1h", "_lux", b"_lux", "_one_wire_temperature_ch0", b"_one_wire_temperature_ch0", "_one_wire_temperature_ch1", b"_one_wire_temperature_ch1", "_one_wire_temperature_ch2", b"_one_wire_temperature_ch2", "_one_wire_temperature_ch3", b"_one_wire_temperature_ch3", "_one_wire_temperature_ch4", b"_one_wire_temperature_ch4", "_one_wire_temperature_ch5", b"_one_wire_temperature_ch5", "_one_wire_temperature_ch6", b"_one_wire_temperature_ch6", "_one_wire_temperature_ch7", b"_one_wire_temperature_ch7", "_radiation", b"_radiation", "_rainfall_1h", b"_rainfall_1h", "_rainfall_24h", b"_rainfall_24h", "_relative_humidity", b"_relative_humidity", "_soil_moisture", b"_soil_moisture", "_soil_temperature", b"_soil_temperature", "_temperature", b"_temperature", "_uv_lux", b"_uv_lux", "_voltage", b"_voltage", "_weight", b"_weight", "_white_lux", b"_white_lux", "_wind_direction", b"_wind_direction", "_wind_gust", b"_wind_gust", "_wind_lull", b"_wind_lull", "_wind_speed", b"_wind_speed", "adc_voltage_ch0", b"adc_voltage_ch0", "adc_voltage_ch1", b"adc_voltage_ch1", "adc_voltage_ch2", b"adc_voltage_ch2", "adc_voltage_ch3", b"adc_voltage_ch3", "adc_voltage_ch4", b"adc_voltage_ch4", "adc_voltage_ch5", b"adc_voltage_ch5", "adc_voltage_ch6", b"adc_voltage_ch6", "adc_voltage_ch7", b"adc_voltage_ch7", "barometric_pressure", b"barometric_pressure", "current", b"current", "distance", b"distance", "gas_resistance", b"gas_resistance", "iaq", b"iaq", "ir_lux", b"ir_lux", "lightning_distance_km", b"lightning_distance_km", "lightning_strike_count_1h", b"lightning_strike_count_1h", "lux", b"lux", "one_wire_temperature", b"one_wire_temperature", "one_wire_temperature_ch0", b"one_wire_temperature_ch0", "one_wire_temperature_ch1", b"one_wire_temperature_ch1", "one_wire_temperature_ch2", b"one_wire_temperature_ch2", "one_wire_temperature_ch3", b"one_wire_temperature_ch3", "one_wire_temperature_ch4", b"one_wire_temperature_ch4", "one_wire_temperature_ch5", b"one_wire_temperature_ch5", "one_wire_temperature_ch6", b"one_wire_temperature_ch6", "one_wire_temperature_ch7", b"one_wire_temperature_ch7", "radiation", b"radiation", "rainfall_1h", b"rainfall_1h", "rainfall_24h", b"rainfall_24h", "relative_humidity", b"relative_humidity", "soil_moisture", b"soil_moisture", "soil_temperature", b"soil_temperature", "temperature", b"temperature", "uv_lux", b"uv_lux", "voltage", b"voltage", "weight", b"weight", "white_lux", b"white_lux", "wind_direction", b"wind_direction", "wind_gust", b"wind_gust", "wind_lull", b"wind_lull", "wind_speed", b"wind_speed"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__adc_voltage_ch0: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch0"]
+    _WhichOneofArgType__adc_voltage_ch0: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch0", b"_adc_voltage_ch0"]
+    _WhichOneofReturnType__adc_voltage_ch1: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch1"]
+    _WhichOneofArgType__adc_voltage_ch1: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch1", b"_adc_voltage_ch1"]
+    _WhichOneofReturnType__adc_voltage_ch2: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch2"]
+    _WhichOneofArgType__adc_voltage_ch2: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch2", b"_adc_voltage_ch2"]
+    _WhichOneofReturnType__adc_voltage_ch3: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch3"]
+    _WhichOneofArgType__adc_voltage_ch3: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch3", b"_adc_voltage_ch3"]
+    _WhichOneofReturnType__adc_voltage_ch4: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch4"]
+    _WhichOneofArgType__adc_voltage_ch4: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch4", b"_adc_voltage_ch4"]
+    _WhichOneofReturnType__adc_voltage_ch5: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch5"]
+    _WhichOneofArgType__adc_voltage_ch5: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch5", b"_adc_voltage_ch5"]
+    _WhichOneofReturnType__adc_voltage_ch6: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch6"]
+    _WhichOneofArgType__adc_voltage_ch6: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch6", b"_adc_voltage_ch6"]
+    _WhichOneofReturnType__adc_voltage_ch7: typing_extensions.TypeAlias = typing.Literal["adc_voltage_ch7"]
+    _WhichOneofArgType__adc_voltage_ch7: typing_extensions.TypeAlias = typing.Literal["_adc_voltage_ch7", b"_adc_voltage_ch7"]
+    _WhichOneofReturnType__barometric_pressure: typing_extensions.TypeAlias = typing.Literal["barometric_pressure"]
+    _WhichOneofArgType__barometric_pressure: typing_extensions.TypeAlias = typing.Literal["_barometric_pressure", b"_barometric_pressure"]
+    _WhichOneofReturnType__current: typing_extensions.TypeAlias = typing.Literal["current"]
+    _WhichOneofArgType__current: typing_extensions.TypeAlias = typing.Literal["_current", b"_current"]
+    _WhichOneofReturnType__distance: typing_extensions.TypeAlias = typing.Literal["distance"]
+    _WhichOneofArgType__distance: typing_extensions.TypeAlias = typing.Literal["_distance", b"_distance"]
+    _WhichOneofReturnType__gas_resistance: typing_extensions.TypeAlias = typing.Literal["gas_resistance"]
+    _WhichOneofArgType__gas_resistance: typing_extensions.TypeAlias = typing.Literal["_gas_resistance", b"_gas_resistance"]
+    _WhichOneofReturnType__iaq: typing_extensions.TypeAlias = typing.Literal["iaq"]
+    _WhichOneofArgType__iaq: typing_extensions.TypeAlias = typing.Literal["_iaq", b"_iaq"]
+    _WhichOneofReturnType__ir_lux: typing_extensions.TypeAlias = typing.Literal["ir_lux"]
+    _WhichOneofArgType__ir_lux: typing_extensions.TypeAlias = typing.Literal["_ir_lux", b"_ir_lux"]
+    _WhichOneofReturnType__lightning_distance_km: typing_extensions.TypeAlias = typing.Literal["lightning_distance_km"]
+    _WhichOneofArgType__lightning_distance_km: typing_extensions.TypeAlias = typing.Literal["_lightning_distance_km", b"_lightning_distance_km"]
+    _WhichOneofReturnType__lightning_strike_count_1h: typing_extensions.TypeAlias = typing.Literal["lightning_strike_count_1h"]
+    _WhichOneofArgType__lightning_strike_count_1h: typing_extensions.TypeAlias = typing.Literal["_lightning_strike_count_1h", b"_lightning_strike_count_1h"]
+    _WhichOneofReturnType__lux: typing_extensions.TypeAlias = typing.Literal["lux"]
+    _WhichOneofArgType__lux: typing_extensions.TypeAlias = typing.Literal["_lux", b"_lux"]
+    _WhichOneofReturnType__one_wire_temperature_ch0: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch0"]
+    _WhichOneofArgType__one_wire_temperature_ch0: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch0", b"_one_wire_temperature_ch0"]
+    _WhichOneofReturnType__one_wire_temperature_ch1: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch1"]
+    _WhichOneofArgType__one_wire_temperature_ch1: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch1", b"_one_wire_temperature_ch1"]
+    _WhichOneofReturnType__one_wire_temperature_ch2: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch2"]
+    _WhichOneofArgType__one_wire_temperature_ch2: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch2", b"_one_wire_temperature_ch2"]
+    _WhichOneofReturnType__one_wire_temperature_ch3: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch3"]
+    _WhichOneofArgType__one_wire_temperature_ch3: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch3", b"_one_wire_temperature_ch3"]
+    _WhichOneofReturnType__one_wire_temperature_ch4: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch4"]
+    _WhichOneofArgType__one_wire_temperature_ch4: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch4", b"_one_wire_temperature_ch4"]
+    _WhichOneofReturnType__one_wire_temperature_ch5: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch5"]
+    _WhichOneofArgType__one_wire_temperature_ch5: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch5", b"_one_wire_temperature_ch5"]
+    _WhichOneofReturnType__one_wire_temperature_ch6: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch6"]
+    _WhichOneofArgType__one_wire_temperature_ch6: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch6", b"_one_wire_temperature_ch6"]
+    _WhichOneofReturnType__one_wire_temperature_ch7: typing_extensions.TypeAlias = typing.Literal["one_wire_temperature_ch7"]
+    _WhichOneofArgType__one_wire_temperature_ch7: typing_extensions.TypeAlias = typing.Literal["_one_wire_temperature_ch7", b"_one_wire_temperature_ch7"]
+    _WhichOneofReturnType__radiation: typing_extensions.TypeAlias = typing.Literal["radiation"]
+    _WhichOneofArgType__radiation: typing_extensions.TypeAlias = typing.Literal["_radiation", b"_radiation"]
+    _WhichOneofReturnType__rainfall_1h: typing_extensions.TypeAlias = typing.Literal["rainfall_1h"]
+    _WhichOneofArgType__rainfall_1h: typing_extensions.TypeAlias = typing.Literal["_rainfall_1h", b"_rainfall_1h"]
+    _WhichOneofReturnType__rainfall_24h: typing_extensions.TypeAlias = typing.Literal["rainfall_24h"]
+    _WhichOneofArgType__rainfall_24h: typing_extensions.TypeAlias = typing.Literal["_rainfall_24h", b"_rainfall_24h"]
+    _WhichOneofReturnType__relative_humidity: typing_extensions.TypeAlias = typing.Literal["relative_humidity"]
+    _WhichOneofArgType__relative_humidity: typing_extensions.TypeAlias = typing.Literal["_relative_humidity", b"_relative_humidity"]
+    _WhichOneofReturnType__soil_moisture: typing_extensions.TypeAlias = typing.Literal["soil_moisture"]
+    _WhichOneofArgType__soil_moisture: typing_extensions.TypeAlias = typing.Literal["_soil_moisture", b"_soil_moisture"]
+    _WhichOneofReturnType__soil_temperature: typing_extensions.TypeAlias = typing.Literal["soil_temperature"]
+    _WhichOneofArgType__soil_temperature: typing_extensions.TypeAlias = typing.Literal["_soil_temperature", b"_soil_temperature"]
+    _WhichOneofReturnType__temperature: typing_extensions.TypeAlias = typing.Literal["temperature"]
+    _WhichOneofArgType__temperature: typing_extensions.TypeAlias = typing.Literal["_temperature", b"_temperature"]
+    _WhichOneofReturnType__uv_lux: typing_extensions.TypeAlias = typing.Literal["uv_lux"]
+    _WhichOneofArgType__uv_lux: typing_extensions.TypeAlias = typing.Literal["_uv_lux", b"_uv_lux"]
+    _WhichOneofReturnType__voltage: typing_extensions.TypeAlias = typing.Literal["voltage"]
+    _WhichOneofArgType__voltage: typing_extensions.TypeAlias = typing.Literal["_voltage", b"_voltage"]
+    _WhichOneofReturnType__weight: typing_extensions.TypeAlias = typing.Literal["weight"]
+    _WhichOneofArgType__weight: typing_extensions.TypeAlias = typing.Literal["_weight", b"_weight"]
+    _WhichOneofReturnType__white_lux: typing_extensions.TypeAlias = typing.Literal["white_lux"]
+    _WhichOneofArgType__white_lux: typing_extensions.TypeAlias = typing.Literal["_white_lux", b"_white_lux"]
+    _WhichOneofReturnType__wind_direction: typing_extensions.TypeAlias = typing.Literal["wind_direction"]
+    _WhichOneofArgType__wind_direction: typing_extensions.TypeAlias = typing.Literal["_wind_direction", b"_wind_direction"]
+    _WhichOneofReturnType__wind_gust: typing_extensions.TypeAlias = typing.Literal["wind_gust"]
+    _WhichOneofArgType__wind_gust: typing_extensions.TypeAlias = typing.Literal["_wind_gust", b"_wind_gust"]
+    _WhichOneofReturnType__wind_lull: typing_extensions.TypeAlias = typing.Literal["wind_lull"]
+    _WhichOneofArgType__wind_lull: typing_extensions.TypeAlias = typing.Literal["_wind_lull", b"_wind_lull"]
+    _WhichOneofReturnType__wind_speed: typing_extensions.TypeAlias = typing.Literal["wind_speed"]
+    _WhichOneofArgType__wind_speed: typing_extensions.TypeAlias = typing.Literal["_wind_speed", b"_wind_speed"]
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_barometric_pressure", b"_barometric_pressure"]) -> typing.Literal["barometric_pressure"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch0) -> _WhichOneofReturnType__adc_voltage_ch0 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_current", b"_current"]) -> typing.Literal["current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch1) -> _WhichOneofReturnType__adc_voltage_ch1 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_distance", b"_distance"]) -> typing.Literal["distance"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch2) -> _WhichOneofReturnType__adc_voltage_ch2 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_gas_resistance", b"_gas_resistance"]) -> typing.Literal["gas_resistance"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch3) -> _WhichOneofReturnType__adc_voltage_ch3 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_iaq", b"_iaq"]) -> typing.Literal["iaq"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch4) -> _WhichOneofReturnType__adc_voltage_ch4 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ir_lux", b"_ir_lux"]) -> typing.Literal["ir_lux"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch5) -> _WhichOneofReturnType__adc_voltage_ch5 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_lux", b"_lux"]) -> typing.Literal["lux"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch6) -> _WhichOneofReturnType__adc_voltage_ch6 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_radiation", b"_radiation"]) -> typing.Literal["radiation"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__adc_voltage_ch7) -> _WhichOneofReturnType__adc_voltage_ch7 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_rainfall_1h", b"_rainfall_1h"]) -> typing.Literal["rainfall_1h"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__barometric_pressure) -> _WhichOneofReturnType__barometric_pressure | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_rainfall_24h", b"_rainfall_24h"]) -> typing.Literal["rainfall_24h"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__current) -> _WhichOneofReturnType__current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_relative_humidity", b"_relative_humidity"]) -> typing.Literal["relative_humidity"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__distance) -> _WhichOneofReturnType__distance | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_soil_moisture", b"_soil_moisture"]) -> typing.Literal["soil_moisture"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__gas_resistance) -> _WhichOneofReturnType__gas_resistance | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_soil_temperature", b"_soil_temperature"]) -> typing.Literal["soil_temperature"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__iaq) -> _WhichOneofReturnType__iaq | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_temperature", b"_temperature"]) -> typing.Literal["temperature"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ir_lux) -> _WhichOneofReturnType__ir_lux | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_uv_lux", b"_uv_lux"]) -> typing.Literal["uv_lux"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__lightning_distance_km) -> _WhichOneofReturnType__lightning_distance_km | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_voltage", b"_voltage"]) -> typing.Literal["voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__lightning_strike_count_1h) -> _WhichOneofReturnType__lightning_strike_count_1h | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_weight", b"_weight"]) -> typing.Literal["weight"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__lux) -> _WhichOneofReturnType__lux | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_white_lux", b"_white_lux"]) -> typing.Literal["white_lux"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch0) -> _WhichOneofReturnType__one_wire_temperature_ch0 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_wind_direction", b"_wind_direction"]) -> typing.Literal["wind_direction"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch1) -> _WhichOneofReturnType__one_wire_temperature_ch1 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_wind_gust", b"_wind_gust"]) -> typing.Literal["wind_gust"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch2) -> _WhichOneofReturnType__one_wire_temperature_ch2 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_wind_lull", b"_wind_lull"]) -> typing.Literal["wind_lull"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch3) -> _WhichOneofReturnType__one_wire_temperature_ch3 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_wind_speed", b"_wind_speed"]) -> typing.Literal["wind_speed"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch4) -> _WhichOneofReturnType__one_wire_temperature_ch4 | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch5) -> _WhichOneofReturnType__one_wire_temperature_ch5 | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch6) -> _WhichOneofReturnType__one_wire_temperature_ch6 | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__one_wire_temperature_ch7) -> _WhichOneofReturnType__one_wire_temperature_ch7 | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__radiation) -> _WhichOneofReturnType__radiation | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__rainfall_1h) -> _WhichOneofReturnType__rainfall_1h | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__rainfall_24h) -> _WhichOneofReturnType__rainfall_24h | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__relative_humidity) -> _WhichOneofReturnType__relative_humidity | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__soil_moisture) -> _WhichOneofReturnType__soil_moisture | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__soil_temperature) -> _WhichOneofReturnType__soil_temperature | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__temperature) -> _WhichOneofReturnType__temperature | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__uv_lux) -> _WhichOneofReturnType__uv_lux | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voltage) -> _WhichOneofReturnType__voltage | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__weight) -> _WhichOneofReturnType__weight | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__white_lux) -> _WhichOneofReturnType__white_lux | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__wind_direction) -> _WhichOneofReturnType__wind_direction | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__wind_gust) -> _WhichOneofReturnType__wind_gust | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__wind_lull) -> _WhichOneofReturnType__wind_lull | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__wind_speed) -> _WhichOneofReturnType__wind_speed | None: ...
 
-global___EnvironmentMetrics = EnvironmentMetrics
+Global___EnvironmentMetrics: typing_extensions.TypeAlias = EnvironmentMetrics
 
 @typing.final
 class PowerMetrics(google.protobuf.message.Message):
@@ -685,43 +1045,43 @@ class PowerMetrics(google.protobuf.message.Message):
     """
     ch4_voltage: builtins.float
     """
-    Voltage (Ch4)
+    Voltage (Ch4) - TODO Remove
     """
     ch4_current: builtins.float
     """
-    Current (Ch4)
+    Current (Ch4) - TODO Remove
     """
     ch5_voltage: builtins.float
     """
-    Voltage (Ch5)
+    Voltage (Ch5) - TODO Remove
     """
     ch5_current: builtins.float
     """
-    Current (Ch5)
+    Current (Ch5) - TODO Remove
     """
     ch6_voltage: builtins.float
     """
-    Voltage (Ch6)
+    Voltage (Ch6) - TODO Remove
     """
     ch6_current: builtins.float
     """
-    Current (Ch6)
+    Current (Ch6) - TODO Remove
     """
     ch7_voltage: builtins.float
     """
-    Voltage (Ch7)
+    Voltage (Ch7) - TODO Remove
     """
     ch7_current: builtins.float
     """
-    Current (Ch7)
+    Current (Ch7) - TODO Remove
     """
     ch8_voltage: builtins.float
     """
-    Voltage (Ch8)
+    Voltage (Ch8) - TODO Remove
     """
     ch8_current: builtins.float
     """
-    Current (Ch8)
+    Current (Ch8) - TODO Remove
     """
     def __init__(
         self,
@@ -743,42 +1103,76 @@ class PowerMetrics(google.protobuf.message.Message):
         ch8_voltage: builtins.float | None = ...,
         ch8_current: builtins.float | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_ch1_current", b"_ch1_current", "_ch1_voltage", b"_ch1_voltage", "_ch2_current", b"_ch2_current", "_ch2_voltage", b"_ch2_voltage", "_ch3_current", b"_ch3_current", "_ch3_voltage", b"_ch3_voltage", "_ch4_current", b"_ch4_current", "_ch4_voltage", b"_ch4_voltage", "_ch5_current", b"_ch5_current", "_ch5_voltage", b"_ch5_voltage", "_ch6_current", b"_ch6_current", "_ch6_voltage", b"_ch6_voltage", "_ch7_current", b"_ch7_current", "_ch7_voltage", b"_ch7_voltage", "_ch8_current", b"_ch8_current", "_ch8_voltage", b"_ch8_voltage", "ch1_current", b"ch1_current", "ch1_voltage", b"ch1_voltage", "ch2_current", b"ch2_current", "ch2_voltage", b"ch2_voltage", "ch3_current", b"ch3_current", "ch3_voltage", b"ch3_voltage", "ch4_current", b"ch4_current", "ch4_voltage", b"ch4_voltage", "ch5_current", b"ch5_current", "ch5_voltage", b"ch5_voltage", "ch6_current", b"ch6_current", "ch6_voltage", b"ch6_voltage", "ch7_current", b"ch7_current", "ch7_voltage", b"ch7_voltage", "ch8_current", b"ch8_current", "ch8_voltage", b"ch8_voltage"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_ch1_current", b"_ch1_current", "_ch1_voltage", b"_ch1_voltage", "_ch2_current", b"_ch2_current", "_ch2_voltage", b"_ch2_voltage", "_ch3_current", b"_ch3_current", "_ch3_voltage", b"_ch3_voltage", "_ch4_current", b"_ch4_current", "_ch4_voltage", b"_ch4_voltage", "_ch5_current", b"_ch5_current", "_ch5_voltage", b"_ch5_voltage", "_ch6_current", b"_ch6_current", "_ch6_voltage", b"_ch6_voltage", "_ch7_current", b"_ch7_current", "_ch7_voltage", b"_ch7_voltage", "_ch8_current", b"_ch8_current", "_ch8_voltage", b"_ch8_voltage", "ch1_current", b"ch1_current", "ch1_voltage", b"ch1_voltage", "ch2_current", b"ch2_current", "ch2_voltage", b"ch2_voltage", "ch3_current", b"ch3_current", "ch3_voltage", b"ch3_voltage", "ch4_current", b"ch4_current", "ch4_voltage", b"ch4_voltage", "ch5_current", b"ch5_current", "ch5_voltage", b"ch5_voltage", "ch6_current", b"ch6_current", "ch6_voltage", b"ch6_voltage", "ch7_current", b"ch7_current", "ch7_voltage", b"ch7_voltage", "ch8_current", b"ch8_current", "ch8_voltage", b"ch8_voltage"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_ch1_current", b"_ch1_current", "_ch1_voltage", b"_ch1_voltage", "_ch2_current", b"_ch2_current", "_ch2_voltage", b"_ch2_voltage", "_ch3_current", b"_ch3_current", "_ch3_voltage", b"_ch3_voltage", "_ch4_current", b"_ch4_current", "_ch4_voltage", b"_ch4_voltage", "_ch5_current", b"_ch5_current", "_ch5_voltage", b"_ch5_voltage", "_ch6_current", b"_ch6_current", "_ch6_voltage", b"_ch6_voltage", "_ch7_current", b"_ch7_current", "_ch7_voltage", b"_ch7_voltage", "_ch8_current", b"_ch8_current", "_ch8_voltage", b"_ch8_voltage", "ch1_current", b"ch1_current", "ch1_voltage", b"ch1_voltage", "ch2_current", b"ch2_current", "ch2_voltage", b"ch2_voltage", "ch3_current", b"ch3_current", "ch3_voltage", b"ch3_voltage", "ch4_current", b"ch4_current", "ch4_voltage", b"ch4_voltage", "ch5_current", b"ch5_current", "ch5_voltage", b"ch5_voltage", "ch6_current", b"ch6_current", "ch6_voltage", b"ch6_voltage", "ch7_current", b"ch7_current", "ch7_voltage", b"ch7_voltage", "ch8_current", b"ch8_current", "ch8_voltage", b"ch8_voltage"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_ch1_current", b"_ch1_current", "_ch1_voltage", b"_ch1_voltage", "_ch2_current", b"_ch2_current", "_ch2_voltage", b"_ch2_voltage", "_ch3_current", b"_ch3_current", "_ch3_voltage", b"_ch3_voltage", "_ch4_current", b"_ch4_current", "_ch4_voltage", b"_ch4_voltage", "_ch5_current", b"_ch5_current", "_ch5_voltage", b"_ch5_voltage", "_ch6_current", b"_ch6_current", "_ch6_voltage", b"_ch6_voltage", "_ch7_current", b"_ch7_current", "_ch7_voltage", b"_ch7_voltage", "_ch8_current", b"_ch8_current", "_ch8_voltage", b"_ch8_voltage", "ch1_current", b"ch1_current", "ch1_voltage", b"ch1_voltage", "ch2_current", b"ch2_current", "ch2_voltage", b"ch2_voltage", "ch3_current", b"ch3_current", "ch3_voltage", b"ch3_voltage", "ch4_current", b"ch4_current", "ch4_voltage", b"ch4_voltage", "ch5_current", b"ch5_current", "ch5_voltage", b"ch5_voltage", "ch6_current", b"ch6_current", "ch6_voltage", b"ch6_voltage", "ch7_current", b"ch7_current", "ch7_voltage", b"ch7_voltage", "ch8_current", b"ch8_current", "ch8_voltage", b"ch8_voltage"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__ch1_current: typing_extensions.TypeAlias = typing.Literal["ch1_current"]
+    _WhichOneofArgType__ch1_current: typing_extensions.TypeAlias = typing.Literal["_ch1_current", b"_ch1_current"]
+    _WhichOneofReturnType__ch1_voltage: typing_extensions.TypeAlias = typing.Literal["ch1_voltage"]
+    _WhichOneofArgType__ch1_voltage: typing_extensions.TypeAlias = typing.Literal["_ch1_voltage", b"_ch1_voltage"]
+    _WhichOneofReturnType__ch2_current: typing_extensions.TypeAlias = typing.Literal["ch2_current"]
+    _WhichOneofArgType__ch2_current: typing_extensions.TypeAlias = typing.Literal["_ch2_current", b"_ch2_current"]
+    _WhichOneofReturnType__ch2_voltage: typing_extensions.TypeAlias = typing.Literal["ch2_voltage"]
+    _WhichOneofArgType__ch2_voltage: typing_extensions.TypeAlias = typing.Literal["_ch2_voltage", b"_ch2_voltage"]
+    _WhichOneofReturnType__ch3_current: typing_extensions.TypeAlias = typing.Literal["ch3_current"]
+    _WhichOneofArgType__ch3_current: typing_extensions.TypeAlias = typing.Literal["_ch3_current", b"_ch3_current"]
+    _WhichOneofReturnType__ch3_voltage: typing_extensions.TypeAlias = typing.Literal["ch3_voltage"]
+    _WhichOneofArgType__ch3_voltage: typing_extensions.TypeAlias = typing.Literal["_ch3_voltage", b"_ch3_voltage"]
+    _WhichOneofReturnType__ch4_current: typing_extensions.TypeAlias = typing.Literal["ch4_current"]
+    _WhichOneofArgType__ch4_current: typing_extensions.TypeAlias = typing.Literal["_ch4_current", b"_ch4_current"]
+    _WhichOneofReturnType__ch4_voltage: typing_extensions.TypeAlias = typing.Literal["ch4_voltage"]
+    _WhichOneofArgType__ch4_voltage: typing_extensions.TypeAlias = typing.Literal["_ch4_voltage", b"_ch4_voltage"]
+    _WhichOneofReturnType__ch5_current: typing_extensions.TypeAlias = typing.Literal["ch5_current"]
+    _WhichOneofArgType__ch5_current: typing_extensions.TypeAlias = typing.Literal["_ch5_current", b"_ch5_current"]
+    _WhichOneofReturnType__ch5_voltage: typing_extensions.TypeAlias = typing.Literal["ch5_voltage"]
+    _WhichOneofArgType__ch5_voltage: typing_extensions.TypeAlias = typing.Literal["_ch5_voltage", b"_ch5_voltage"]
+    _WhichOneofReturnType__ch6_current: typing_extensions.TypeAlias = typing.Literal["ch6_current"]
+    _WhichOneofArgType__ch6_current: typing_extensions.TypeAlias = typing.Literal["_ch6_current", b"_ch6_current"]
+    _WhichOneofReturnType__ch6_voltage: typing_extensions.TypeAlias = typing.Literal["ch6_voltage"]
+    _WhichOneofArgType__ch6_voltage: typing_extensions.TypeAlias = typing.Literal["_ch6_voltage", b"_ch6_voltage"]
+    _WhichOneofReturnType__ch7_current: typing_extensions.TypeAlias = typing.Literal["ch7_current"]
+    _WhichOneofArgType__ch7_current: typing_extensions.TypeAlias = typing.Literal["_ch7_current", b"_ch7_current"]
+    _WhichOneofReturnType__ch7_voltage: typing_extensions.TypeAlias = typing.Literal["ch7_voltage"]
+    _WhichOneofArgType__ch7_voltage: typing_extensions.TypeAlias = typing.Literal["_ch7_voltage", b"_ch7_voltage"]
+    _WhichOneofReturnType__ch8_current: typing_extensions.TypeAlias = typing.Literal["ch8_current"]
+    _WhichOneofArgType__ch8_current: typing_extensions.TypeAlias = typing.Literal["_ch8_current", b"_ch8_current"]
+    _WhichOneofReturnType__ch8_voltage: typing_extensions.TypeAlias = typing.Literal["ch8_voltage"]
+    _WhichOneofArgType__ch8_voltage: typing_extensions.TypeAlias = typing.Literal["_ch8_voltage", b"_ch8_voltage"]
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch1_current", b"_ch1_current"]) -> typing.Literal["ch1_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch1_current) -> _WhichOneofReturnType__ch1_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch1_voltage", b"_ch1_voltage"]) -> typing.Literal["ch1_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch1_voltage) -> _WhichOneofReturnType__ch1_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch2_current", b"_ch2_current"]) -> typing.Literal["ch2_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch2_current) -> _WhichOneofReturnType__ch2_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch2_voltage", b"_ch2_voltage"]) -> typing.Literal["ch2_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch2_voltage) -> _WhichOneofReturnType__ch2_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch3_current", b"_ch3_current"]) -> typing.Literal["ch3_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch3_current) -> _WhichOneofReturnType__ch3_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch3_voltage", b"_ch3_voltage"]) -> typing.Literal["ch3_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch3_voltage) -> _WhichOneofReturnType__ch3_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch4_current", b"_ch4_current"]) -> typing.Literal["ch4_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch4_current) -> _WhichOneofReturnType__ch4_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch4_voltage", b"_ch4_voltage"]) -> typing.Literal["ch4_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch4_voltage) -> _WhichOneofReturnType__ch4_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch5_current", b"_ch5_current"]) -> typing.Literal["ch5_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch5_current) -> _WhichOneofReturnType__ch5_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch5_voltage", b"_ch5_voltage"]) -> typing.Literal["ch5_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch5_voltage) -> _WhichOneofReturnType__ch5_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch6_current", b"_ch6_current"]) -> typing.Literal["ch6_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch6_current) -> _WhichOneofReturnType__ch6_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch6_voltage", b"_ch6_voltage"]) -> typing.Literal["ch6_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch6_voltage) -> _WhichOneofReturnType__ch6_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch7_current", b"_ch7_current"]) -> typing.Literal["ch7_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch7_current) -> _WhichOneofReturnType__ch7_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch7_voltage", b"_ch7_voltage"]) -> typing.Literal["ch7_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch7_voltage) -> _WhichOneofReturnType__ch7_voltage | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch8_current", b"_ch8_current"]) -> typing.Literal["ch8_current"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch8_current) -> _WhichOneofReturnType__ch8_current | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_ch8_voltage", b"_ch8_voltage"]) -> typing.Literal["ch8_voltage"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__ch8_voltage) -> _WhichOneofReturnType__ch8_voltage | None: ...
 
-global___PowerMetrics = PowerMetrics
+Global___PowerMetrics: typing_extensions.TypeAlias = PowerMetrics
 
 @typing.final
 class AirQualityMetrics(google.protobuf.message.Message):
@@ -813,6 +1207,7 @@ class AirQualityMetrics(google.protobuf.message.Message):
     PM_VOC_IDX_FIELD_NUMBER: builtins.int
     PM_NOX_IDX_FIELD_NUMBER: builtins.int
     PARTICLES_TPS_FIELD_NUMBER: builtins.int
+    PM_STATUS_FLAGS_FIELD_NUMBER: builtins.int
     pm10_standard: builtins.int
     """
     Concentration Units Standard PM1.0 in ug/m3
@@ -913,6 +1308,13 @@ class AirQualityMetrics(google.protobuf.message.Message):
     """
     Typical Particle Size in um
     """
+    pm_status_flags: builtins.int
+    """
+    Raw PM sensor device status/error register bitmask, as defined by the sensor's own datasheet
+    (currently populated by the SEN6X family: bit 4 fan error, bit 6 RH&T error, bit 7 gas/VOC-NOx
+    error, bit 9 CO2 error (SEN66), bit 10 HCHO error, bit 11 PM error, bit 12 CO2 error (SEN63C/SEN69C),
+    bit 21 fan speed warning)
+    """
     def __init__(
         self,
         *,
@@ -941,61 +1343,118 @@ class AirQualityMetrics(google.protobuf.message.Message):
         pm_voc_idx: builtins.float | None = ...,
         pm_nox_idx: builtins.float | None = ...,
         particles_tps: builtins.float | None = ...,
+        pm_status_flags: builtins.int | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_co2", b"_co2", "_co2_humidity", b"_co2_humidity", "_co2_temperature", b"_co2_temperature", "_form_formaldehyde", b"_form_formaldehyde", "_form_humidity", b"_form_humidity", "_form_temperature", b"_form_temperature", "_particles_03um", b"_particles_03um", "_particles_05um", b"_particles_05um", "_particles_100um", b"_particles_100um", "_particles_10um", b"_particles_10um", "_particles_25um", b"_particles_25um", "_particles_40um", b"_particles_40um", "_particles_50um", b"_particles_50um", "_particles_tps", b"_particles_tps", "_pm100_environmental", b"_pm100_environmental", "_pm100_standard", b"_pm100_standard", "_pm10_environmental", b"_pm10_environmental", "_pm10_standard", b"_pm10_standard", "_pm25_environmental", b"_pm25_environmental", "_pm25_standard", b"_pm25_standard", "_pm40_standard", b"_pm40_standard", "_pm_humidity", b"_pm_humidity", "_pm_nox_idx", b"_pm_nox_idx", "_pm_temperature", b"_pm_temperature", "_pm_voc_idx", b"_pm_voc_idx", "co2", b"co2", "co2_humidity", b"co2_humidity", "co2_temperature", b"co2_temperature", "form_formaldehyde", b"form_formaldehyde", "form_humidity", b"form_humidity", "form_temperature", b"form_temperature", "particles_03um", b"particles_03um", "particles_05um", b"particles_05um", "particles_100um", b"particles_100um", "particles_10um", b"particles_10um", "particles_25um", b"particles_25um", "particles_40um", b"particles_40um", "particles_50um", b"particles_50um", "particles_tps", b"particles_tps", "pm100_environmental", b"pm100_environmental", "pm100_standard", b"pm100_standard", "pm10_environmental", b"pm10_environmental", "pm10_standard", b"pm10_standard", "pm25_environmental", b"pm25_environmental", "pm25_standard", b"pm25_standard", "pm40_standard", b"pm40_standard", "pm_humidity", b"pm_humidity", "pm_nox_idx", b"pm_nox_idx", "pm_temperature", b"pm_temperature", "pm_voc_idx", b"pm_voc_idx"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_co2", b"_co2", "_co2_humidity", b"_co2_humidity", "_co2_temperature", b"_co2_temperature", "_form_formaldehyde", b"_form_formaldehyde", "_form_humidity", b"_form_humidity", "_form_temperature", b"_form_temperature", "_particles_03um", b"_particles_03um", "_particles_05um", b"_particles_05um", "_particles_100um", b"_particles_100um", "_particles_10um", b"_particles_10um", "_particles_25um", b"_particles_25um", "_particles_40um", b"_particles_40um", "_particles_50um", b"_particles_50um", "_particles_tps", b"_particles_tps", "_pm100_environmental", b"_pm100_environmental", "_pm100_standard", b"_pm100_standard", "_pm10_environmental", b"_pm10_environmental", "_pm10_standard", b"_pm10_standard", "_pm25_environmental", b"_pm25_environmental", "_pm25_standard", b"_pm25_standard", "_pm40_standard", b"_pm40_standard", "_pm_humidity", b"_pm_humidity", "_pm_nox_idx", b"_pm_nox_idx", "_pm_temperature", b"_pm_temperature", "_pm_voc_idx", b"_pm_voc_idx", "co2", b"co2", "co2_humidity", b"co2_humidity", "co2_temperature", b"co2_temperature", "form_formaldehyde", b"form_formaldehyde", "form_humidity", b"form_humidity", "form_temperature", b"form_temperature", "particles_03um", b"particles_03um", "particles_05um", b"particles_05um", "particles_100um", b"particles_100um", "particles_10um", b"particles_10um", "particles_25um", b"particles_25um", "particles_40um", b"particles_40um", "particles_50um", b"particles_50um", "particles_tps", b"particles_tps", "pm100_environmental", b"pm100_environmental", "pm100_standard", b"pm100_standard", "pm10_environmental", b"pm10_environmental", "pm10_standard", b"pm10_standard", "pm25_environmental", b"pm25_environmental", "pm25_standard", b"pm25_standard", "pm40_standard", b"pm40_standard", "pm_humidity", b"pm_humidity", "pm_nox_idx", b"pm_nox_idx", "pm_temperature", b"pm_temperature", "pm_voc_idx", b"pm_voc_idx"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_co2", b"_co2", "_co2_humidity", b"_co2_humidity", "_co2_temperature", b"_co2_temperature", "_form_formaldehyde", b"_form_formaldehyde", "_form_humidity", b"_form_humidity", "_form_temperature", b"_form_temperature", "_particles_03um", b"_particles_03um", "_particles_05um", b"_particles_05um", "_particles_100um", b"_particles_100um", "_particles_10um", b"_particles_10um", "_particles_25um", b"_particles_25um", "_particles_40um", b"_particles_40um", "_particles_50um", b"_particles_50um", "_particles_tps", b"_particles_tps", "_pm100_environmental", b"_pm100_environmental", "_pm100_standard", b"_pm100_standard", "_pm10_environmental", b"_pm10_environmental", "_pm10_standard", b"_pm10_standard", "_pm25_environmental", b"_pm25_environmental", "_pm25_standard", b"_pm25_standard", "_pm40_standard", b"_pm40_standard", "_pm_humidity", b"_pm_humidity", "_pm_nox_idx", b"_pm_nox_idx", "_pm_status_flags", b"_pm_status_flags", "_pm_temperature", b"_pm_temperature", "_pm_voc_idx", b"_pm_voc_idx", "co2", b"co2", "co2_humidity", b"co2_humidity", "co2_temperature", b"co2_temperature", "form_formaldehyde", b"form_formaldehyde", "form_humidity", b"form_humidity", "form_temperature", b"form_temperature", "particles_03um", b"particles_03um", "particles_05um", b"particles_05um", "particles_100um", b"particles_100um", "particles_10um", b"particles_10um", "particles_25um", b"particles_25um", "particles_40um", b"particles_40um", "particles_50um", b"particles_50um", "particles_tps", b"particles_tps", "pm100_environmental", b"pm100_environmental", "pm100_standard", b"pm100_standard", "pm10_environmental", b"pm10_environmental", "pm10_standard", b"pm10_standard", "pm25_environmental", b"pm25_environmental", "pm25_standard", b"pm25_standard", "pm40_standard", b"pm40_standard", "pm_humidity", b"pm_humidity", "pm_nox_idx", b"pm_nox_idx", "pm_status_flags", b"pm_status_flags", "pm_temperature", b"pm_temperature", "pm_voc_idx", b"pm_voc_idx"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_co2", b"_co2", "_co2_humidity", b"_co2_humidity", "_co2_temperature", b"_co2_temperature", "_form_formaldehyde", b"_form_formaldehyde", "_form_humidity", b"_form_humidity", "_form_temperature", b"_form_temperature", "_particles_03um", b"_particles_03um", "_particles_05um", b"_particles_05um", "_particles_100um", b"_particles_100um", "_particles_10um", b"_particles_10um", "_particles_25um", b"_particles_25um", "_particles_40um", b"_particles_40um", "_particles_50um", b"_particles_50um", "_particles_tps", b"_particles_tps", "_pm100_environmental", b"_pm100_environmental", "_pm100_standard", b"_pm100_standard", "_pm10_environmental", b"_pm10_environmental", "_pm10_standard", b"_pm10_standard", "_pm25_environmental", b"_pm25_environmental", "_pm25_standard", b"_pm25_standard", "_pm40_standard", b"_pm40_standard", "_pm_humidity", b"_pm_humidity", "_pm_nox_idx", b"_pm_nox_idx", "_pm_status_flags", b"_pm_status_flags", "_pm_temperature", b"_pm_temperature", "_pm_voc_idx", b"_pm_voc_idx", "co2", b"co2", "co2_humidity", b"co2_humidity", "co2_temperature", b"co2_temperature", "form_formaldehyde", b"form_formaldehyde", "form_humidity", b"form_humidity", "form_temperature", b"form_temperature", "particles_03um", b"particles_03um", "particles_05um", b"particles_05um", "particles_100um", b"particles_100um", "particles_10um", b"particles_10um", "particles_25um", b"particles_25um", "particles_40um", b"particles_40um", "particles_50um", b"particles_50um", "particles_tps", b"particles_tps", "pm100_environmental", b"pm100_environmental", "pm100_standard", b"pm100_standard", "pm10_environmental", b"pm10_environmental", "pm10_standard", b"pm10_standard", "pm25_environmental", b"pm25_environmental", "pm25_standard", b"pm25_standard", "pm40_standard", b"pm40_standard", "pm_humidity", b"pm_humidity", "pm_nox_idx", b"pm_nox_idx", "pm_status_flags", b"pm_status_flags", "pm_temperature", b"pm_temperature", "pm_voc_idx", b"pm_voc_idx"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__co2: typing_extensions.TypeAlias = typing.Literal["co2"]
+    _WhichOneofArgType__co2: typing_extensions.TypeAlias = typing.Literal["_co2", b"_co2"]
+    _WhichOneofReturnType__co2_humidity: typing_extensions.TypeAlias = typing.Literal["co2_humidity"]
+    _WhichOneofArgType__co2_humidity: typing_extensions.TypeAlias = typing.Literal["_co2_humidity", b"_co2_humidity"]
+    _WhichOneofReturnType__co2_temperature: typing_extensions.TypeAlias = typing.Literal["co2_temperature"]
+    _WhichOneofArgType__co2_temperature: typing_extensions.TypeAlias = typing.Literal["_co2_temperature", b"_co2_temperature"]
+    _WhichOneofReturnType__form_formaldehyde: typing_extensions.TypeAlias = typing.Literal["form_formaldehyde"]
+    _WhichOneofArgType__form_formaldehyde: typing_extensions.TypeAlias = typing.Literal["_form_formaldehyde", b"_form_formaldehyde"]
+    _WhichOneofReturnType__form_humidity: typing_extensions.TypeAlias = typing.Literal["form_humidity"]
+    _WhichOneofArgType__form_humidity: typing_extensions.TypeAlias = typing.Literal["_form_humidity", b"_form_humidity"]
+    _WhichOneofReturnType__form_temperature: typing_extensions.TypeAlias = typing.Literal["form_temperature"]
+    _WhichOneofArgType__form_temperature: typing_extensions.TypeAlias = typing.Literal["_form_temperature", b"_form_temperature"]
+    _WhichOneofReturnType__particles_03um: typing_extensions.TypeAlias = typing.Literal["particles_03um"]
+    _WhichOneofArgType__particles_03um: typing_extensions.TypeAlias = typing.Literal["_particles_03um", b"_particles_03um"]
+    _WhichOneofReturnType__particles_05um: typing_extensions.TypeAlias = typing.Literal["particles_05um"]
+    _WhichOneofArgType__particles_05um: typing_extensions.TypeAlias = typing.Literal["_particles_05um", b"_particles_05um"]
+    _WhichOneofReturnType__particles_100um: typing_extensions.TypeAlias = typing.Literal["particles_100um"]
+    _WhichOneofArgType__particles_100um: typing_extensions.TypeAlias = typing.Literal["_particles_100um", b"_particles_100um"]
+    _WhichOneofReturnType__particles_10um: typing_extensions.TypeAlias = typing.Literal["particles_10um"]
+    _WhichOneofArgType__particles_10um: typing_extensions.TypeAlias = typing.Literal["_particles_10um", b"_particles_10um"]
+    _WhichOneofReturnType__particles_25um: typing_extensions.TypeAlias = typing.Literal["particles_25um"]
+    _WhichOneofArgType__particles_25um: typing_extensions.TypeAlias = typing.Literal["_particles_25um", b"_particles_25um"]
+    _WhichOneofReturnType__particles_40um: typing_extensions.TypeAlias = typing.Literal["particles_40um"]
+    _WhichOneofArgType__particles_40um: typing_extensions.TypeAlias = typing.Literal["_particles_40um", b"_particles_40um"]
+    _WhichOneofReturnType__particles_50um: typing_extensions.TypeAlias = typing.Literal["particles_50um"]
+    _WhichOneofArgType__particles_50um: typing_extensions.TypeAlias = typing.Literal["_particles_50um", b"_particles_50um"]
+    _WhichOneofReturnType__particles_tps: typing_extensions.TypeAlias = typing.Literal["particles_tps"]
+    _WhichOneofArgType__particles_tps: typing_extensions.TypeAlias = typing.Literal["_particles_tps", b"_particles_tps"]
+    _WhichOneofReturnType__pm100_environmental: typing_extensions.TypeAlias = typing.Literal["pm100_environmental"]
+    _WhichOneofArgType__pm100_environmental: typing_extensions.TypeAlias = typing.Literal["_pm100_environmental", b"_pm100_environmental"]
+    _WhichOneofReturnType__pm100_standard: typing_extensions.TypeAlias = typing.Literal["pm100_standard"]
+    _WhichOneofArgType__pm100_standard: typing_extensions.TypeAlias = typing.Literal["_pm100_standard", b"_pm100_standard"]
+    _WhichOneofReturnType__pm10_environmental: typing_extensions.TypeAlias = typing.Literal["pm10_environmental"]
+    _WhichOneofArgType__pm10_environmental: typing_extensions.TypeAlias = typing.Literal["_pm10_environmental", b"_pm10_environmental"]
+    _WhichOneofReturnType__pm10_standard: typing_extensions.TypeAlias = typing.Literal["pm10_standard"]
+    _WhichOneofArgType__pm10_standard: typing_extensions.TypeAlias = typing.Literal["_pm10_standard", b"_pm10_standard"]
+    _WhichOneofReturnType__pm25_environmental: typing_extensions.TypeAlias = typing.Literal["pm25_environmental"]
+    _WhichOneofArgType__pm25_environmental: typing_extensions.TypeAlias = typing.Literal["_pm25_environmental", b"_pm25_environmental"]
+    _WhichOneofReturnType__pm25_standard: typing_extensions.TypeAlias = typing.Literal["pm25_standard"]
+    _WhichOneofArgType__pm25_standard: typing_extensions.TypeAlias = typing.Literal["_pm25_standard", b"_pm25_standard"]
+    _WhichOneofReturnType__pm40_standard: typing_extensions.TypeAlias = typing.Literal["pm40_standard"]
+    _WhichOneofArgType__pm40_standard: typing_extensions.TypeAlias = typing.Literal["_pm40_standard", b"_pm40_standard"]
+    _WhichOneofReturnType__pm_humidity: typing_extensions.TypeAlias = typing.Literal["pm_humidity"]
+    _WhichOneofArgType__pm_humidity: typing_extensions.TypeAlias = typing.Literal["_pm_humidity", b"_pm_humidity"]
+    _WhichOneofReturnType__pm_nox_idx: typing_extensions.TypeAlias = typing.Literal["pm_nox_idx"]
+    _WhichOneofArgType__pm_nox_idx: typing_extensions.TypeAlias = typing.Literal["_pm_nox_idx", b"_pm_nox_idx"]
+    _WhichOneofReturnType__pm_status_flags: typing_extensions.TypeAlias = typing.Literal["pm_status_flags"]
+    _WhichOneofArgType__pm_status_flags: typing_extensions.TypeAlias = typing.Literal["_pm_status_flags", b"_pm_status_flags"]
+    _WhichOneofReturnType__pm_temperature: typing_extensions.TypeAlias = typing.Literal["pm_temperature"]
+    _WhichOneofArgType__pm_temperature: typing_extensions.TypeAlias = typing.Literal["_pm_temperature", b"_pm_temperature"]
+    _WhichOneofReturnType__pm_voc_idx: typing_extensions.TypeAlias = typing.Literal["pm_voc_idx"]
+    _WhichOneofArgType__pm_voc_idx: typing_extensions.TypeAlias = typing.Literal["_pm_voc_idx", b"_pm_voc_idx"]
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_co2", b"_co2"]) -> typing.Literal["co2"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__co2) -> _WhichOneofReturnType__co2 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_co2_humidity", b"_co2_humidity"]) -> typing.Literal["co2_humidity"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__co2_humidity) -> _WhichOneofReturnType__co2_humidity | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_co2_temperature", b"_co2_temperature"]) -> typing.Literal["co2_temperature"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__co2_temperature) -> _WhichOneofReturnType__co2_temperature | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_form_formaldehyde", b"_form_formaldehyde"]) -> typing.Literal["form_formaldehyde"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__form_formaldehyde) -> _WhichOneofReturnType__form_formaldehyde | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_form_humidity", b"_form_humidity"]) -> typing.Literal["form_humidity"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__form_humidity) -> _WhichOneofReturnType__form_humidity | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_form_temperature", b"_form_temperature"]) -> typing.Literal["form_temperature"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__form_temperature) -> _WhichOneofReturnType__form_temperature | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_03um", b"_particles_03um"]) -> typing.Literal["particles_03um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_03um) -> _WhichOneofReturnType__particles_03um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_05um", b"_particles_05um"]) -> typing.Literal["particles_05um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_05um) -> _WhichOneofReturnType__particles_05um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_100um", b"_particles_100um"]) -> typing.Literal["particles_100um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_100um) -> _WhichOneofReturnType__particles_100um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_10um", b"_particles_10um"]) -> typing.Literal["particles_10um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_10um) -> _WhichOneofReturnType__particles_10um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_25um", b"_particles_25um"]) -> typing.Literal["particles_25um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_25um) -> _WhichOneofReturnType__particles_25um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_40um", b"_particles_40um"]) -> typing.Literal["particles_40um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_40um) -> _WhichOneofReturnType__particles_40um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_50um", b"_particles_50um"]) -> typing.Literal["particles_50um"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_50um) -> _WhichOneofReturnType__particles_50um | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_particles_tps", b"_particles_tps"]) -> typing.Literal["particles_tps"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__particles_tps) -> _WhichOneofReturnType__particles_tps | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm100_environmental", b"_pm100_environmental"]) -> typing.Literal["pm100_environmental"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm100_environmental) -> _WhichOneofReturnType__pm100_environmental | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm100_standard", b"_pm100_standard"]) -> typing.Literal["pm100_standard"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm100_standard) -> _WhichOneofReturnType__pm100_standard | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm10_environmental", b"_pm10_environmental"]) -> typing.Literal["pm10_environmental"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm10_environmental) -> _WhichOneofReturnType__pm10_environmental | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm10_standard", b"_pm10_standard"]) -> typing.Literal["pm10_standard"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm10_standard) -> _WhichOneofReturnType__pm10_standard | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm25_environmental", b"_pm25_environmental"]) -> typing.Literal["pm25_environmental"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm25_environmental) -> _WhichOneofReturnType__pm25_environmental | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm25_standard", b"_pm25_standard"]) -> typing.Literal["pm25_standard"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm25_standard) -> _WhichOneofReturnType__pm25_standard | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm40_standard", b"_pm40_standard"]) -> typing.Literal["pm40_standard"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm40_standard) -> _WhichOneofReturnType__pm40_standard | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm_humidity", b"_pm_humidity"]) -> typing.Literal["pm_humidity"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm_humidity) -> _WhichOneofReturnType__pm_humidity | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm_nox_idx", b"_pm_nox_idx"]) -> typing.Literal["pm_nox_idx"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm_nox_idx) -> _WhichOneofReturnType__pm_nox_idx | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm_temperature", b"_pm_temperature"]) -> typing.Literal["pm_temperature"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm_status_flags) -> _WhichOneofReturnType__pm_status_flags | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_pm_voc_idx", b"_pm_voc_idx"]) -> typing.Literal["pm_voc_idx"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm_temperature) -> _WhichOneofReturnType__pm_temperature | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__pm_voc_idx) -> _WhichOneofReturnType__pm_voc_idx | None: ...
 
-global___AirQualityMetrics = AirQualityMetrics
+Global___AirQualityMetrics: typing_extensions.TypeAlias = AirQualityMetrics
 
 @typing.final
 class LocalStats(google.protobuf.message.Message):
@@ -1018,6 +1477,8 @@ class LocalStats(google.protobuf.message.Message):
     NUM_TX_RELAY_CANCELED_FIELD_NUMBER: builtins.int
     HEAP_TOTAL_BYTES_FIELD_NUMBER: builtins.int
     HEAP_FREE_BYTES_FIELD_NUMBER: builtins.int
+    NUM_TX_DROPPED_FIELD_NUMBER: builtins.int
+    NOISE_FLOOR_FIELD_NUMBER: builtins.int
     uptime_seconds: builtins.int
     """
     How long the device has been running since the last reboot (in seconds)
@@ -1072,6 +1533,14 @@ class LocalStats(google.protobuf.message.Message):
     """
     Number of bytes free in the heap
     """
+    num_tx_dropped: builtins.int
+    """
+    Number of packets that were dropped because the transmit queue was full.
+    """
+    noise_floor: builtins.int
+    """
+    Noise floor value measured in dBm
+    """
     def __init__(
         self,
         *,
@@ -1088,10 +1557,72 @@ class LocalStats(google.protobuf.message.Message):
         num_tx_relay_canceled: builtins.int = ...,
         heap_total_bytes: builtins.int = ...,
         heap_free_bytes: builtins.int = ...,
+        num_tx_dropped: builtins.int = ...,
+        noise_floor: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["air_util_tx", b"air_util_tx", "channel_utilization", b"channel_utilization", "heap_free_bytes", b"heap_free_bytes", "heap_total_bytes", b"heap_total_bytes", "num_online_nodes", b"num_online_nodes", "num_packets_rx", b"num_packets_rx", "num_packets_rx_bad", b"num_packets_rx_bad", "num_packets_tx", b"num_packets_tx", "num_rx_dupe", b"num_rx_dupe", "num_total_nodes", b"num_total_nodes", "num_tx_relay", b"num_tx_relay", "num_tx_relay_canceled", b"num_tx_relay_canceled", "uptime_seconds", b"uptime_seconds"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_util_tx", b"air_util_tx", "channel_utilization", b"channel_utilization", "heap_free_bytes", b"heap_free_bytes", "heap_total_bytes", b"heap_total_bytes", "noise_floor", b"noise_floor", "num_online_nodes", b"num_online_nodes", "num_packets_rx", b"num_packets_rx", "num_packets_rx_bad", b"num_packets_rx_bad", "num_packets_tx", b"num_packets_tx", "num_rx_dupe", b"num_rx_dupe", "num_total_nodes", b"num_total_nodes", "num_tx_dropped", b"num_tx_dropped", "num_tx_relay", b"num_tx_relay", "num_tx_relay_canceled", b"num_tx_relay_canceled", "uptime_seconds", b"uptime_seconds"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___LocalStats = LocalStats
+Global___LocalStats: typing_extensions.TypeAlias = LocalStats
+
+@typing.final
+class TrafficManagementStats(google.protobuf.message.Message):
+    """
+    Traffic management statistics for mesh network optimization
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    PACKETS_INSPECTED_FIELD_NUMBER: builtins.int
+    POSITION_DEDUP_DROPS_FIELD_NUMBER: builtins.int
+    NODEINFO_CACHE_HITS_FIELD_NUMBER: builtins.int
+    RATE_LIMIT_DROPS_FIELD_NUMBER: builtins.int
+    UNKNOWN_PACKET_DROPS_FIELD_NUMBER: builtins.int
+    HOP_EXHAUSTED_PACKETS_FIELD_NUMBER: builtins.int
+    ROUTER_HOPS_PRESERVED_FIELD_NUMBER: builtins.int
+    packets_inspected: builtins.int
+    """
+    Total number of packets inspected by traffic management
+    """
+    position_dedup_drops: builtins.int
+    """
+    Number of position packets dropped due to deduplication
+    """
+    nodeinfo_cache_hits: builtins.int
+    """
+    Number of NodeInfo requests answered from cache
+    """
+    rate_limit_drops: builtins.int
+    """
+    Number of packets dropped due to rate limiting
+    """
+    unknown_packet_drops: builtins.int
+    """
+    Number of unknown/undecryptable packets dropped
+    """
+    hop_exhausted_packets: builtins.int
+    """
+    Number of packets with hop_limit exhausted for local-only broadcast
+    """
+    router_hops_preserved: builtins.int
+    """
+    Number of times router hop preservation was applied
+    """
+    def __init__(
+        self,
+        *,
+        packets_inspected: builtins.int = ...,
+        position_dedup_drops: builtins.int = ...,
+        nodeinfo_cache_hits: builtins.int = ...,
+        rate_limit_drops: builtins.int = ...,
+        unknown_packet_drops: builtins.int = ...,
+        hop_exhausted_packets: builtins.int = ...,
+        router_hops_preserved: builtins.int = ...,
+    ) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["hop_exhausted_packets", b"hop_exhausted_packets", "nodeinfo_cache_hits", b"nodeinfo_cache_hits", "packets_inspected", b"packets_inspected", "position_dedup_drops", b"position_dedup_drops", "rate_limit_drops", b"rate_limit_drops", "router_hops_preserved", b"router_hops_preserved", "unknown_packet_drops", b"unknown_packet_drops"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___TrafficManagementStats: typing_extensions.TypeAlias = TrafficManagementStats
 
 @typing.final
 class HealthMetrics(google.protobuf.message.Message):
@@ -1123,16 +1654,24 @@ class HealthMetrics(google.protobuf.message.Message):
         spO2: builtins.int | None = ...,
         temperature: builtins.float | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_heart_bpm", b"_heart_bpm", "_spO2", b"_spO2", "_temperature", b"_temperature", "heart_bpm", b"heart_bpm", "spO2", b"spO2", "temperature", b"temperature"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_heart_bpm", b"_heart_bpm", "_spO2", b"_spO2", "_temperature", b"_temperature", "heart_bpm", b"heart_bpm", "spO2", b"spO2", "temperature", b"temperature"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_heart_bpm", b"_heart_bpm", "_spO2", b"_spO2", "_temperature", b"_temperature", "heart_bpm", b"heart_bpm", "spO2", b"spO2", "temperature", b"temperature"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_heart_bpm", b"_heart_bpm", "_spO2", b"_spO2", "_temperature", b"_temperature", "heart_bpm", b"heart_bpm", "spO2", b"spO2", "temperature", b"temperature"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__heart_bpm: typing_extensions.TypeAlias = typing.Literal["heart_bpm"]
+    _WhichOneofArgType__heart_bpm: typing_extensions.TypeAlias = typing.Literal["_heart_bpm", b"_heart_bpm"]
+    _WhichOneofReturnType__spO2: typing_extensions.TypeAlias = typing.Literal["spO2"]
+    _WhichOneofArgType__spO2: typing_extensions.TypeAlias = typing.Literal["_spO2", b"_spO2"]
+    _WhichOneofReturnType__temperature: typing_extensions.TypeAlias = typing.Literal["temperature"]
+    _WhichOneofArgType__temperature: typing_extensions.TypeAlias = typing.Literal["_temperature", b"_temperature"]
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_heart_bpm", b"_heart_bpm"]) -> typing.Literal["heart_bpm"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__heart_bpm) -> _WhichOneofReturnType__heart_bpm | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_spO2", b"_spO2"]) -> typing.Literal["spO2"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__spO2) -> _WhichOneofReturnType__spO2 | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_temperature", b"_temperature"]) -> typing.Literal["temperature"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__temperature) -> _WhichOneofReturnType__temperature | None: ...
 
-global___HealthMetrics = HealthMetrics
+Global___HealthMetrics: typing_extensions.TypeAlias = HealthMetrics
 
 @typing.final
 class HostMetrics(google.protobuf.message.Message):
@@ -1201,16 +1740,24 @@ class HostMetrics(google.protobuf.message.Message):
         load15: builtins.int = ...,
         user_string: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_diskfree2_bytes", b"_diskfree2_bytes", "_diskfree3_bytes", b"_diskfree3_bytes", "_user_string", b"_user_string", "diskfree2_bytes", b"diskfree2_bytes", "diskfree3_bytes", b"diskfree3_bytes", "user_string", b"user_string"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_diskfree2_bytes", b"_diskfree2_bytes", "_diskfree3_bytes", b"_diskfree3_bytes", "_user_string", b"_user_string", "diskfree1_bytes", b"diskfree1_bytes", "diskfree2_bytes", b"diskfree2_bytes", "diskfree3_bytes", b"diskfree3_bytes", "freemem_bytes", b"freemem_bytes", "load1", b"load1", "load15", b"load15", "load5", b"load5", "uptime_seconds", b"uptime_seconds", "user_string", b"user_string"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_diskfree2_bytes", b"_diskfree2_bytes", "_diskfree3_bytes", b"_diskfree3_bytes", "_user_string", b"_user_string", "diskfree2_bytes", b"diskfree2_bytes", "diskfree3_bytes", b"diskfree3_bytes", "user_string", b"user_string"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_diskfree2_bytes", b"_diskfree2_bytes", "_diskfree3_bytes", b"_diskfree3_bytes", "_user_string", b"_user_string", "diskfree1_bytes", b"diskfree1_bytes", "diskfree2_bytes", b"diskfree2_bytes", "diskfree3_bytes", b"diskfree3_bytes", "freemem_bytes", b"freemem_bytes", "load1", b"load1", "load15", b"load15", "load5", b"load5", "uptime_seconds", b"uptime_seconds", "user_string", b"user_string"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__diskfree2_bytes: typing_extensions.TypeAlias = typing.Literal["diskfree2_bytes"]
+    _WhichOneofArgType__diskfree2_bytes: typing_extensions.TypeAlias = typing.Literal["_diskfree2_bytes", b"_diskfree2_bytes"]
+    _WhichOneofReturnType__diskfree3_bytes: typing_extensions.TypeAlias = typing.Literal["diskfree3_bytes"]
+    _WhichOneofArgType__diskfree3_bytes: typing_extensions.TypeAlias = typing.Literal["_diskfree3_bytes", b"_diskfree3_bytes"]
+    _WhichOneofReturnType__user_string: typing_extensions.TypeAlias = typing.Literal["user_string"]
+    _WhichOneofArgType__user_string: typing_extensions.TypeAlias = typing.Literal["_user_string", b"_user_string"]
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_diskfree2_bytes", b"_diskfree2_bytes"]) -> typing.Literal["diskfree2_bytes"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__diskfree2_bytes) -> _WhichOneofReturnType__diskfree2_bytes | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_diskfree3_bytes", b"_diskfree3_bytes"]) -> typing.Literal["diskfree3_bytes"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__diskfree3_bytes) -> _WhichOneofReturnType__diskfree3_bytes | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing.Literal["_user_string", b"_user_string"]) -> typing.Literal["user_string"] | None: ...
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__user_string) -> _WhichOneofReturnType__user_string | None: ...
 
-global___HostMetrics = HostMetrics
+Global___HostMetrics: typing_extensions.TypeAlias = HostMetrics
 
 @typing.final
 class Telemetry(google.protobuf.message.Message):
@@ -1228,69 +1775,81 @@ class Telemetry(google.protobuf.message.Message):
     LOCAL_STATS_FIELD_NUMBER: builtins.int
     HEALTH_METRICS_FIELD_NUMBER: builtins.int
     HOST_METRICS_FIELD_NUMBER: builtins.int
+    TRAFFIC_MANAGEMENT_STATS_FIELD_NUMBER: builtins.int
     time: builtins.int
     """
     Seconds since 1970 - or 0 for unknown/unset
     """
     @property
-    def device_metrics(self) -> global___DeviceMetrics:
+    def device_metrics(self) -> Global___DeviceMetrics:
         """
         Key native device metrics such as battery level
         """
 
     @property
-    def environment_metrics(self) -> global___EnvironmentMetrics:
+    def environment_metrics(self) -> Global___EnvironmentMetrics:
         """
         Weather station or other environmental metrics
         """
 
     @property
-    def air_quality_metrics(self) -> global___AirQualityMetrics:
+    def air_quality_metrics(self) -> Global___AirQualityMetrics:
         """
         Air quality metrics
         """
 
     @property
-    def power_metrics(self) -> global___PowerMetrics:
+    def power_metrics(self) -> Global___PowerMetrics:
         """
         Power Metrics
         """
 
     @property
-    def local_stats(self) -> global___LocalStats:
+    def local_stats(self) -> Global___LocalStats:
         """
         Local device mesh statistics
         """
 
     @property
-    def health_metrics(self) -> global___HealthMetrics:
+    def health_metrics(self) -> Global___HealthMetrics:
         """
         Health telemetry metrics
         """
 
     @property
-    def host_metrics(self) -> global___HostMetrics:
+    def host_metrics(self) -> Global___HostMetrics:
         """
         Linux host metrics
+        """
+
+    @property
+    def traffic_management_stats(self) -> Global___TrafficManagementStats:
+        """
+        Traffic management statistics
         """
 
     def __init__(
         self,
         *,
         time: builtins.int = ...,
-        device_metrics: global___DeviceMetrics | None = ...,
-        environment_metrics: global___EnvironmentMetrics | None = ...,
-        air_quality_metrics: global___AirQualityMetrics | None = ...,
-        power_metrics: global___PowerMetrics | None = ...,
-        local_stats: global___LocalStats | None = ...,
-        health_metrics: global___HealthMetrics | None = ...,
-        host_metrics: global___HostMetrics | None = ...,
+        device_metrics: Global___DeviceMetrics | None = ...,
+        environment_metrics: Global___EnvironmentMetrics | None = ...,
+        air_quality_metrics: Global___AirQualityMetrics | None = ...,
+        power_metrics: Global___PowerMetrics | None = ...,
+        local_stats: Global___LocalStats | None = ...,
+        health_metrics: Global___HealthMetrics | None = ...,
+        host_metrics: Global___HostMetrics | None = ...,
+        traffic_management_stats: Global___TrafficManagementStats | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["air_quality_metrics", b"air_quality_metrics", "device_metrics", b"device_metrics", "environment_metrics", b"environment_metrics", "health_metrics", b"health_metrics", "host_metrics", b"host_metrics", "local_stats", b"local_stats", "power_metrics", b"power_metrics", "variant", b"variant"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["air_quality_metrics", b"air_quality_metrics", "device_metrics", b"device_metrics", "environment_metrics", b"environment_metrics", "health_metrics", b"health_metrics", "host_metrics", b"host_metrics", "local_stats", b"local_stats", "power_metrics", b"power_metrics", "time", b"time", "variant", b"variant"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["variant", b"variant"]) -> typing.Literal["device_metrics", "environment_metrics", "air_quality_metrics", "power_metrics", "local_stats", "health_metrics", "host_metrics"] | None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_quality_metrics", b"air_quality_metrics", "device_metrics", b"device_metrics", "environment_metrics", b"environment_metrics", "health_metrics", b"health_metrics", "host_metrics", b"host_metrics", "local_stats", b"local_stats", "power_metrics", b"power_metrics", "traffic_management_stats", b"traffic_management_stats", "variant", b"variant"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["air_quality_metrics", b"air_quality_metrics", "device_metrics", b"device_metrics", "environment_metrics", b"environment_metrics", "health_metrics", b"health_metrics", "host_metrics", b"host_metrics", "local_stats", b"local_stats", "power_metrics", b"power_metrics", "time", b"time", "traffic_management_stats", b"traffic_management_stats", "variant", b"variant"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType_variant: typing_extensions.TypeAlias = typing.Literal["device_metrics", "environment_metrics", "air_quality_metrics", "power_metrics", "local_stats", "health_metrics", "host_metrics", "traffic_management_stats"]
+    _WhichOneofArgType_variant: typing_extensions.TypeAlias = typing.Literal["variant", b"variant"]
+    def WhichOneof(self, oneof_group: _WhichOneofArgType_variant) -> _WhichOneofReturnType_variant | None: ...
 
-global___Telemetry = Telemetry
+Global___Telemetry: typing_extensions.TypeAlias = Telemetry
 
 @typing.final
 class Nau7802Config(google.protobuf.message.Message):
@@ -1316,6 +1875,165 @@ class Nau7802Config(google.protobuf.message.Message):
         zeroOffset: builtins.int = ...,
         calibrationFactor: builtins.float = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["calibrationFactor", b"calibrationFactor", "zeroOffset", b"zeroOffset"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["calibrationFactor", b"calibrationFactor", "zeroOffset", b"zeroOffset"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___Nau7802Config = Nau7802Config
+Global___Nau7802Config: typing_extensions.TypeAlias = Nau7802Config
+
+@typing.final
+class AS3935Config(google.protobuf.message.Message):
+    """
+    AS3935 lightning sensor configuration, for saving to flash
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    TUNING_CAP_PF_FIELD_NUMBER: builtins.int
+    tuning_cap_pf: builtins.int
+    """
+    Antenna tuning capacitance in pF, 0 to 120 in steps of 8. The chip does not retain
+    this across power loss, so it is stored here and re-applied on every boot.
+    """
+    def __init__(
+        self,
+        *,
+        tuning_cap_pf: builtins.int = ...,
+    ) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["tuning_cap_pf", b"tuning_cap_pf"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___AS3935Config: typing_extensions.TypeAlias = AS3935Config
+
+@typing.final
+class SEN5XState(google.protobuf.message.Message):
+    """
+    SEN5X State, for saving to flash (to be merged with SEN6XState)
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LAST_CLEANING_TIME_FIELD_NUMBER: builtins.int
+    LAST_CLEANING_VALID_FIELD_NUMBER: builtins.int
+    ONE_SHOT_MODE_FIELD_NUMBER: builtins.int
+    VOC_STATE_TIME_FIELD_NUMBER: builtins.int
+    VOC_STATE_VALID_FIELD_NUMBER: builtins.int
+    VOC_STATE_ARRAY_FIELD_NUMBER: builtins.int
+    last_cleaning_time: builtins.int
+    """
+    Last cleaning time for SEN5X
+    """
+    last_cleaning_valid: builtins.bool
+    """
+    Last cleaning time for SEN5X - valid flag
+    """
+    one_shot_mode: builtins.bool
+    """
+    Config flag for one-shot mode (see admin.proto)
+    """
+    voc_state_time: builtins.int
+    """
+    Last VOC state time for SEN55
+    """
+    voc_state_valid: builtins.bool
+    """
+    Last VOC state validity flag for SEN55
+    """
+    voc_state_array: builtins.int
+    """
+    VOC state array (8x uint8t) for SEN55
+    """
+    def __init__(
+        self,
+        *,
+        last_cleaning_time: builtins.int = ...,
+        last_cleaning_valid: builtins.bool = ...,
+        one_shot_mode: builtins.bool = ...,
+        voc_state_time: builtins.int | None = ...,
+        voc_state_valid: builtins.bool | None = ...,
+        voc_state_array: builtins.int | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_voc_state_array", b"_voc_state_array", "_voc_state_time", b"_voc_state_time", "_voc_state_valid", b"_voc_state_valid", "voc_state_array", b"voc_state_array", "voc_state_time", b"voc_state_time", "voc_state_valid", b"voc_state_valid"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_voc_state_array", b"_voc_state_array", "_voc_state_time", b"_voc_state_time", "_voc_state_valid", b"_voc_state_valid", "last_cleaning_time", b"last_cleaning_time", "last_cleaning_valid", b"last_cleaning_valid", "one_shot_mode", b"one_shot_mode", "voc_state_array", b"voc_state_array", "voc_state_time", b"voc_state_time", "voc_state_valid", b"voc_state_valid"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__voc_state_array: typing_extensions.TypeAlias = typing.Literal["voc_state_array"]
+    _WhichOneofArgType__voc_state_array: typing_extensions.TypeAlias = typing.Literal["_voc_state_array", b"_voc_state_array"]
+    _WhichOneofReturnType__voc_state_time: typing_extensions.TypeAlias = typing.Literal["voc_state_time"]
+    _WhichOneofArgType__voc_state_time: typing_extensions.TypeAlias = typing.Literal["_voc_state_time", b"_voc_state_time"]
+    _WhichOneofReturnType__voc_state_valid: typing_extensions.TypeAlias = typing.Literal["voc_state_valid"]
+    _WhichOneofArgType__voc_state_valid: typing_extensions.TypeAlias = typing.Literal["_voc_state_valid", b"_voc_state_valid"]
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voc_state_array) -> _WhichOneofReturnType__voc_state_array | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voc_state_time) -> _WhichOneofReturnType__voc_state_time | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voc_state_valid) -> _WhichOneofReturnType__voc_state_valid | None: ...
+
+Global___SEN5XState: typing_extensions.TypeAlias = SEN5XState
+
+@typing.final
+class SEN6XState(google.protobuf.message.Message):
+    """
+    SEN6X State, for saving to flash
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LAST_CLEANING_TIME_FIELD_NUMBER: builtins.int
+    LAST_CLEANING_VALID_FIELD_NUMBER: builtins.int
+    ONE_SHOT_MODE_FIELD_NUMBER: builtins.int
+    VOC_STATE_TIME_FIELD_NUMBER: builtins.int
+    VOC_STATE_VALID_FIELD_NUMBER: builtins.int
+    VOC_STATE_ARRAY_FIELD_NUMBER: builtins.int
+    last_cleaning_time: builtins.int
+    """
+    Last cleaning time for SEN6X
+    """
+    last_cleaning_valid: builtins.bool
+    """
+    Last cleaning time for SEN6X - valid flag
+    """
+    one_shot_mode: builtins.bool
+    """
+    Config flag for one-shot mode (see admin.proto)
+    """
+    voc_state_time: builtins.int
+    """
+    Last VOC state time, for models with a VOC sensor (SEN65, SEN66, SEN68, SEN69C)
+    """
+    voc_state_valid: builtins.bool
+    """
+    Last VOC state validity flag, for models with a VOC sensor (SEN65, SEN66, SEN68, SEN69C)
+    """
+    voc_state_array: builtins.int
+    """
+    VOC state array (8x uint8t), for models with a VOC sensor (SEN65, SEN66, SEN68, SEN69C)
+    """
+    def __init__(
+        self,
+        *,
+        last_cleaning_time: builtins.int = ...,
+        last_cleaning_valid: builtins.bool = ...,
+        one_shot_mode: builtins.bool = ...,
+        voc_state_time: builtins.int | None = ...,
+        voc_state_valid: builtins.bool | None = ...,
+        voc_state_array: builtins.int | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_voc_state_array", b"_voc_state_array", "_voc_state_time", b"_voc_state_time", "_voc_state_valid", b"_voc_state_valid", "voc_state_array", b"voc_state_array", "voc_state_time", b"voc_state_time", "voc_state_valid", b"voc_state_valid"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_voc_state_array", b"_voc_state_array", "_voc_state_time", b"_voc_state_time", "_voc_state_valid", b"_voc_state_valid", "last_cleaning_time", b"last_cleaning_time", "last_cleaning_valid", b"last_cleaning_valid", "one_shot_mode", b"one_shot_mode", "voc_state_array", b"voc_state_array", "voc_state_time", b"voc_state_time", "voc_state_valid", b"voc_state_valid"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__voc_state_array: typing_extensions.TypeAlias = typing.Literal["voc_state_array"]
+    _WhichOneofArgType__voc_state_array: typing_extensions.TypeAlias = typing.Literal["_voc_state_array", b"_voc_state_array"]
+    _WhichOneofReturnType__voc_state_time: typing_extensions.TypeAlias = typing.Literal["voc_state_time"]
+    _WhichOneofArgType__voc_state_time: typing_extensions.TypeAlias = typing.Literal["_voc_state_time", b"_voc_state_time"]
+    _WhichOneofReturnType__voc_state_valid: typing_extensions.TypeAlias = typing.Literal["voc_state_valid"]
+    _WhichOneofArgType__voc_state_valid: typing_extensions.TypeAlias = typing.Literal["_voc_state_valid", b"_voc_state_valid"]
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voc_state_array) -> _WhichOneofReturnType__voc_state_array | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voc_state_time) -> _WhichOneofReturnType__voc_state_time | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__voc_state_valid) -> _WhichOneofReturnType__voc_state_valid | None: ...
+
+Global___SEN6XState: typing_extensions.TypeAlias = SEN6XState

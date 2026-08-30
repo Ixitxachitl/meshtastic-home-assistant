@@ -237,7 +237,8 @@ class StoreAndForward(google.protobuf.message.Message):
             return_max: builtins.int = ...,
             return_window: builtins.int = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing.Literal["heartbeat", b"heartbeat", "messages_max", b"messages_max", "messages_saved", b"messages_saved", "messages_total", b"messages_total", "requests", b"requests", "requests_history", b"requests_history", "return_max", b"return_max", "return_window", b"return_window", "up_time", b"up_time"]) -> None: ...
+        _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["heartbeat", b"heartbeat", "messages_max", b"messages_max", "messages_saved", b"messages_saved", "messages_total", b"messages_total", "requests", b"requests", "requests_history", b"requests_history", "return_max", b"return_max", "return_window", b"return_window", "up_time", b"up_time"]
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @typing.final
     class History(google.protobuf.message.Message):
@@ -270,7 +271,8 @@ class StoreAndForward(google.protobuf.message.Message):
             window: builtins.int = ...,
             last_request: builtins.int = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing.Literal["history_messages", b"history_messages", "last_request", b"last_request", "window", b"window"]) -> None: ...
+        _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["history_messages", b"history_messages", "last_request", b"last_request", "window", b"window"]
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     @typing.final
     class Heartbeat(google.protobuf.message.Message):
@@ -296,14 +298,15 @@ class StoreAndForward(google.protobuf.message.Message):
             period: builtins.int = ...,
             secondary: builtins.int = ...,
         ) -> None: ...
-        def ClearField(self, field_name: typing.Literal["period", b"period", "secondary", b"secondary"]) -> None: ...
+        _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["period", b"period", "secondary", b"secondary"]
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
     RR_FIELD_NUMBER: builtins.int
     STATS_FIELD_NUMBER: builtins.int
     HISTORY_FIELD_NUMBER: builtins.int
     HEARTBEAT_FIELD_NUMBER: builtins.int
     TEXT_FIELD_NUMBER: builtins.int
-    rr: global___StoreAndForward.RequestResponse.ValueType
+    rr: Global___StoreAndForward.RequestResponse.ValueType
     """
     TODO: REPLACE
     """
@@ -312,19 +315,19 @@ class StoreAndForward(google.protobuf.message.Message):
     Text from history message.
     """
     @property
-    def stats(self) -> global___StoreAndForward.Statistics:
+    def stats(self) -> Global___StoreAndForward.Statistics:
         """
         TODO: REPLACE
         """
 
     @property
-    def history(self) -> global___StoreAndForward.History:
+    def history(self) -> Global___StoreAndForward.History:
         """
         TODO: REPLACE
         """
 
     @property
-    def heartbeat(self) -> global___StoreAndForward.Heartbeat:
+    def heartbeat(self) -> Global___StoreAndForward.Heartbeat:
         """
         TODO: REPLACE
         """
@@ -332,14 +335,18 @@ class StoreAndForward(google.protobuf.message.Message):
     def __init__(
         self,
         *,
-        rr: global___StoreAndForward.RequestResponse.ValueType = ...,
-        stats: global___StoreAndForward.Statistics | None = ...,
-        history: global___StoreAndForward.History | None = ...,
-        heartbeat: global___StoreAndForward.Heartbeat | None = ...,
+        rr: Global___StoreAndForward.RequestResponse.ValueType = ...,
+        stats: Global___StoreAndForward.Statistics | None = ...,
+        history: Global___StoreAndForward.History | None = ...,
+        heartbeat: Global___StoreAndForward.Heartbeat | None = ...,
         text: builtins.bytes = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["heartbeat", b"heartbeat", "history", b"history", "stats", b"stats", "text", b"text", "variant", b"variant"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["heartbeat", b"heartbeat", "history", b"history", "rr", b"rr", "stats", b"stats", "text", b"text", "variant", b"variant"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["variant", b"variant"]) -> typing.Literal["stats", "history", "heartbeat", "text"] | None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["heartbeat", b"heartbeat", "history", b"history", "stats", b"stats", "text", b"text", "variant", b"variant"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["heartbeat", b"heartbeat", "history", b"history", "rr", b"rr", "stats", b"stats", "text", b"text", "variant", b"variant"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType_variant: typing_extensions.TypeAlias = typing.Literal["stats", "history", "heartbeat", "text"]
+    _WhichOneofArgType_variant: typing_extensions.TypeAlias = typing.Literal["variant", b"variant"]
+    def WhichOneof(self, oneof_group: _WhichOneofArgType_variant) -> _WhichOneofReturnType_variant | None: ...
 
-global___StoreAndForward = StoreAndForward
+Global___StoreAndForward: typing_extensions.TypeAlias = StoreAndForward

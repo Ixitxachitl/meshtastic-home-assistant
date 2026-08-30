@@ -6,7 +6,13 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -40,6 +46,7 @@ class Paxcount(google.protobuf.message.Message):
         ble: builtins.int = ...,
         uptime: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["ble", b"ble", "uptime", b"uptime", "wifi", b"wifi"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["ble", b"ble", "uptime", b"uptime", "wifi", b"wifi"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___Paxcount = Paxcount
+Global___Paxcount: typing_extensions.TypeAlias = Paxcount

@@ -10,7 +10,13 @@ import google.protobuf.internal.containers
 import google.protobuf.message
 from . import channel_pb2
 from . import config_pb2
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -46,7 +52,9 @@ class ChannelSet(google.protobuf.message.Message):
         settings: collections.abc.Iterable[channel_pb2.ChannelSettings] | None = ...,
         lora_config: config_pb2.Config.LoRaConfig | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["lora_config", b"lora_config"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["lora_config", b"lora_config", "settings", b"settings"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["lora_config", b"lora_config"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["lora_config", b"lora_config", "settings", b"settings"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___ChannelSet = ChannelSet
+Global___ChannelSet: typing_extensions.TypeAlias = ChannelSet

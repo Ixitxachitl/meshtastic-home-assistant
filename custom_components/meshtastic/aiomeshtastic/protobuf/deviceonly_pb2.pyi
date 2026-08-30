@@ -13,7 +13,13 @@ from . import config_pb2
 from . import localonly_pb2
 from . import mesh_pb2
 from . import telemetry_pb2
+import sys
 import typing
+
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
@@ -30,6 +36,7 @@ class PositionLite(google.protobuf.message.Message):
     ALTITUDE_FIELD_NUMBER: builtins.int
     TIME_FIELD_NUMBER: builtins.int
     LOCATION_SOURCE_FIELD_NUMBER: builtins.int
+    PRECISION_BITS_FIELD_NUMBER: builtins.int
     latitude_i: builtins.int
     """
     The new preferred location encoding, multiply by 1e-7 to get degrees
@@ -55,6 +62,10 @@ class PositionLite(google.protobuf.message.Message):
     """
     TODO: REPLACE
     """
+    precision_bits: builtins.int
+    """
+    Indicates the bits of precision set by the sending node
+    """
     def __init__(
         self,
         *,
@@ -63,10 +74,12 @@ class PositionLite(google.protobuf.message.Message):
         altitude: builtins.int = ...,
         time: builtins.int = ...,
         location_source: mesh_pb2.Position.LocSource.ValueType = ...,
+        precision_bits: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["altitude", b"altitude", "latitude_i", b"latitude_i", "location_source", b"location_source", "longitude_i", b"longitude_i", "time", b"time"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["altitude", b"altitude", "latitude_i", b"latitude_i", "location_source", b"location_source", "longitude_i", b"longitude_i", "precision_bits", b"precision_bits", "time", b"time"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___PositionLite = PositionLite
+Global___PositionLite: typing_extensions.TypeAlias = PositionLite
 
 @typing.final
 class UserLite(google.protobuf.message.Message):
@@ -131,37 +144,41 @@ class UserLite(google.protobuf.message.Message):
         public_key: builtins.bytes = ...,
         is_unmessagable: builtins.bool | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_is_unmessagable", b"_is_unmessagable", "is_unmessagable", b"is_unmessagable"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_is_unmessagable", b"_is_unmessagable", "hw_model", b"hw_model", "is_licensed", b"is_licensed", "is_unmessagable", b"is_unmessagable", "long_name", b"long_name", "macaddr", b"macaddr", "public_key", b"public_key", "role", b"role", "short_name", b"short_name"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["_is_unmessagable", b"_is_unmessagable"]) -> typing.Literal["is_unmessagable"] | None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_is_unmessagable", b"_is_unmessagable", "is_unmessagable", b"is_unmessagable"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_is_unmessagable", b"_is_unmessagable", "hw_model", b"hw_model", "is_licensed", b"is_licensed", "is_unmessagable", b"is_unmessagable", "long_name", b"long_name", "macaddr", b"macaddr", "public_key", b"public_key", "role", b"role", "short_name", b"short_name"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__is_unmessagable: typing_extensions.TypeAlias = typing.Literal["is_unmessagable"]
+    _WhichOneofArgType__is_unmessagable: typing_extensions.TypeAlias = typing.Literal["_is_unmessagable", b"_is_unmessagable"]
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__is_unmessagable) -> _WhichOneofReturnType__is_unmessagable | None: ...
 
-global___UserLite = UserLite
+Global___UserLite: typing_extensions.TypeAlias = UserLite
 
 @typing.final
 class NodeInfoLite(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     NUM_FIELD_NUMBER: builtins.int
-    USER_FIELD_NUMBER: builtins.int
-    POSITION_FIELD_NUMBER: builtins.int
     SNR_FIELD_NUMBER: builtins.int
     LAST_HEARD_FIELD_NUMBER: builtins.int
-    DEVICE_METRICS_FIELD_NUMBER: builtins.int
     CHANNEL_FIELD_NUMBER: builtins.int
-    VIA_MQTT_FIELD_NUMBER: builtins.int
     HOPS_AWAY_FIELD_NUMBER: builtins.int
-    IS_FAVORITE_FIELD_NUMBER: builtins.int
-    IS_IGNORED_FIELD_NUMBER: builtins.int
     NEXT_HOP_FIELD_NUMBER: builtins.int
     BITFIELD_FIELD_NUMBER: builtins.int
+    LONG_NAME_FIELD_NUMBER: builtins.int
+    SHORT_NAME_FIELD_NUMBER: builtins.int
+    HW_MODEL_FIELD_NUMBER: builtins.int
+    ROLE_FIELD_NUMBER: builtins.int
+    PUBLIC_KEY_FIELD_NUMBER: builtins.int
+    SNR_Q4_FIELD_NUMBER: builtins.int
     num: builtins.int
     """
     The node number
     """
     snr: builtins.float
     """
-    Returns the Signal-to-noise ratio (SNR) of the last received message,
-    as measured by the receiver. Return SNR of the last received message in dB
+    In-memory SNR of the last received message in dB. Not serialised directly:
+    always zeroed before encode; persisted as snr_q4 = 19 below.
     """
     last_heard: builtins.int
     """
@@ -171,23 +188,9 @@ class NodeInfoLite(google.protobuf.message.Message):
     """
     local channel index we heard that node on. Only populated if its not the default channel.
     """
-    via_mqtt: builtins.bool
-    """
-    True if we witnessed the node over MQTT instead of LoRA transport
-    """
     hops_away: builtins.int
     """
     Number of hops away from us this node is (0 if direct neighbor)
-    """
-    is_favorite: builtins.bool
-    """
-    True if node is in our favorites list
-    Persists between NodeDB internal clean ups
-    """
-    is_ignored: builtins.bool
-    """
-    True if node is in our ignored list
-    Persists between NodeDB internal clean ups
     """
     next_hop: builtins.int
     """
@@ -195,50 +198,66 @@ class NodeInfoLite(google.protobuf.message.Message):
     """
     bitfield: builtins.int
     """
-    Bitfield for storing booleans.
-    LSB 0 is_key_manually_verified
+    Bitfield for storing booleans. See NODEINFO_BITFIELD_* in src/mesh/NodeDB.h.
     """
-    @property
-    def user(self) -> global___UserLite:
-        """
-        The user info for this node
-        """
+    long_name: builtins.str
+    """Flattened user fields (formerly UserLite). macaddr dropped (deprecated 1.2.11).
 
-    @property
-    def position(self) -> global___PositionLite:
-        """
-        This position data. Note: before 1.2.14 we would also store the last time we've heard from this node in position.time, that is no longer true.
-        Position.time now indicates the last time we received a POSITION from that node.
-        """
 
-    @property
-    def device_metrics(self) -> telemetry_pb2.DeviceMetrics:
-        """
-        The latest device metrics for the node.
-        """
-
+    A full name for this user, i.e. "Kevin Hester".
+    """
+    short_name: builtins.str
+    """
+    A VERY short name, ideally two characters or an emoji.
+    Suitable for a tiny OLED screen.
+    """
+    hw_model: mesh_pb2.HardwareModel.ValueType
+    """
+    Hardware model the user's device is running.
+    """
+    role: config_pb2.Config.DeviceConfig.Role.ValueType
+    """
+    The user's role in the mesh.
+    """
+    public_key: builtins.bytes
+    """
+    The public key of the user's device, for PKI-based encrypted DMs.
+    """
+    snr_q4: builtins.int
+    """
+    Q4-encoded SNR: dB × 4, sint32 zigzag. Matches RouteDiscovery convention.
+    Encode: snr_q4 = (int32_t)lroundf(snr * 4.0f). Decode: snr = snr_q4 / 4.0f.
+    float snr is always zeroed on disk; this field carries all persisted SNR.
+    A stored 0 does not by itself mean "unknown" here - see NODEINFO_BITFIELD_HAS_SNR in
+    src/mesh/NodeDB.h for the presence bit that disambiguates a genuine 0 dB reading from
+    "never measured".
+    """
     def __init__(
         self,
         *,
         num: builtins.int = ...,
-        user: global___UserLite | None = ...,
-        position: global___PositionLite | None = ...,
         snr: builtins.float = ...,
         last_heard: builtins.int = ...,
-        device_metrics: telemetry_pb2.DeviceMetrics | None = ...,
         channel: builtins.int = ...,
-        via_mqtt: builtins.bool = ...,
         hops_away: builtins.int | None = ...,
-        is_favorite: builtins.bool = ...,
-        is_ignored: builtins.bool = ...,
         next_hop: builtins.int = ...,
         bitfield: builtins.int = ...,
+        long_name: builtins.str = ...,
+        short_name: builtins.str = ...,
+        hw_model: mesh_pb2.HardwareModel.ValueType = ...,
+        role: config_pb2.Config.DeviceConfig.Role.ValueType = ...,
+        public_key: builtins.bytes = ...,
+        snr_q4: builtins.int = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_hops_away", b"_hops_away", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "position", b"position", "user", b"user"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_hops_away", b"_hops_away", "bitfield", b"bitfield", "channel", b"channel", "device_metrics", b"device_metrics", "hops_away", b"hops_away", "is_favorite", b"is_favorite", "is_ignored", b"is_ignored", "last_heard", b"last_heard", "next_hop", b"next_hop", "num", b"num", "position", b"position", "snr", b"snr", "user", b"user", "via_mqtt", b"via_mqtt"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["_hops_away", b"_hops_away"]) -> typing.Literal["hops_away"] | None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away", "hops_away", b"hops_away"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away", "bitfield", b"bitfield", "channel", b"channel", "hops_away", b"hops_away", "hw_model", b"hw_model", "last_heard", b"last_heard", "long_name", b"long_name", "next_hop", b"next_hop", "num", b"num", "public_key", b"public_key", "role", b"role", "short_name", b"short_name", "snr", b"snr", "snr_q4", b"snr_q4"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType__hops_away: typing_extensions.TypeAlias = typing.Literal["hops_away"]
+    _WhichOneofArgType__hops_away: typing_extensions.TypeAlias = typing.Literal["_hops_away", b"_hops_away"]
+    def WhichOneof(self, oneof_group: _WhichOneofArgType__hops_away) -> _WhichOneofReturnType__hops_away | None: ...
 
-global___NodeInfoLite = NodeInfoLite
+Global___NodeInfoLite: typing_extensions.TypeAlias = NodeInfoLite
 
 @typing.final
 class DeviceState(google.protobuf.message.Message):
@@ -331,10 +350,104 @@ class DeviceState(google.protobuf.message.Message):
         rx_waypoint: mesh_pb2.MeshPacket | None = ...,
         node_remote_hardware_pins: collections.abc.Iterable[mesh_pb2.NodeRemoteHardwarePin] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["my_node", b"my_node", "owner", b"owner", "rx_text_message", b"rx_text_message", "rx_waypoint", b"rx_waypoint"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["did_gps_reset", b"did_gps_reset", "my_node", b"my_node", "no_save", b"no_save", "node_remote_hardware_pins", b"node_remote_hardware_pins", "owner", b"owner", "receive_queue", b"receive_queue", "rx_text_message", b"rx_text_message", "rx_waypoint", b"rx_waypoint", "version", b"version"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["my_node", b"my_node", "owner", b"owner", "rx_text_message", b"rx_text_message", "rx_waypoint", b"rx_waypoint"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["did_gps_reset", b"did_gps_reset", "my_node", b"my_node", "no_save", b"no_save", "node_remote_hardware_pins", b"node_remote_hardware_pins", "owner", b"owner", "receive_queue", b"receive_queue", "rx_text_message", b"rx_text_message", "rx_waypoint", b"rx_waypoint", "version", b"version"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___DeviceState = DeviceState
+Global___DeviceState: typing_extensions.TypeAlias = DeviceState
+
+@typing.final
+class NodePositionEntry(google.protobuf.message.Message):
+    """Satellite per-node entries; stored alongside the slim NodeInfoLite so nodes
+    that never report don't pay the embedded cost.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NUM_FIELD_NUMBER: builtins.int
+    POSITION_FIELD_NUMBER: builtins.int
+    num: builtins.int
+    @property
+    def position(self) -> Global___PositionLite: ...
+    def __init__(
+        self,
+        *,
+        num: builtins.int = ...,
+        position: Global___PositionLite | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["position", b"position"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["num", b"num", "position", b"position"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___NodePositionEntry: typing_extensions.TypeAlias = NodePositionEntry
+
+@typing.final
+class NodeTelemetryEntry(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NUM_FIELD_NUMBER: builtins.int
+    DEVICE_METRICS_FIELD_NUMBER: builtins.int
+    num: builtins.int
+    @property
+    def device_metrics(self) -> telemetry_pb2.DeviceMetrics: ...
+    def __init__(
+        self,
+        *,
+        num: builtins.int = ...,
+        device_metrics: telemetry_pb2.DeviceMetrics | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["device_metrics", b"device_metrics"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["device_metrics", b"device_metrics", "num", b"num"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___NodeTelemetryEntry: typing_extensions.TypeAlias = NodeTelemetryEntry
+
+@typing.final
+class NodeEnvironmentEntry(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NUM_FIELD_NUMBER: builtins.int
+    ENVIRONMENT_METRICS_FIELD_NUMBER: builtins.int
+    num: builtins.int
+    @property
+    def environment_metrics(self) -> telemetry_pb2.EnvironmentMetrics: ...
+    def __init__(
+        self,
+        *,
+        num: builtins.int = ...,
+        environment_metrics: telemetry_pb2.EnvironmentMetrics | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["environment_metrics", b"environment_metrics"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["environment_metrics", b"environment_metrics", "num", b"num"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___NodeEnvironmentEntry: typing_extensions.TypeAlias = NodeEnvironmentEntry
+
+@typing.final
+class NodeStatusEntry(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    NUM_FIELD_NUMBER: builtins.int
+    STATUS_FIELD_NUMBER: builtins.int
+    num: builtins.int
+    @property
+    def status(self) -> mesh_pb2.StatusMessage: ...
+    def __init__(
+        self,
+        *,
+        num: builtins.int = ...,
+        status: mesh_pb2.StatusMessage | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["status", b"status"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["num", b"num", "status", b"status"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+
+Global___NodeStatusEntry: typing_extensions.TypeAlias = NodeStatusEntry
 
 @typing.final
 class NodeDatabase(google.protobuf.message.Message):
@@ -342,6 +455,10 @@ class NodeDatabase(google.protobuf.message.Message):
 
     VERSION_FIELD_NUMBER: builtins.int
     NODES_FIELD_NUMBER: builtins.int
+    POSITIONS_FIELD_NUMBER: builtins.int
+    TELEMETRY_FIELD_NUMBER: builtins.int
+    STATUS_FIELD_NUMBER: builtins.int
+    ENVIRONMENT_FIELD_NUMBER: builtins.int
     version: builtins.int
     """
     A version integer used to invalidate old save files when we make
@@ -349,20 +466,37 @@ class NodeDatabase(google.protobuf.message.Message):
     NodeDB.cpp in the device code.
     """
     @property
-    def nodes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___NodeInfoLite]:
+    def nodes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___NodeInfoLite]:
         """
         New lite version of NodeDB to decrease memory footprint
         """
 
+    @property
+    def positions(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___NodePositionEntry]:
+        """Per-NodeNum satellite arrays. Constrained platforms (e.g. STM32WL) omit
+        these via MESHTASTIC_EXCLUDE_*DB build flags.
+        """
+
+    @property
+    def telemetry(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___NodeTelemetryEntry]: ...
+    @property
+    def status(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___NodeStatusEntry]: ...
+    @property
+    def environment(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[Global___NodeEnvironmentEntry]: ...
     def __init__(
         self,
         *,
         version: builtins.int = ...,
-        nodes: collections.abc.Iterable[global___NodeInfoLite] | None = ...,
+        nodes: collections.abc.Iterable[Global___NodeInfoLite] | None = ...,
+        positions: collections.abc.Iterable[Global___NodePositionEntry] | None = ...,
+        telemetry: collections.abc.Iterable[Global___NodeTelemetryEntry] | None = ...,
+        status: collections.abc.Iterable[Global___NodeStatusEntry] | None = ...,
+        environment: collections.abc.Iterable[Global___NodeEnvironmentEntry] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["nodes", b"nodes", "version", b"version"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["environment", b"environment", "nodes", b"nodes", "positions", b"positions", "status", b"status", "telemetry", b"telemetry", "version", b"version"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___NodeDatabase = NodeDatabase
+Global___NodeDatabase: typing_extensions.TypeAlias = NodeDatabase
 
 @typing.final
 class ChannelFile(google.protobuf.message.Message):
@@ -392,9 +526,10 @@ class ChannelFile(google.protobuf.message.Message):
         channels: collections.abc.Iterable[channel_pb2.Channel] | None = ...,
         version: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["channels", b"channels", "version", b"version"]) -> None: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["channels", b"channels", "version", b"version"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___ChannelFile = ChannelFile
+Global___ChannelFile: typing_extensions.TypeAlias = ChannelFile
 
 @typing.final
 class BackupPreferences(google.protobuf.message.Message):
@@ -431,7 +566,7 @@ class BackupPreferences(google.protobuf.message.Message):
         """
 
     @property
-    def channels(self) -> global___ChannelFile:
+    def channels(self) -> Global___ChannelFile:
         """
         The node's channels
         """
@@ -449,10 +584,12 @@ class BackupPreferences(google.protobuf.message.Message):
         timestamp: builtins.int = ...,
         config: localonly_pb2.LocalConfig | None = ...,
         module_config: localonly_pb2.LocalModuleConfig | None = ...,
-        channels: global___ChannelFile | None = ...,
+        channels: Global___ChannelFile | None = ...,
         owner: mesh_pb2.User | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["channels", b"channels", "config", b"config", "module_config", b"module_config", "owner", b"owner"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["channels", b"channels", "config", b"config", "module_config", b"module_config", "owner", b"owner", "timestamp", b"timestamp", "version", b"version"]) -> None: ...
+    _HasFieldArgType: typing_extensions.TypeAlias = typing.Literal["channels", b"channels", "config", b"config", "module_config", b"module_config", "owner", b"owner"]
+    def HasField(self, field_name: _HasFieldArgType) -> builtins.bool: ...
+    _ClearFieldArgType: typing_extensions.TypeAlias = typing.Literal["channels", b"channels", "config", b"config", "module_config", b"module_config", "owner", b"owner", "timestamp", b"timestamp", "version", b"version"]
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
 
-global___BackupPreferences = BackupPreferences
+Global___BackupPreferences: typing_extensions.TypeAlias = BackupPreferences
