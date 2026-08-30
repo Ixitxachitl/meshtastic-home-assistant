@@ -16,6 +16,58 @@ SPDX-License-Identifier: MIT
 
 _Home Assistant Integration for [Meshtastic](https://www.meshtastic.org)._
 
+> ## This fork
+>
+> Based on upstream `dev` (unreleased 0.6.2 work: outgoing-message logbook,
+> host and heap metrics, extra environment sensors, `reply_id`,
+> pyserial-asyncio-fast) merged with upstream `main`, which carries BLE and
+> MQTT fixes `dev` does not yet have. On top of that:
+>
+> **Fixes**
+> * Options flow no longer stores the config entry — assigning it was removed
+>   in Home Assistant 2025.12, so without this the integration fails to load.
+> * Entities de-duplicate on `unique_id`. The previous `entity_id` check never
+>   matched, because entities have no `entity_id` until they are added, so
+>   every coordinator update re-added the whole set.
+> * `lastHeard` is no longer written from packets the radio could not
+>   timestamp, which used to overwrite a good value with 1970-01-01.
+> * Reading the node database no longer waits forever for a node that never
+>   becomes ready; it fails and retries instead of hanging setup, the options
+>   flow and the notify platform.
+> * Gas resistance is reported in kΩ rather than hPa, a pressure unit. The
+>   firmware divides the sensor's Ohm reading by 1000; note `telemetry.proto`
+>   claims MOhm, which disagrees with the firmware by a factor of 1000.
+> * Coordinator debug logging no longer logs a line per packet from every
+>   filtered-out node, and no longer formats `None` with `%d`.
+> * Protobuf messages are no longer `repr()`d for every packet regardless of
+>   log level, and `scripts/develop` no longer forces `--debug`. Together
+>   these stalled the event loop enough that a large node database could not
+>   finish syncing inside the 60s `request_config` timeout, so it reconnected
+>   and restarted the dump forever.
+>
+> **Additions**
+> * Text-message events carry the `!xxxxxxxx` sender id, hop count and
+>   rx_snr / rx_rssi.
+> * Display precision capped on float metric sensors.
+>
+> **Versions**
+> * meshtastic protobufs `v2.8.0`, regenerated. The generator now keeps its
+>   SPDX header and populates `__version__` for untagged pins.
+> * Developed against Home Assistant `2026.8.3` on Python 3.14, with `bleak`
+>   at `~=3.0.2`. The lint workflow moves to 3.14 because `requirements.txt`
+>   no longer resolves on 3.12. **This raises the HACS minimum to 2026.8.3.**
+> * Bundled web client `v2.7.2`, built reproducibly by `scripts/deploy_web`
+>   rather than hand-edited. 2.7.x assumes it is served from the server root
+>   in several places and dropped the `?path=` parameter the integration uses
+>   to point it at a gateway; see [scripts/web/README.md](scripts/web/README.md).
+>
+> **Known limitations**
+> * The `request_config` timeout is a fixed 60s and does not scale with
+>   `nodedb_count`. It passes at the 250-node ceiling over TCP with little
+>   margin; Bluetooth may still loop.
+> * The web client cannot persist its database — Home Assistant's static
+>   handler does not send the COOP/COEP headers OPFS requires.
+
 Supported Features:
  * Add meshtastic devices as gateways to interact with the mesh
    * Supports TCP, Serial & Bluetooth connection (also works with [Bluetooth Proxy](https://esphome.io/components/bluetooth_proxy.html))
