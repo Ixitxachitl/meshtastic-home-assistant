@@ -66,6 +66,15 @@ bootstrap also rewrites `<base>index.html` to `<base>` so the index route
 resolves. Note the v2.7.1 build carried no basepath and worked, so if routing
 misbehaves after an upgrade this is the first thing to try removing.
 
+## Timeouts that must agree
+
+The client polls `/api/v1/fromradio` as a long poll and aborts after 7s
+(`READ_TIMEOUT_MS` in `@meshtastic/transport-http`), reporting the connection
+as lost. The integration holds an empty queue for `FROM_RADIO_HOLD_SECONDS`,
+which must stay under that. Holding longer made an idle mesh appear to
+disconnect every few seconds. Check both if the client starts cycling between
+connected and `read-timeout`.
+
 ## Known limitations
 
 - **OPFS persistence needs cross-origin isolation.** SQLite stores
