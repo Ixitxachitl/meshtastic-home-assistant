@@ -278,6 +278,9 @@
     "sensor": {
       "battery_level": {
         "name": "Battery Level"
+      },
+      "environment_gas_resistance": {
+        "name": "Gas Resistance"
       }
     },
     "meshtastic": {
