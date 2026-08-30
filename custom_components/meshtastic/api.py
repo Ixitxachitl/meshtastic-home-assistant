@@ -65,6 +65,10 @@ EVENT_MESHTASTIC_API_TEXT_MESSAGE = EVENT_MESHTASTIC_API_BASE + "_text_message"
 EVENT_MESHTASTIC_API_TEXT_MESSAGE_OUT = EVENT_MESHTASTIC_API_BASE + "_text_message_out"
 EVENT_MESHTASTIC_API_POSITION = EVENT_MESHTASTIC_API_BASE + "_position"
 
+# How long to wait for the connected node to finish its config exchange
+# before treating the connection as unusable.
+NODE_READY_TIMEOUT = 30
+
 ATTR_EVENT_MESHTASTIC_API_CONFIG_ENTRY_ID = "config_entry_id"
 ATTR_EVENT_MESHTASTIC_API_NODE = "node"
 ATTR_EVENT_MESHTASTIC_API_DATA = "data"
@@ -211,7 +215,17 @@ class MeshtasticApiClient:
         return self._interface.find_node(node_id=node_id)
 
     async def async_get_all_nodes(self) -> Mapping[int, Mapping[str, Any]]:
-        await self._interface.connected_node_ready()
+        # The node database is held in memory, so this is cheap once the node is
+        # ready. The readiness event is cleared whenever the connection drops or
+        # the node re-runs its config exchange, though, and waiting on it is
+        # otherwise unbounded -- a radio that never comes back would block the
+        # caller forever. Fail instead, so callers can retry or report.
+        try:
+            await asyncio.wait_for(self._interface.connected_node_ready(), timeout=NODE_READY_TIMEOUT)
+        except TimeoutError as e:
+            msg = f"Node not ready after {NODE_READY_TIMEOUT} seconds"
+            raise MeshtasticApiClientError(msg) from e
+
         return {node_id: self._transform_node_info(node_info) for node_id, node_info in self._interface.nodes().items()}
 
     def _transform_node_info(self, node_info: Mapping[str, Any]) -> Mapping[str, Any]:
