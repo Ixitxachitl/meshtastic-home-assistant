@@ -44,12 +44,15 @@ def meshtastic_api_event_callback(f):  # noqa: ANN001, ANN201
                 return None
 
             if not self.data:
-                self._logger.debug("Received event but coordinator is not yet initialized")
+                if not self._logged_preinit_event_drop:
+                    self._logger.debug("Received event before coordinator initialization; dropping pre-init events")
+                    self._logged_preinit_event_drop = True
                 return None
 
             node_id = event_data.get(ATTR_EVENT_MESHTASTIC_API_NODE, None)
             if node_id is None or node_id not in self.data:
-                self._logger.debug("Node %d not in coordinator data", node_id)
+                # Expected for every mesh node excluded by the node filter, which is
+                # most of them on a busy mesh. Logging it drowns out everything else.
                 return None
 
             data = event_data.get(ATTR_EVENT_MESHTASTIC_API_DATA, None)
@@ -84,6 +87,7 @@ class MeshtasticDataUpdateCoordinator(DataUpdateCoordinator):
             update_interval=timedelta(hours=1),
         )
         self._logger = LOGGER.getChild(self.__class__.__name__)
+        self._logged_preinit_event_drop = False
         self._remove_event_listeners = []
         self._remove_event_listeners.append(
             hass.bus.async_listen(EVENT_MESHTASTIC_API_NODE_UPDATED, self._api_node_updated)
@@ -172,7 +176,6 @@ class MeshtasticDataUpdateCoordinator(DataUpdateCoordinator):
 
         node_id = event_data.get("num", None)
         if node_id is None or node_id not in self.data:
-            self._logger.debug("Node %d not in coordinator data", node_id)
             return
 
         if self.data[node_id] != event_data:
