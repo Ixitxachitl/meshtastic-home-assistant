@@ -23,5 +23,13 @@ else
     HASS_BIN="hass"
 fi
 
-# Start Home Assistant
-"${HASS_BIN}" --config "${PWD}/config" --debug
+# Start Home Assistant.
+#
+# --debug turns on asyncio debug mode and floods the log with a formatted copy
+# of every packet, which is enough to stall the event loop while a node
+# database is streaming. Opt in with HASS_DEBUG=1 when you actually need it.
+if [[ -n "${HASS_DEBUG:-}" ]]; then
+    "${HASS_BIN}" --config "${PWD}/config" --debug
+else
+    "${HASS_BIN}" --config "${PWD}/config"
+fi
